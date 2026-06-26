@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#04111f"/>
+      <stop offset="0.48" stop-color="#17324d"/>
+      <stop offset="1" stop-color="#112514"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="55%" cy="42%" r="55%">
+      <stop offset="0" stop-color="#89ff55" stop-opacity="0.95"/>
+      <stop offset="0.32" stop-color="#89ff55" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="16"/></filter>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="28" stdDeviation="30" flood-color="#000" flood-opacity=".45"/></filter>
+    <pattern id="grid" width="80" height="80" patternUnits="userSpaceOnUse">
+      <path d="M80 0H0V80" fill="none" stroke="#fff" stroke-opacity=".06" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#grid)"/>
+  <ellipse cx="1040" cy="380" rx="540" ry="440" fill="url(#glow)"/>
+  <g filter="url(#blur)" opacity=".9">
+    <circle cx="1180" cy="250" r="210" fill="#00d6ff" opacity=".55"/>
+    <circle cx="960" cy="590" r="260" fill="#86ff5f" opacity=".40"/>
+    <circle cx="1250" cy="680" r="180" fill="#e9f4ff" opacity=".35"/>
+  </g>
+  <g filter="url(#shadow)">
+    <path d="M520 700 C610 520, 760 430, 950 380 C1060 350, 1150 300, 1260 190" stroke="#78ff54" stroke-width="16" fill="none" stroke-linecap="round" opacity=".86"/>
+    <path d="M540 725 C690 610, 800 620, 920 480 C1010 380, 1130 380, 1320 260" stroke="#19d7ff" stroke-width="8" fill="none" stroke-linecap="round" opacity=".82"/>
+    <path d="M625 300 L970 175 L1310 350 L1240 705 L770 760 Z" fill="#0a1624" opacity=".55" stroke="#ffffff" stroke-opacity=".16" stroke-width="2"/>
+    <circle cx="930" cy="455" r="180" fill="none" stroke="#fff" stroke-opacity=".22" stroke-width="28"/>
+    <circle cx="930" cy="455" r="92" fill="#eaffff" opacity=".12"/>
+    <circle cx="930" cy="455" r="44" fill="#78ff54" opacity=".85"/>
+  </g>
+  <g transform="translate(110,120)">
+    <rect x="0" y="0" width="610" height="250" rx="30" fill="#08111c" opacity=".64" stroke="#ffffff" stroke-opacity=".14"/>
+    <text x="42" y="78" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="800" letter-spacing="-2">ENVIRONMENT ART</text>
+    <text x="44" y="132" fill="#9cf8ff" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="700">Personal Portfolio</text>
+    <text x="44" y="184" fill="#dce8f3" font-family="Arial, Helvetica, sans-serif" font-size="24">Replace with final game screenshot</text>
+  </g>
+</svg>
