@@ -100,6 +100,12 @@
                 <span class="tag">Meta Quest</span>
                 <span class="tag">Vehicular Combat</span>
               </div>
+              <button class="trailer-button pending-video" type="button"
+                data-title="Car Crash Arena Trailer"
+                data-video="assets/videos/car-crash-arena-trailer-web.mp4"
+                data-poster="assets/images/car_crash_02.png">
+                Trailer file pending
+              </button>
             </div>
           </article>
 
@@ -125,6 +131,12 @@
                 <span class="tag">Meta Quest</span>
                 <span class="tag">Stylized World</span>
               </div>
+              <button class="trailer-button" type="button"
+                data-title="I'm Prisoner Trailer"
+                data-video="assets/videos/im-prisoner-trailer-web.mp4"
+                data-poster="assets/images/im_prisoner_03.png">
+                Watch trailer
+              </button>
             </div>
           </article>
 
@@ -141,6 +153,7 @@
                 <img class="project-icon" src="assets/icons/infinity-climb-icon.png" alt="Infinity Climb icon" />
                 <h3>Infinity Climb</h3>
               </div>
+              <img class="infinity-cover-mark" src="assets/images/infinity_climb_cover.png" alt="Infinity Climb key art and logo" />
               <p>
                 A bright, family-friendly climbing experience with a strong color theme, readable spaces and cheerful arcade-style progression.
               </p>
@@ -149,6 +162,12 @@
                 <span class="tag">Released</span>
                 <span class="tag">Climbing</span>
               </div>
+              <button class="trailer-button" type="button"
+                data-title="Infinity Climb Trailer"
+                data-video="assets/videos/infinity-climb-trailer-web.mp4"
+                data-poster="assets/images/infinity_climb_cover.png">
+                Watch trailer
+              </button>
             </div>
           </article>
         </div>
@@ -297,6 +316,21 @@
       <div>Projects · Services · Portfolio · Contact</div>
     </div>
   </footer>
+
+
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <div class="video-modal-backdrop" data-close-video></div>
+    <div class="video-modal-panel" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
+      <div class="video-modal-header">
+        <h2 id="videoModalTitle">Project trailer</h2>
+        <button class="video-modal-close" type="button" data-close-video aria-label="Close trailer">×</button>
+      </div>
+      <video id="projectTrailer" controls playsinline preload="metadata" poster="">
+        Your browser does not support embedded video.
+      </video>
+      <p class="video-modal-note">The trailer loads only after you click play, keeping the main page lighter.</p>
+    </div>
+  </div>
 
   <script src="assets/js/main.js"></script>
 </body>
