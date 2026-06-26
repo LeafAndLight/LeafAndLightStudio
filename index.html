@@ -100,11 +100,22 @@
                 <span class="tag">Meta Quest</span>
                 <span class="tag">Vehicular Combat</span>
               </div>
-              <button class="trailer-button pending-video" type="button"
-                data-title="Car Crash Arena Trailer"
-                data-video="assets/videos/car-crash-arena-trailer-web.mp4"
-                data-poster="assets/images/car_crash_02.png">
-                Trailer file pending
+              <button class="youtube-preview youtube-preview--car" type="button"
+                data-youtube-id="zTKtXHv1lbI"
+                data-title="Car Crash Arena — Official Trailer"
+                aria-label="Play Car Crash Arena official trailer">
+                <span class="youtube-preview-media">
+                  <img src="https://i.ytimg.com/vi/zTKtXHv1lbI/maxresdefault.jpg"
+                    data-fallback="https://i.ytimg.com/vi/zTKtXHv1lbI/hqdefault.jpg"
+                    alt="Car Crash Arena official trailer preview" loading="lazy" />
+                  <span class="youtube-preview-shade"></span>
+                  <span class="youtube-play" aria-hidden="true"><span></span></span>
+                  <span class="youtube-preview-badge">Official trailer</span>
+                </span>
+                <span class="youtube-preview-meta">
+                  <span><strong>Watch on site</strong><small>High-quality YouTube playback</small></span>
+                  <span class="youtube-preview-arrow" aria-hidden="true">↗</span>
+                </span>
               </button>
             </div>
           </article>
@@ -131,11 +142,22 @@
                 <span class="tag">Meta Quest</span>
                 <span class="tag">Stylized World</span>
               </div>
-              <button class="trailer-button" type="button"
-                data-title="I'm Prisoner Trailer"
-                data-video="assets/videos/im-prisoner-trailer-web.mp4"
-                data-poster="assets/images/im_prisoner_03.png">
-                Watch trailer
+              <button class="youtube-preview youtube-preview--prison" type="button"
+                data-youtube-id="jClY-se4Meo"
+                data-title="I'm Prisoner — Official Trailer"
+                aria-label="Play I'm Prisoner official trailer">
+                <span class="youtube-preview-media">
+                  <img src="https://i.ytimg.com/vi/jClY-se4Meo/maxresdefault.jpg"
+                    data-fallback="https://i.ytimg.com/vi/jClY-se4Meo/hqdefault.jpg"
+                    alt="I'm Prisoner official trailer preview" loading="lazy" />
+                  <span class="youtube-preview-shade"></span>
+                  <span class="youtube-play" aria-hidden="true"><span></span></span>
+                  <span class="youtube-preview-badge">Official trailer</span>
+                </span>
+                <span class="youtube-preview-meta">
+                  <span><strong>Watch on site</strong><small>High-quality YouTube playback</small></span>
+                  <span class="youtube-preview-arrow" aria-hidden="true">↗</span>
+                </span>
               </button>
             </div>
           </article>
@@ -162,11 +184,22 @@
                 <span class="tag">Released</span>
                 <span class="tag">Climbing</span>
               </div>
-              <button class="trailer-button" type="button"
-                data-title="Infinity Climb Trailer"
-                data-video="assets/videos/infinity-climb-trailer-web.mp4"
-                data-poster="assets/images/infinity_climb_cover.png">
-                Watch trailer
+              <button class="youtube-preview youtube-preview--climb" type="button"
+                data-youtube-id="mJ9uwHqM4RM"
+                data-title="Infinity Climb — Official Trailer"
+                aria-label="Play Infinity Climb official trailer">
+                <span class="youtube-preview-media">
+                  <img src="https://i.ytimg.com/vi/mJ9uwHqM4RM/maxresdefault.jpg"
+                    data-fallback="https://i.ytimg.com/vi/mJ9uwHqM4RM/hqdefault.jpg"
+                    alt="Infinity Climb official trailer preview" loading="lazy" />
+                  <span class="youtube-preview-shade"></span>
+                  <span class="youtube-play" aria-hidden="true"><span></span></span>
+                  <span class="youtube-preview-badge">Official trailer</span>
+                </span>
+                <span class="youtube-preview-meta">
+                  <span><strong>Watch on site</strong><small>High-quality YouTube playback</small></span>
+                  <span class="youtube-preview-arrow" aria-hidden="true">↗</span>
+                </span>
               </button>
             </div>
           </article>
@@ -322,13 +355,14 @@
     <div class="video-modal-backdrop" data-close-video></div>
     <div class="video-modal-panel" role="dialog" aria-modal="true" aria-labelledby="videoModalTitle">
       <div class="video-modal-header">
-        <h2 id="videoModalTitle">Project trailer</h2>
+        <div>
+          <span class="video-modal-kicker">YouTube · Official trailer</span>
+          <h2 id="videoModalTitle">Project trailer</h2>
+        </div>
         <button class="video-modal-close" type="button" data-close-video aria-label="Close trailer">×</button>
       </div>
-      <video id="projectTrailer" controls playsinline preload="metadata" poster="">
-        Your browser does not support embedded video.
-      </video>
-      <p class="video-modal-note">The trailer loads only after you click play, keeping the main page lighter.</p>
+      <div class="youtube-frame" id="youtubeFrame"></div>
+      <p class="video-modal-note">The YouTube player is loaded only after you click a trailer, keeping the page fast.</p>
     </div>
   </div>
 
