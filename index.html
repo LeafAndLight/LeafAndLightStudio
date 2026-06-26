@@ -1,253 +1,303 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Leaf & Light Studio — End-to-end VR Game Development</title>
-  <meta name="description" content="Leaf & Light Studio is a solo-led outsourcing studio for end-to-end VR game development, Quest prototypes, full game production, environment art and optimization." />
-  <meta property="og:title" content="Leaf & Light Studio — End-to-end VR Game Development" />
-  <meta property="og:description" content="Complete VR games from concept to store-ready release." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/hero-showcase.svg" />
-  <link rel="icon" href="assets/logo-mark.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Leaf & Light Studio creates immersive VR worlds, prototypes and full game builds." />
+  <title>Leaf & Light Studio — VR Worlds, Games & Prototypes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="cursor-glow" aria-hidden="true"></div>
-
-  <header class="site-header" id="top">
-    <a class="brand" href="#top" aria-label="Leaf & Light Studio home">
-      <img src="assets/logo-mark.svg" alt="" />
-      <span>
-        <strong>Leaf & Light</strong>
-        <small>Studio</small>
-      </span>
-    </a>
-
-    <button class="nav-toggle" aria-expanded="false" aria-label="Open menu">
-      <span></span><span></span><span></span>
-    </button>
-
-    <nav class="site-nav" aria-label="Main navigation">
-      <a href="#work">Games</a>
-      <a href="#services">Services</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#process">Process</a>
-      <a href="#contact" class="nav-cta">Start a project</a>
-    </nav>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <img src="assets/images/leaf_and_light_logo.png" alt="Leaf & Light Studio logo" />
+        <div class="brand-name">Leaf & Light Studio</div>
+      </a>
+      <nav class="menu">
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact" class="cta">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <section class="hero section-pad">
-      <div class="hero-copy">
-        <p class="eyebrow"><span></span> Solo-led outsourcing studio for Quest VR</p>
-        <h1>End-to-end VR game development.</h1>
-        <p class="lead">Complete VR games built from idea to store-ready release — design, development, environment art, Quest optimization and production handled in one clear pipeline.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#contact">Get a quote</a>
-          <a class="button ghost" href="#work">See shipped games</a>
-        </div>
-        <div class="proof-strip" aria-label="Studio highlights">
-          <div><strong>2</strong><span>Published Meta Quest games</span></div>
-          <div><strong>1</strong><span>New VR game in development</span></div>
-          <div><strong>Solo</strong><span>Concept, code, art & release</span></div>
-        </div>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-bg">
+        <div class="hero-slide active"><img src="assets/images/car_crash_02.png" alt="Car Crash Arena screenshot" /></div>
+        <div class="hero-slide"><img src="assets/images/im_prisoner_02.jpg" alt="I'm Prisoner screenshot" /></div>
+        <div class="hero-slide"><img src="assets/images/infinity_climb_01.png" alt="Infinity Climb screenshot" /></div>
       </div>
-
-      <div class="hero-visual" aria-label="Featured visual placeholder">
-        <img src="assets/hero-showcase.svg" alt="Abstract VR game development showcase placeholder" />
-        <div class="floating-card card-one">
-          <span>Quest-ready</span>
-          <strong>Performance-first builds</strong>
-        </div>
-        <div class="floating-card card-two">
-          <span>Pipeline</span>
-          <strong>Prototype → Art → Release</strong>
-        </div>
-      </div>
-    </section>
-
-    <section class="logo-belt" aria-label="Focus areas">
-      <span>Meta Quest 2 & 3</span>
-      <span>Playable prototypes</span>
-      <span>Environment art</span>
-      <span>Full game production</span>
-      <span>Optimization</span>
-      <span>Store-ready delivery</span>
-    </section>
-
-    <section class="section-pad split-intro">
-      <div>
-        <p class="eyebrow"><span></span> What this studio is built for</p>
-        <h2>For clients, publishers and investors who need a complete VR game, not just separate pieces.</h2>
-      </div>
-      <p>Leaf & Light Studio is structured around one goal: turning a game idea into a polished, playable VR experience. The site currently uses placeholder content so you can review the design direction before replacing it with final screenshots, trailers and project details.</p>
-    </section>
-
-    <section class="section-pad services" id="services">
-      <div class="section-heading">
-        <p class="eyebrow"><span></span> Services</p>
-        <h2>Development support from first prototype to Quest-ready game.</h2>
-      </div>
-      <div class="service-grid">
-        <article class="service-card featured">
-          <div class="service-icon">01</div>
-          <h3>Complete Game Production</h3>
-          <p>End-to-end development for small and focused VR projects: gameplay, level flow, art direction, implementation, polish and release preparation.</p>
-        </article>
-        <article class="service-card">
-          <div class="service-icon">02</div>
-          <h3>Playable Prototypes</h3>
-          <p>Fast playable vertical slices to test the core idea, prove the interaction loop and prepare a pitchable build.</p>
-        </article>
-        <article class="service-card">
-          <div class="service-icon">03</div>
-          <h3>Quest VR Development</h3>
-          <p>VR-first gameplay, hand interaction, comfort-aware systems and production focused on Meta Quest 2 and Quest 3.</p>
-        </article>
-        <article class="service-card">
-          <div class="service-icon">04</div>
-          <h3>Environment Art</h3>
-          <p>Stylized worlds, props, lighting and level composition built to support gameplay and run well in VR.</p>
-        </article>
-        <article class="service-card wide">
-          <div class="service-icon">05</div>
-          <h3>Quest Optimization</h3>
-          <p>Performance passes for VR projects: scene cleanup, shader strategy, batching awareness, asset budgets and device-focused testing.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-pad work" id="work">
-      <div class="section-heading row-heading">
-        <div>
-          <p class="eyebrow"><span></span> Games</p>
-          <h2>Shipped and in-development VR projects.</h2>
-        </div>
-        <a class="text-link" href="https://www.meta.com/pt-br/experiences/profile/25575568562123762/" target="_blank" rel="noopener">Meta profile ↗</a>
-      </div>
-
-      <div class="work-grid">
-        <article class="work-card big">
-          <a href="https://www.meta.com/pt-br/experiences/game-im-prisoner/25657930913826702/?require_login=true" target="_blank" rel="noopener" aria-label="Open I'm Prisoner on Meta Store">
-            <img src="assets/game-im-prisoner.svg" alt="I'm Prisoner placeholder artwork" />
-          </a>
-          <div class="work-content">
-            <div class="tag-row"><span>Published</span><span>Meta Quest</span><span>VR Game</span></div>
-            <h3>I'm Prisoner</h3>
-            <p>Placeholder description: a VR escape experience built around pressure, spatial navigation and interactive systems. Replace this with the final store copy and best trailer frame.</p>
-            <a class="text-link" href="https://www.meta.com/pt-br/experiences/game-im-prisoner/25657930913826702/?require_login=true" target="_blank" rel="noopener">Open store page ↗</a>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <div class="eyebrow">Independent VR game development studio</div>
+          <h1>Immersive VR worlds, built from idea to final game.</h1>
+          <p>
+            We create original concepts, playable prototypes and full game builds.
+            A focused core team leads every project, with the right specialists added when the game needs them.
+          </p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn primary">Explore projects</a>
+            <a href="#contact" class="btn">Start a project</a>
           </div>
-        </article>
-
-        <article class="work-card">
-          <img src="assets/game-second.svg" alt="Second published Quest game placeholder" />
-          <div class="work-content">
-            <div class="tag-row"><span>Published</span><span>Meta Quest</span></div>
-            <h3>Published Quest Game</h3>
-            <p>Placeholder for your second published Meta title. Add the real name, store link, screenshots and short pitch here.</p>
+        </div>
+        <div class="hero-side">
+          <div class="side-card">
+            <div class="label">What we do</div>
+            <strong>Full-cycle VR game development</strong>
+            <p>From concept and prototyping to content production, optimization and final delivery.</p>
           </div>
-        </article>
-
-        <article class="work-card">
-          <img src="assets/game-wip.svg" alt="VR game in development placeholder" />
-          <div class="work-content">
-            <div class="tag-row"><span>In development</span><span>VR</span></div>
-            <h3>Next VR Project</h3>
-            <p>Placeholder for the current WIP game. Use this card to build interest with a teaser, progress status and visual direction.</p>
+          <div class="side-card">
+            <div class="label">Featured projects</div>
+            <strong>Car Crash Arena · I'm Prisoner · Infinity Climb</strong>
+            <div class="slide-dots">
+              <button class="active" data-index="0" aria-label="Show slide 1"></button>
+              <button data-index="1" aria-label="Show slide 2"></button>
+              <button data-index="2" aria-label="Show slide 3"></button>
+            </div>
           </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-pad portfolio" id="portfolio">
-      <div class="section-heading row-heading">
-        <div>
-          <p class="eyebrow"><span></span> Portfolio</p>
-          <h2>Personal art, production work and collaboration projects.</h2>
-        </div>
-        <div class="filter-tabs" role="tablist" aria-label="Portfolio filters">
-          <button class="active" data-filter="all">All</button>
-          <button data-filter="games">Games</button>
-          <button data-filter="art">Art</button>
-          <button data-filter="collab">Collab</button>
-        </div>
-      </div>
-
-      <div class="portfolio-grid">
-        <article class="portfolio-item" data-kind="art">
-          <img src="assets/portfolio-env.svg" alt="Environment art placeholder" />
-          <div><span>Environment Art</span><h3>Stylized VR Worlds</h3></div>
-        </article>
-        <article class="portfolio-item" data-kind="games">
-          <img src="assets/portfolio-dev.svg" alt="Game systems placeholder" />
-          <div><span>VR Development</span><h3>Gameplay Systems</h3></div>
-        </article>
-        <article class="portfolio-item" data-kind="collab">
-          <img src="assets/portfolio-collab.svg" alt="Collaboration project placeholder" />
-          <div><span>Collaboration</span><h3>Art Support Work</h3></div>
-        </article>
-        <article class="portfolio-item" data-kind="games">
-          <img src="assets/portfolio-proto.svg" alt="Prototype placeholder" />
-          <div><span>Prototype</span><h3>Playable Experiments</h3></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section-pad process" id="process">
-      <div class="section-heading">
-        <p class="eyebrow"><span></span> Process</p>
-        <h2>A simple production path for building complete VR games.</h2>
-      </div>
-      <ol class="timeline">
-        <li><span>01</span><div><h3>Discovery & scope</h3><p>Define the game idea, platform, production size, target audience and the smallest version worth building.</p></div></li>
-        <li><span>02</span><div><h3>Playable prototype</h3><p>Build the core interaction loop fast so the project can be tested, pitched and improved early.</p></div></li>
-        <li><span>03</span><div><h3>Production</h3><p>Create environments, gameplay systems, level flow and VR interaction in an organized Unity pipeline.</p></div></li>
-        <li><span>04</span><div><h3>Optimization & release prep</h3><p>Polish the experience, test on Quest hardware and prepare the project for public presentation or store release.</p></div></li>
-      </ol>
-    </section>
-
-    <section class="section-pad founder">
-      <div class="founder-card">
-        <div class="founder-mark">EJ</div>
-        <div>
-          <p class="eyebrow"><span></span> Founder-led production</p>
-          <h2>Created by Eduardo Jaeger — CEO, developer and environment artist.</h2>
-          <p>Leaf & Light Studio is a solo-led game development studio focused on building complete VR experiences with a practical production mindset. The strength is direct ownership: concept, Unity development, environment art, optimization and launch preparation move through one clear creative direction.</p>
         </div>
       </div>
     </section>
 
-    <section class="section-pad contact" id="contact">
-      <div class="contact-panel">
-        <div>
-          <p class="eyebrow"><span></span> Start a project</p>
-          <h2>Have a VR game idea that needs to become real?</h2>
-          <p>Send a message with your concept, target platform, deadline and budget range. Placeholder contact fields can be replaced with a real form service later, such as Formspree, Tally or Netlify Forms.</p>
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">01 / Projects</div>
+          <div>
+            <h2>Games we have created and worlds we are building.</h2>
+            <p>
+              A selection of VR projects built with a practical production mindset: clear scope, focused execution and strong visual identity.
+            </p>
+          </div>
         </div>
-        <div class="contact-actions">
-          <a class="button primary" href="mailto:leafandlightstudio@gmail.com?subject=VR%20Game%20Development%20Project">Email Leaf & Light Studio</a>
-          <button class="button ghost copy-email" data-email="leafandlightstudio@gmail.com">Copy email</button>
-          <a class="button soft" href="https://www.meta.com/pt-br/experiences/profile/25575568562123762/" target="_blank" rel="noopener">View Meta profile</a>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/images/car_crash_01.png" alt="Car Crash Arena" />
+              <div class="project-theme">
+                <div class="project-badge"><img src="assets/icons/car-crash-icon.png" alt="Car Crash icon" /> Car Crash Arena</div>
+                <div class="status wip">WIP</div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-title">
+                <img class="project-icon" src="assets/icons/car-crash-icon.png" alt="Car Crash icon" />
+                <h3>Car Crash Arena</h3>
+              </div>
+              <img class="project-logo" src="assets/images/car_crash_logo.png" alt="Car Crash Arena logo" />
+              <p>
+                A stylized vehicular combat game for VR, built around destructive arenas, cockpit immersion and arcade energy.
+              </p>
+              <div class="tag-row">
+                <span class="tag">VR Game</span>
+                <span class="tag">Meta Quest</span>
+                <span class="tag">Vehicular Combat</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/images/im_prisoner_03.png" alt="I'm Prisoner" />
+              <div class="project-theme">
+                <div class="project-badge"><img src="assets/icons/im-prisoner-icon.png" alt="I'm Prisoner icon" /> I'm Prisoner</div>
+                <div class="status wip">WIP</div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-title">
+                <img class="project-icon" src="assets/icons/im-prisoner-icon.png" alt="I'm Prisoner icon" />
+                <h3>I'm Prisoner</h3>
+              </div>
+              <img class="project-logo" src="assets/images/im_prisoner_logo.png" alt="I'm Prisoner logo" />
+              <p>
+                A playful VR prison-themed project with strong personality, vivid environments and an immediately readable game feel.
+              </p>
+              <div class="tag-row">
+                <span class="tag">VR Game</span>
+                <span class="tag">Meta Quest</span>
+                <span class="tag">Stylized World</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-media">
+              <img src="assets/images/infinity_climb_02.png" alt="Infinity Climb" />
+              <div class="project-theme">
+                <div class="project-badge"><img src="assets/icons/infinity-climb-icon.png" alt="Infinity Climb icon" /> Infinity Climb</div>
+                <div class="status released">Released</div>
+              </div>
+            </div>
+            <div class="project-body">
+              <div class="project-title">
+                <img class="project-icon" src="assets/icons/infinity-climb-icon.png" alt="Infinity Climb icon" />
+                <h3>Infinity Climb</h3>
+              </div>
+              <p>
+                A bright, family-friendly climbing experience with a strong color theme, readable spaces and cheerful arcade-style progression.
+              </p>
+              <div class="tag-row">
+                <span class="tag">VR Game</span>
+                <span class="tag">Released</span>
+                <span class="tag">Climbing</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="services">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">02 / Services</div>
+          <div>
+            <h2>Professional production, ultra simple process.</h2>
+            <p>
+              Bring us an idea, an early prototype or a project already in progress. We help shape the direction and carry the work to a stable final build.
+            </p>
+          </div>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card">
+            <div class="service-number">01</div>
+            <h3>Full-Cycle Game Development</h3>
+            <p>From creative planning and game systems to art production, implementation, testing and final delivery.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-number">02</div>
+            <h3>VR Worlds & Experiences</h3>
+            <p>Immersive worlds designed around presence, visual clarity, comfort and performance for head-mounted platforms.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-number">03</div>
+            <h3>Concepts & Prototypes</h3>
+            <p>We turn raw ideas and themes into playable prototypes that validate the core loop before deeper production starts.</p>
+          </article>
+          <article class="service-card">
+            <div class="service-number">04</div>
+            <h3>Focused Production Support</h3>
+            <p>Need help continuing an existing project? We can step in for gameplay, environments, optimization or production support.</p>
+          </article>
+        </div>
+
+        <div class="process-wrap">
+          <div class="eyebrow">Workflow</div>
+          <div class="process-grid">
+            <div class="step"><strong>Discover</strong><p>We understand the idea, the audience, the visual tone and the production goals.</p></div>
+            <div class="step"><strong>Prototype</strong><p>We test the core experience early, define scope and establish the strongest path forward.</p></div>
+            <div class="step"><strong>Build</strong><p>A focused team leads the project while specialized talent is added when the game truly needs it.</p></div>
+            <div class="step"><strong>Deliver</strong><p>We optimize, polish and prepare the project for final submission, release or next milestone.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container approach">
+        <div class="approach-copy">
+          <div class="eyebrow" style="color:#384048">03 / How we work</div>
+          <h2>Small by design. Ready to scale for the right project.</h2>
+          <p>
+            A smart core team keeps production direct, fast and accountable. When a project needs extra expertise, we bring in specialists selected specifically for that game's visual style, technical needs and production stage.
+          </p>
+          <p>
+            That means less overhead, better focus and a production structure built around results.
+          </p>
+        </div>
+        <div class="approach-visual">
+          <div class="ring"></div>
+          <div class="ring two"></div>
+          <div class="ring three"></div>
+          <div class="node center">Core Team</div>
+          <div class="node n1">3D Artist</div>
+          <div class="node n2">Technical Artist</div>
+          <div class="node n3">Animator</div>
+          <div class="node n4">Sound Designer</div>
+          <div class="node n5">Gameplay Support</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-head">
+          <div class="eyebrow">04 / Portfolio</div>
+          <div>
+            <h2>Shots, spaces and gameplay moments.</h2>
+            <p>
+              A quick portfolio wall mixing your existing projects. This section shows the range of atmosphere, stylization and production direction across the studio.
+            </p>
+          </div>
+        </div>
+
+        <div class="portfolio-grid">
+          <figure class="shot large"><img src="assets/images/car_crash_02.png" alt="Car Crash Arena environment" /><figcaption>Car Crash Arena</figcaption></figure>
+          <figure class="shot medium"><img src="assets/images/im_prisoner_01.jpg" alt="I'm Prisoner character screen" /><figcaption>I'm Prisoner</figcaption></figure>
+          <figure class="shot small"><img src="assets/images/infinity_climb_03.png" alt="Infinity Climb" /><figcaption>Infinity Climb</figcaption></figure>
+          <figure class="shot wide"><img src="assets/images/car_crash_03.png" alt="Car Crash Arena second shot" /><figcaption>Stylized VR combat world</figcaption></figure>
+          <figure class="shot small"><img src="assets/images/im_prisoner_02.jpg" alt="I'm Prisoner control room" /><figcaption>Readable VR spaces</figcaption></figure>
+          <figure class="shot wide"><img src="assets/images/infinity_climb_05.png" alt="Infinity Climb tower" /><figcaption>Bright, approachable game feel</figcaption></figure>
+        </div>
+
+        <div class="theme-strip">
+          <div class="theme-card">
+            <div class="theme-top"><span class="theme-swatch" style="background:var(--car)"></span><strong>Car Crash Arena Theme</strong></div>
+            <img src="assets/icons/car-crash-icon.png" alt="Car Crash Arena icon" />
+            <p>Orange-coded identity for high-energy combat, heavy vehicles and destructive arena action.</p>
+          </div>
+          <div class="theme-card">
+            <div class="theme-top"><span class="theme-swatch" style="background:var(--prison)"></span><strong>I'm Prisoner Theme</strong></div>
+            <img src="assets/icons/im-prisoner-icon.png" alt="I'm Prisoner icon" />
+            <p>Purple-coded identity for bold personality, playful styling and strong character-driven presentation.</p>
+          </div>
+          <div class="theme-card">
+            <div class="theme-top"><span class="theme-swatch" style="background:var(--climb)"></span><strong>Infinity Climb Theme</strong></div>
+            <img src="assets/icons/infinity-climb-icon.png" alt="Infinity Climb icon" />
+            <p>Green-coded identity for colorful climbing, cheerful progression and a clean, accessible visual mood.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="contact-card">
+          <div class="eyebrow" style="color:#39444f">05 / Contact</div>
+          <h2>Have an idea, a project or a game already in motion?</h2>
+          <div class="contact-row">
+            <p>
+              We can help shape the concept, build the prototype, continue an existing project or take development all the way to the final build. Contact us for more information.
+            </p>
+            <div class="contact-actions">
+              <a class="btn" href="mailto:contact@leafandlightstudio.com">contact@leafandlightstudio.com</a>
+              <a class="btn" href="#top">Back to top</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <a class="brand small" href="#top">
-      <img src="assets/logo-mark.svg" alt="" />
-      <span><strong>Leaf & Light</strong><small>Studio</small></span>
-    </a>
-    <p>© <span id="year"></span> Leaf & Light Studio. End-to-end VR game development.</p>
-    <div class="footer-links">
-      <a href="#work">Games</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
+  <footer class="footer">
+    <div class="container footer-row">
+      <div class="footer-mini">
+        <img src="assets/images/leaf_and_light_logo.png" alt="Leaf & Light logo" />
+        <div>© 2026 Leaf & Light Studio</div>
+      </div>
+      <div>Projects · Services · Portfolio · Contact</div>
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>
