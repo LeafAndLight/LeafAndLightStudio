@@ -26,17 +26,40 @@ if (copyEmailBtn) {
   copyEmailBtn.addEventListener('click', async () => {
     try {
       await navigator.clipboard.writeText(emailAddress);
-      const originalText = copyEmailBtn.textContent;
-      copyEmailBtn.textContent = 'Copied';
-      setTimeout(() => { copyEmailBtn.textContent = originalText; }, 1600);
+      copyEmailBtn.classList.add('copied');
+      copyEmailBtn.title = 'Copied';
+      setTimeout(() => {
+        copyEmailBtn.classList.remove('copied');
+        copyEmailBtn.title = 'Copy email';
+      }, 1500);
     } catch (error) {
       window.prompt('Copy this email:', emailAddress);
     }
   });
 }
 
+async function submitToFormSubmit({ name, email, type, message }) {
+  const response = await fetch(`https://formsubmit.co/ajax/${emailAddress}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      _captcha: 'false',
+      _template: 'table',
+      _subject: `${type} inquiry from ${name}`,
+      name,
+      email,
+      type,
+      message
+    })
+  });
+  return response.json();
+}
+
 if (contactForm) {
-  contactForm.addEventListener('submit', event => {
+  contactForm.addEventListener('submit', async event => {
     event.preventDefault();
 
     const name = document.getElementById('contactName').value.trim();
@@ -44,14 +67,10 @@ if (contactForm) {
     const type = document.getElementById('contactType').value.trim();
     const message = document.getElementById('contactMessage').value.trim();
 
-    const subject = `${type} inquiry from ${name}`;
-    const body = [
-      `Name: ${name}`,
-      `Email: ${email}`,
-      `Type: ${type}`,
-      '',
-      message
-    ].join('\n');
+    const submitButton = contactForm.querySelector('.submit-btn');
+    const originalText = submitButton.innerHTML;
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<span>Sending...</span>';
 
     if (contactCard) {
       contactCard.classList.remove('launching');
@@ -61,13 +80,22 @@ if (contactForm) {
     }
 
     if (formNote) {
-      formNote.textContent = 'Opening your email app with the message ready...';
-      setTimeout(() => {
-        formNote.textContent = 'This static site opens your email app with the message prefilled.';
-      }, 2600);
+      formNote.textContent = 'Sending your message to the studio inbox...';
     }
 
-    const mailto = `mailto:${encodeURIComponent(emailAddress)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
+    try {
+      const data = await submitToFormSubmit({ name, email, type, message });
+      if (data.success === 'true' || data.success === true) {
+        formNote.textContent = 'Message sent successfully.';
+        contactForm.reset();
+      } else {
+        formNote.textContent = 'The form service needs to be activated first from the studio email inbox.';
+      }
+    } catch (error) {
+      formNote.textContent = 'Could not send automatically right now. Activate the form service first or try again.';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalText;
+    }
   });
 }
