@@ -175,3 +175,48 @@ portfolioShots.forEach(shot => {
     shot.style.transform = '';
   });
 });
+
+// Active section navigation
+const sectionNavLinks = Array.from(document.querySelectorAll('.menu a[href^="#"]'));
+const trackedSections = sectionNavLinks
+  .map(link => ({
+    id: link.getAttribute('href').slice(1),
+    link,
+    section: document.getElementById(link.getAttribute('href').slice(1))
+  }))
+  .filter(item => item.section);
+
+let navTicking = false;
+
+function updateActiveNavigation() {
+  const marker = window.scrollY + window.innerHeight * 0.32;
+  let activeId = '';
+
+  trackedSections.forEach(item => {
+    if (item.section.offsetTop <= marker) {
+      activeId = item.id;
+    }
+  });
+
+  trackedSections.forEach(item => {
+    const isActive = item.id === activeId;
+    item.link.classList.toggle('is-active', isActive);
+    if (isActive) {
+      item.link.setAttribute('aria-current', 'location');
+    } else {
+      item.link.removeAttribute('aria-current');
+    }
+  });
+
+  navTicking = false;
+}
+
+window.addEventListener('scroll', () => {
+  if (!navTicking) {
+    navTicking = true;
+    window.requestAnimationFrame(updateActiveNavigation);
+  }
+}, { passive: true });
+
+window.addEventListener('resize', updateActiveNavigation);
+updateActiveNavigation();

@@ -192,3 +192,15 @@ button,input,textarea,select{font:inherit}
 .portfolio-shell{padding:clamp(28px,4vw,48px);border-radius:34px;background:linear-gradient(135deg,rgba(12,18,25,.92),rgba(16,25,35,.76));border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 70px rgba(0,0,0,.28);backdrop-filter:blur(14px)}
 .portfolio-shell .section-head{margin-bottom:30px}
 @media (max-width:780px){.approach-visual{min-height:340px}.orbit-outer{width:88%}.orbit-inner{width:42%}.core-node{width:122px;height:122px;padding:12px}.core-node strong{font-size:15px}.portfolio-shell{padding:24px 16px;border-radius:26px}}
+/* Project actions, section navigation and page return */
+.project-dot{width:38px;height:38px;padding:5px;border-width:1px;background:rgba(8,13,18,.38);box-shadow:none;opacity:.45;backdrop-filter:blur(8px)}
+.project-dot img{opacity:.72;filter:saturate(.72)}
+.store-cta-row{display:flex;justify-content:center;margin:0 0 18px;padding-top:2px;margin-top:auto}
+.store-cta-row .store-link{min-width:118px}
+.project-video{margin-top:0}
+.menu a{position:relative;transition:color .2s ease,background .2s ease,opacity .2s ease}
+.menu a.is-active{color:#8fc1ff;opacity:1}
+.menu a.is-active:after{content:"";position:absolute;left:50%;bottom:-9px;width:20px;height:3px;border-radius:99px;background:#4f9cff;box-shadow:0 0 15px rgba(79,156,255,.72);transform:translateX(-50%)}
+.menu .cta.is-active{background:rgba(79,156,255,.12);border-color:rgba(79,156,255,.4)}
+.back-to-top-row{display:flex;justify-content:center;padding:10px 20px 42px}
+.back-to-top-btn{min-width:140px;background:rgba(255,255,255,.05)}
