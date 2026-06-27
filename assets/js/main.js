@@ -139,3 +139,39 @@ if (contactForm) {
     }
   });
 }
+
+// Portfolio interaction
+const portfolioShots = document.querySelectorAll('.portfolio-reveal');
+
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const portfolioObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        setTimeout(() => { entry.target.style.transitionDelay = '0ms'; }, 700);
+        portfolioObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.16 });
+
+  portfolioShots.forEach((shot, index) => {
+    shot.style.transitionDelay = String(Math.min(index * 70, 280)) + 'ms';
+    portfolioObserver.observe(shot);
+  });
+} else {
+  portfolioShots.forEach(shot => shot.classList.add('is-visible'));
+}
+
+portfolioShots.forEach(shot => {
+  shot.addEventListener('pointermove', event => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || window.innerWidth < 900) return;
+    const rect = shot.getBoundingClientRect();
+    const rotateX = ((event.clientY - rect.top) / rect.height - 0.5) * -3;
+    const rotateY = ((event.clientX - rect.left) / rect.width - 0.5) * 3;
+    shot.style.transform = 'perspective(900px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateY(-4px)';
+  });
+
+  shot.addEventListener('pointerleave', () => {
+    shot.style.transform = '';
+  });
+});

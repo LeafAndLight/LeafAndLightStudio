@@ -271,12 +271,12 @@
       <div class="container approach">
         <div class="approach-copy">
           <div class="eyebrow">03 / How we work</div>
-          <h2>Brazil-based core team. Global support when the project needs it.</h2>
+          <h2>A focused core. The right specialists for every world.</h2>
           <p>
-            Leaf & Light Studio is led from Brazil, with a focused production core and access to external specialists from other countries when the scope, style or technical challenge calls for it.
+            Our Brazil-based core crew leads each project from creative direction to delivery, keeping the vision, production and technical decisions connected.
           </p>
           <p>
-            We can support VR games, Steam games, multiplayer, co-op experiences and solo play projects, always matching the team structure to the real needs of the game.
+            When a project calls for a specific discipline, we bring in trusted specialists from our professional network across LinkedIn and ArtStation, matching the right talent to the style and challenge of the game.
           </p>
           <div class="approach-pills">
             <span>VR Games</span>
@@ -286,16 +286,22 @@
             <span>Solo Play</span>
           </div>
         </div>
-        <div class="approach-visual">
-          <div class="ring"></div>
-          <div class="ring two"></div>
-          <div class="ring three"></div>
-          <div class="node center">Brazil Core Team</div>
-          <div class="node n1">3D Artist</div>
-          <div class="node n2">Technical Artist</div>
-          <div class="node n3">Animator</div>
-          <div class="node n4">Sound Designer</div>
-          <div class="node n5">Gameplay Support</div>
+        <div class="approach-visual" aria-label="Core crew connected to selected specialists on demand">
+          <div class="talent-orbit orbit-outer" aria-hidden="true">
+            <span class="orbit-node node-3d">3D Artist</span>
+            <span class="orbit-node node-tech">Technical Artist</span>
+            <span class="orbit-node node-sound">Sound Designer</span>
+          </div>
+          <div class="talent-orbit orbit-inner" aria-hidden="true">
+            <span class="orbit-node node-gameplay">Gameplay</span>
+            <span class="orbit-node node-animation">Animator</span>
+          </div>
+          <div class="core-node">
+            <span>Official crew</span>
+            <strong>Leaf &amp; Light Core</strong>
+            <small>Creative direction + production</small>
+          </div>
+          <div class="orbit-caption"><span></span> Selected talent, connected on demand</div>
         </div>
       </div>
     </section>
@@ -312,10 +318,13 @@
 
         <div class="leadership-grid">
           <article class="leader-card leader-main">
-            <div class="leader-photo-wrap">
-              <img class="leader-photo" src="assets/images/eduardo-jaeger.jpg" alt="Portrait of Eduardo Jaeger" />
-              <img class="country-flag" src="assets/images/brazil-flag.png" alt="Brazil" />
-            </div>
+            <a class="leader-photo-link" href="https://www.linkedin.com/in/eduardo-jaeger-3a2549112/" target="_blank" rel="noreferrer" aria-label="Open Eduardo Jaeger's LinkedIn profile">
+              <span class="leader-photo-wrap">
+                <img class="leader-photo" src="assets/images/eduardo-jaeger.jpg" alt="Portrait of Eduardo Jaeger" />
+                <img class="country-flag" src="assets/images/brazil-flag.png" alt="Brazil" />
+                <span class="photo-link-hint" aria-hidden="true">in</span>
+              </span>
+            </a>
             <div class="leader-copy">
               <div class="eyebrow">Founder and CEO</div>
               <h3>Eduardo Jaeger</h3>
@@ -373,19 +382,17 @@
           <div class="eyebrow">05 / Portfolio</div>
           <div>
             <h2>Shots, spaces and gameplay moments.</h2>
-            <p>
-              A quick portfolio wall mixing the studio projects. This section shows the range of atmosphere, stylization and production direction across the studio.
-            </p>
+            <p>An interactive selection of worlds, atmosphere and production direction across the studio. Move through the work to reveal each project's character.</p>
           </div>
         </div>
 
-        <div class="portfolio-grid">
-          <figure class="shot large"><img src="assets/images/car_crash_02.png" alt="Car Crash Arena environment" /><figcaption>Car Crash Arena</figcaption></figure>
-          <figure class="shot medium"><img src="assets/images/im_prisoner_01.jpg" alt="I'm Prisoner character screen" /><figcaption>I'm Prisoner</figcaption></figure>
-          <figure class="shot small"><img src="assets/images/infinity_climb_03.png" alt="Infinity Climb" /><figcaption>Infinity Climb</figcaption></figure>
-          <figure class="shot wide"><img src="assets/images/car_crash_03.png" alt="Car Crash Arena second shot" /><figcaption>Stylized VR combat world</figcaption></figure>
-          <figure class="shot small"><img src="assets/images/im_prisoner_02.jpg" alt="I'm Prisoner control room" /><figcaption>Readable VR spaces</figcaption></figure>
-          <figure class="shot wide"><img src="assets/images/infinity_climb_05.png" alt="Infinity Climb tower" /><figcaption>Bright, approachable game feel</figcaption></figure>
+        <div class="portfolio-grid" id="portfolioGrid">
+          <figure class="shot large portfolio-reveal" data-project="Car Crash Arena"><img src="assets/images/car_crash_02.png" alt="Car Crash Arena environment" /><figcaption><span>01 / Arena world</span><strong>Car Crash Arena</strong></figcaption></figure>
+          <figure class="shot medium portfolio-reveal" data-project="I'm Prisoner"><img src="assets/images/im_prisoner_01.jpg" alt="I'm Prisoner character screen" /><figcaption><span>02 / Prison escape</span><strong>I'm Prisoner</strong></figcaption></figure>
+          <figure class="shot small portfolio-reveal" data-project="Infinity Climb"><img src="assets/images/infinity_climb_03.png" alt="Infinity Climb" /><figcaption><span>03 / Infinite ascent</span><strong>Infinity Climb</strong></figcaption></figure>
+          <figure class="shot wide portfolio-reveal" data-project="Car Crash Arena"><img src="assets/images/car_crash_03.png" alt="Car Crash Arena second shot" /><figcaption><span>World building</span><strong>Stylized VR combat</strong></figcaption></figure>
+          <figure class="shot small portfolio-reveal" data-project="I'm Prisoner"><img src="assets/images/im_prisoner_02.jpg" alt="I'm Prisoner control room" /><figcaption><span>Interaction design</span><strong>Readable VR spaces</strong></figcaption></figure>
+          <figure class="shot wide portfolio-reveal" data-project="Infinity Climb"><img src="assets/images/infinity_climb_05.png" alt="Infinity Climb tower" /><figcaption><span>Visual direction</span><strong>Bright game feel</strong></figcaption></figure>
         </div>
       </div>
     </section>
