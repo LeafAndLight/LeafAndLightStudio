@@ -203,4 +203,16 @@ button,input,textarea,select{font:inherit}
 .menu a.is-active:after{content:"";position:absolute;left:50%;bottom:-9px;width:20px;height:3px;border-radius:99px;background:#4f9cff;box-shadow:0 0 15px rgba(79,156,255,.72);transform:translateX(-50%)}
 .menu .cta.is-active{background:rgba(79,156,255,.12);border-color:rgba(79,156,255,.4)}
 .back-to-top-row{display:flex;justify-content:center;padding:10px 20px 42px}
-.back-to-top-btn{min-width:140px;background:rgba(255,255,255,.05)}
+
+/* Final orbit, brand and return control polish */
+.core-node{width:118px;height:118px;padding:12px;border-width:4px}
+.core-node span{font-size:9px}.core-node strong{font-size:15px;margin-top:4px}
+.orbit-outer{width:84%}.orbit-inner{width:52%}
+.approach-visual:hover .orbit-outer,.approach-visual:hover .orbit-inner,.approach-visual:hover .orbit-outer .orbit-node,.approach-visual:hover .orbit-inner .orbit-node{animation-duration:28s}
+.brand{padding:6px 10px;border-radius:12px;transition:background .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease}
+.brand:hover,.brand:focus-visible{background:rgba(10,102,194,.12);color:#8fc1ff;box-shadow:0 0 0 1px rgba(79,156,255,.2);transform:translateY(-1px)}
+#contact{padding-bottom:24px}
+.back-to-top-row{padding:0 20px 24px}
+.back-to-top-btn{display:grid;place-items:center;width:46px;height:46px;min-width:0;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#eaf2fb;font-size:24px;line-height:1;transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease}
+.back-to-top-btn:hover,.back-to-top-btn:focus-visible{transform:translateY(-3px);background:#4f9cff;color:#07101a;border-color:#4f9cff;box-shadow:0 12px 28px rgba(79,156,255,.28)}
+@media (max-width:780px){.core-node{width:104px;height:104px;padding:10px}.core-node strong{font-size:13px}.orbit-outer{width:94%}.orbit-inner{width:56%}}
