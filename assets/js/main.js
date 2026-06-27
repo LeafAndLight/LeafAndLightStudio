@@ -220,3 +220,70 @@ window.addEventListener('scroll', () => {
 
 window.addEventListener('resize', updateActiveNavigation);
 updateActiveNavigation();
+// Portfolio lightbox
+const portfolioOpenButtons = Array.from(document.querySelectorAll('.portfolio-open'));
+const portfolioLightbox = document.getElementById('portfolioLightbox');
+const lightboxImage = document.getElementById('lightboxImage');
+const lightboxLabel = document.getElementById('lightboxLabel');
+const lightboxTitle = document.getElementById('lightboxTitle');
+const lightboxClose = portfolioLightbox?.querySelector('.lightbox-close');
+const lightboxPrevious = portfolioLightbox?.querySelector('.lightbox-prev');
+const lightboxNext = portfolioLightbox?.querySelector('.lightbox-next');
+let lightboxIndex = 0;
+let lightboxTrigger = null;
+
+function updateLightbox(index) {
+  if (!portfolioOpenButtons.length || !lightboxImage) return;
+
+  lightboxIndex = (index + portfolioOpenButtons.length) % portfolioOpenButtons.length;
+  const trigger = portfolioOpenButtons[lightboxIndex];
+  const figure = trigger.closest('.shot');
+  const sourceImage = trigger.querySelector('img');
+  const label = figure?.querySelector('figcaption span');
+  const title = figure?.querySelector('figcaption strong');
+
+  lightboxImage.src = sourceImage.src;
+  lightboxImage.alt = sourceImage.alt;
+  lightboxLabel.textContent = label?.textContent || '';
+  lightboxTitle.textContent = title?.textContent || '';
+}
+
+function openLightbox(index, trigger) {
+  if (!portfolioLightbox) return;
+
+  lightboxTrigger = trigger;
+  updateLightbox(index);
+  portfolioLightbox.classList.add('is-open');
+  portfolioLightbox.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('lightbox-open');
+  lightboxClose?.focus();
+}
+
+function closeLightbox() {
+  if (!portfolioLightbox) return;
+
+  portfolioLightbox.classList.remove('is-open');
+  portfolioLightbox.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('lightbox-open');
+  lightboxTrigger?.focus();
+}
+
+portfolioOpenButtons.forEach((button, index) => {
+  button.addEventListener('click', () => openLightbox(index, button));
+});
+
+lightboxClose?.addEventListener('click', closeLightbox);
+lightboxPrevious?.addEventListener('click', () => updateLightbox(lightboxIndex - 1));
+lightboxNext?.addEventListener('click', () => updateLightbox(lightboxIndex + 1));
+
+portfolioLightbox?.addEventListener('click', event => {
+  if (event.target === portfolioLightbox) closeLightbox();
+});
+
+document.addEventListener('keydown', event => {
+  if (!portfolioLightbox?.classList.contains('is-open')) return;
+
+  if (event.key === 'Escape') closeLightbox();
+  if (event.key === 'ArrowLeft') updateLightbox(lightboxIndex - 1);
+  if (event.key === 'ArrowRight') updateLightbox(lightboxIndex + 1);
+});
