@@ -181,3 +181,14 @@ button,input,textarea,select{font:inherit}
 
 @media (max-width:780px){.leader-photo-link{flex-basis:auto}.approach-visual{min-height:390px}.orbit-outer{width:88%}.orbit-inner{width:58%}.orbit-node{font-size:11px;padding:8px 10px}.core-node{width:150px;height:150px;padding:18px}.core-node strong{font-size:17px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.talent-orbit,.orbit-node{animation:none!important}.portfolio-reveal{opacity:1;transform:none}.shot,.shot img,.core-node{transition:none}}
+/* Compact talent system and unified portfolio panel */
+.approach-visual{min-height:390px}
+.orbit-outer{width:76%}.orbit-inner{width:38%;animation:orbit-spin 28s linear infinite}
+.orbit-inner .orbit-node{animation:orbit-counter 28s linear infinite}
+.approach-visual:hover .orbit-inner,.approach-visual:hover .orbit-inner .orbit-node{animation-duration:19s}
+.orbit-node{padding:8px 11px;font-size:12px}
+.core-node{width:142px;height:142px;padding:16px;border-width:5px}
+.core-node strong{font-size:18px;margin:6px 0 0}
+.portfolio-shell{padding:clamp(28px,4vw,48px);border-radius:34px;background:linear-gradient(135deg,rgba(12,18,25,.92),rgba(16,25,35,.76));border:1px solid rgba(255,255,255,.1);box-shadow:0 24px 70px rgba(0,0,0,.28);backdrop-filter:blur(14px)}
+.portfolio-shell .section-head{margin-bottom:30px}
+@media (max-width:780px){.approach-visual{min-height:340px}.orbit-outer{width:88%}.orbit-inner{width:42%}.core-node{width:122px;height:122px;padding:12px}.core-node strong{font-size:15px}.portfolio-shell{padding:24px 16px;border-radius:26px}}
