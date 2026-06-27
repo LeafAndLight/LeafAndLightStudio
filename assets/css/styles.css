@@ -216,3 +216,8 @@ button,input,textarea,select{font:inherit}
 .back-to-top-btn{display:grid;place-items:center;width:46px;height:46px;min-width:0;border-radius:50%;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#eaf2fb;font-size:24px;line-height:1;transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease,box-shadow .2s ease}
 .back-to-top-btn:hover,.back-to-top-btn:focus-visible{transform:translateY(-3px);background:#4f9cff;color:#07101a;border-color:#4f9cff;box-shadow:0 12px 28px rgba(79,156,255,.28)}
 @media (max-width:780px){.core-node{width:104px;height:104px;padding:10px}.core-node strong{font-size:13px}.orbit-outer{width:94%}.orbit-inner{width:56%}}
+/* Expanded Car Crash Arena portfolio */
+.shot.car-feature{grid-column:span 12;aspect-ratio:16/9;height:auto;min-height:0}
+.shot.car-feature img{object-position:center}
+@media (max-width:1100px){.shot.car-feature{grid-column:1/-1;height:auto}}
+@media (max-width:780px){.shot.car-feature{aspect-ratio:16/10}}
