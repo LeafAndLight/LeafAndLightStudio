@@ -21,6 +21,39 @@ const copyEmailBtn = document.getElementById('copyEmailBtn');
 const contactForm = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');
 const contactCard = document.getElementById('contactCard');
+const contactName = document.getElementById('contactName');
+const contactEmail = document.getElementById('contactEmail');
+const contactMessage = document.getElementById('contactMessage');
+const submitButton = contactForm?.querySelector('.submit-btn');
+
+function hasThreeWords(value) {
+  return value.trim().split(/\s+/).filter(Boolean).length >= 3;
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value.trim());
+}
+
+function updateContactFormState() {
+  if (!submitButton) return;
+
+  const isReady = Boolean(
+    contactName?.value.trim() &&
+    contactEmail?.validity.valid &&
+    isValidEmail(contactEmail.value) &&
+    hasThreeWords(contactMessage?.value || '')
+  );
+
+  submitButton.disabled = !isReady;
+  submitButton.setAttribute('aria-disabled', String(!isReady));
+  submitButton.classList.toggle('is-ready', isReady);
+}
+
+[contactName, contactEmail, contactMessage].forEach(field => {
+  field?.addEventListener('input', updateContactFormState);
+});
+
+updateContactFormState();
 
 if (copyEmailBtn) {
   copyEmailBtn.addEventListener('click', async () => {
@@ -62,12 +95,18 @@ if (contactForm) {
   contactForm.addEventListener('submit', async event => {
     event.preventDefault();
 
-    const name = document.getElementById('contactName').value.trim();
-    const email = document.getElementById('contactEmail').value.trim();
+    const name = contactName.value.trim();
+    const email = contactEmail.value.trim();
     const type = document.getElementById('contactType').value.trim();
-    const message = document.getElementById('contactMessage').value.trim();
+    const message = contactMessage.value.trim();
 
-    const submitButton = contactForm.querySelector('.submit-btn');
+    if (!name || !contactEmail.validity.valid || !isValidEmail(email) || !hasThreeWords(message)) {
+      updateContactFormState();
+      if (formNote) {
+        formNote.textContent = 'Enter your name, a valid email and a message with at least three words.';
+      }
+      return;
+    }
     const originalText = submitButton.innerHTML;
     submitButton.disabled = true;
     submitButton.innerHTML = '<span>Sending...</span>';
@@ -88,14 +127,15 @@ if (contactForm) {
       if (data.success === 'true' || data.success === true) {
         formNote.textContent = 'Message sent successfully.';
         contactForm.reset();
+        updateContactFormState();
       } else {
         formNote.textContent = 'The form service needs to be activated first from the studio email inbox.';
       }
     } catch (error) {
       formNote.textContent = 'Could not send automatically right now. Activate the form service first or try again.';
     } finally {
-      submitButton.disabled = false;
       submitButton.innerHTML = originalText;
+      updateContactFormState();
     }
   });
 }
