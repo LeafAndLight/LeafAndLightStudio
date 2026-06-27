@@ -26,8 +26,8 @@ const contactEmail = document.getElementById('contactEmail');
 const contactMessage = document.getElementById('contactMessage');
 const submitButton = contactForm?.querySelector('.submit-btn');
 
-function hasThreeWords(value) {
-  return value.trim().split(/\s+/).filter(Boolean).length >= 3;
+function hasMessage(value) {
+  return value.trim().length > 0;
 }
 
 function isValidEmail(value) {
@@ -41,7 +41,7 @@ function updateContactFormState() {
     contactName?.value.trim() &&
     contactEmail?.validity.valid &&
     isValidEmail(contactEmail.value) &&
-    hasThreeWords(contactMessage?.value || '')
+    hasMessage(contactMessage?.value || '')
   );
 
   submitButton.disabled = !isReady;
@@ -100,10 +100,10 @@ if (contactForm) {
     const type = document.getElementById('contactType').value.trim();
     const message = contactMessage.value.trim();
 
-    if (!name || !contactEmail.validity.valid || !isValidEmail(email) || !hasThreeWords(message)) {
+    if (!name || !contactEmail.validity.valid || !isValidEmail(email) || !hasMessage(message)) {
       updateContactFormState();
       if (formNote) {
-        formNote.textContent = 'Enter your name, a valid email and a message with at least three words.';
+        formNote.textContent = 'Enter your name, a valid email and a short message.';
       }
       return;
     }
