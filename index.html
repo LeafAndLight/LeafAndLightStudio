@@ -574,7 +574,16 @@
     </div>
   </footer>
 
-  <script src="assets/js/hero-images.js?v=20260627"></script>
-  <script src="assets/js/main.js?v=20260627-hero-config"></script>
+  <script>
+    const assetVersion = Date.now();
+    const heroConfigScript = document.createElement('script');
+    heroConfigScript.src = `assets/js/hero-images.js?v=${assetVersion}`;
+    heroConfigScript.onload = () => {
+      const mainScript = document.createElement('script');
+      mainScript.src = `assets/js/main.js?v=${assetVersion}`;
+      document.body.appendChild(mainScript);
+    };
+    document.body.appendChild(heroConfigScript);
+  </script>
 </body>
 </html>
