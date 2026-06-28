@@ -284,6 +284,7 @@ button,input,textarea,select{font:inherit}
 .hp-field{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;opacity:0!important;pointer-events:none!important}
 .hiring-fields{display:grid;gap:0;margin:4px 0 16px;padding:18px;border-radius:22px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);overflow:hidden;transition:max-height .32s ease,opacity .22s ease,transform .22s ease}
 .hiring-fields[hidden]{display:none}
+.field-helper{display:block;margin-top:-3px;color:#8393a3;font-size:12px;font-weight:500;line-height:1.4}
 .consent-field{display:flex!important;grid-template-columns:auto 1fr!important;align-items:flex-start;gap:12px!important;margin:8px 0 2px!important;padding:14px;border-radius:16px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08)}
 .consent-field input{width:18px!important;height:18px;margin-top:2px;flex:0 0 auto;accent-color:#4f9cff}
 .consent-field span{font-size:13px!important;line-height:1.45;color:#cdd8e3}

@@ -18,6 +18,7 @@ const companyField = document.getElementById('companyField');
 const contactWebsite = document.getElementById('contactWebsite');
 const formOpenedAt = document.getElementById('formOpenedAt');
 const hiringFields = document.getElementById('hiringFields');
+const timeZoneOptions = document.getElementById('timeZoneOptions');
 const serviceCards = Array.from(document.querySelectorAll('.service-select-card'));
 const hiringInputs = {
   country: document.getElementById('hiringCountry'),
@@ -25,12 +26,9 @@ const hiringInputs = {
   roleCategory: document.getElementById('hiringRoleCategory'),
   roleTitle: document.getElementById('hiringRoleTitle'),
   seniority: document.getElementById('hiringSeniority'),
-  workType: document.getElementById('hiringWorkType'),
   availability: document.getElementById('hiringAvailability'),
-  rateMin: document.getElementById('hiringRateMin'),
-  rateMax: document.getElementById('hiringRateMax'),
+  hourlyRate: document.getElementById('hiringHourlyRate'),
   currency: document.getElementById('hiringCurrency'),
-  rateBasis: document.getElementById('hiringRateBasis'),
   portfolioUrl: document.getElementById('hiringPortfolioUrl'),
   linkedinUrl: document.getElementById('hiringLinkedinUrl'),
   resumeUrl: document.getElementById('hiringResumeUrl'),
@@ -49,6 +47,43 @@ function setFormOpenedAt() {
 }
 
 setFormOpenedAt();
+function initializeTimeZones() {
+  const fallbackTimeZones = [
+    'America/Sao_Paulo',
+    'America/New_York',
+    'America/Chicago',
+    'America/Denver',
+    'America/Los_Angeles',
+    'Europe/London',
+    'Europe/Berlin',
+    'Asia/Tokyo',
+    'Australia/Sydney',
+    'UTC'
+  ];
+  let timeZones = fallbackTimeZones;
+
+  if (typeof Intl.supportedValuesOf === 'function') {
+    try {
+      timeZones = Intl.supportedValuesOf('timeZone');
+    } catch (error) {
+      timeZones = fallbackTimeZones;
+    }
+  }
+
+  if (timeZoneOptions) {
+    timeZoneOptions.replaceChildren(...timeZones.map(timeZone => {
+      const option = document.createElement('option');
+      option.value = timeZone;
+      return option;
+    }));
+  }
+
+  if (hiringInputs.timeZone && !fieldValue(hiringInputs.timeZone)) {
+    hiringInputs.timeZone.value = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+  }
+}
+
+initializeTimeZones();
 
 function hasMessage(value) {
   return value.trim().length > 0;
@@ -192,16 +227,12 @@ function validateVisibleForm({ focusFirst = false } = {}) {
   if (fieldValue(contactSubject).length > MAX_FIELD_LENGTHS.subject) invalid.push([contactSubject, 'Subject is too long.']);
 
   if (isHiringMode()) {
-    ['country', 'roleCategory', 'roleTitle', 'seniority', 'workType', 'currency', 'rateBasis', 'portfolioUrl'].forEach(key => {
+    ['country', 'roleCategory', 'roleTitle', 'seniority', 'currency', 'portfolioUrl'].forEach(key => {
       if (!fieldValue(hiringInputs[key])) invalid.push([hiringInputs[key], 'This field is required for hiring.']);
     });
 
-    const rateMin = Number(fieldValue(hiringInputs.rateMin));
-    const rateMaxValue = fieldValue(hiringInputs.rateMax);
-    const rateMax = Number(rateMaxValue);
-    if (!rateMin || rateMin <= 0) invalid.push([hiringInputs.rateMin, 'Enter a positive minimum rate.']);
-    if (rateMaxValue && (!rateMax || rateMax <= 0)) invalid.push([hiringInputs.rateMax, 'Enter a positive maximum rate.']);
-    if (rateMaxValue && rateMin && rateMax < rateMin) invalid.push([hiringInputs.rateMax, 'Maximum rate cannot be lower than minimum rate.']);
+    const hourlyRate = Number(fieldValue(hiringInputs.hourlyRate));
+    if (!hourlyRate || hourlyRate <= 0) invalid.push([hiringInputs.hourlyRate, 'Enter a positive hourly rate.']);
     if (!isValidUrl(fieldValue(hiringInputs.portfolioUrl))) invalid.push([hiringInputs.portfolioUrl, 'Enter a valid portfolio URL.']);
     if (!isValidUrl(fieldValue(hiringInputs.linkedinUrl))) invalid.push([hiringInputs.linkedinUrl, 'Enter a valid LinkedIn URL.']);
     if (!isValidUrl(fieldValue(hiringInputs.resumeUrl))) invalid.push([hiringInputs.resumeUrl, 'Enter a valid Resume / CV URL.']);
@@ -245,18 +276,20 @@ function buildPayload() {
   };
 
   if (isHiringMode()) {
+    const hourlyRate = Number(fieldValue(hiringInputs.hourlyRate));
     payload.hiring = {
       country: fieldValue(hiringInputs.country),
       timeZone: fieldValue(hiringInputs.timeZone),
       roleCategory: fieldValue(hiringInputs.roleCategory),
       roleTitle: fieldValue(hiringInputs.roleTitle),
       seniority: fieldValue(hiringInputs.seniority),
-      workType: fieldValue(hiringInputs.workType),
+      workType: 'Freelance',
       availability: fieldValue(hiringInputs.availability),
-      rateMin: fieldValue(hiringInputs.rateMin),
-      rateMax: fieldValue(hiringInputs.rateMax),
+      hourlyRate,
+      rateMin: hourlyRate,
+      rateMax: '',
       currency: fieldValue(hiringInputs.currency),
-      rateBasis: fieldValue(hiringInputs.rateBasis),
+      rateBasis: 'Per hour',
       portfolioUrl: fieldValue(hiringInputs.portfolioUrl),
       linkedinUrl: fieldValue(hiringInputs.linkedinUrl),
       resumeUrl: fieldValue(hiringInputs.resumeUrl),
@@ -358,6 +391,7 @@ if (contactForm) {
       subjectWasManuallyEdited = false;
       lastAutoGeneratedSubject = '';
       setFormOpenedAt();
+      initializeTimeZones();
       syncInquiryVisibility();
       applyAutoSubject();
       setNote('Message sent successfully.', 'success');

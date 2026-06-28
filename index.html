@@ -563,7 +563,9 @@
                   </label>
                   <label>
                     <span>Time Zone</span>
-                    <input type="text" id="hiringTimeZone" name="timeZone" placeholder="UTC-3 or America/Sao_Paulo" />
+                    <input type="text" id="hiringTimeZone" name="timeZone" list="timeZoneOptions" placeholder="America/Sao_Paulo" autocomplete="off" />
+                    <datalist id="timeZoneOptions"></datalist>
+                    <small class="field-helper">Detected from your device. You can change it.</small>
                   </label>
                 </div>
 
@@ -590,43 +592,31 @@
                   </label>
                 </div>
 
-                <div class="field-row">
-                  <label>
-                    <span>Seniority</span>
-                    <select id="hiringSeniority" name="seniority" data-hiring-required>
-                      <option value="">Select seniority</option>
-                      <option value="Junior">Junior</option>
-                      <option value="Mid-level">Mid-level</option>
-                      <option value="Senior">Senior</option>
-                      <option value="Lead">Lead</option>
-                      <option value="Specialist">Specialist</option>
-                    </select>
-                  </label>
-                  <label>
-                    <span>Work Type</span>
-                    <select id="hiringWorkType" name="workType" data-hiring-required>
-                      <option value="">Select work type</option>
-                      <option value="Freelance">Freelance</option>
-                      <option value="Contract">Contract</option>
-                      <option value="Part-time">Part-time</option>
-                      <option value="Full-time">Full-time</option>
-                      <option value="Project-based">Project-based</option>
-                    </select>
-                  </label>
-                </div>
+                <label>
+                  <span>Seniority</span>
+                  <select id="hiringSeniority" name="seniority" data-hiring-required>
+                    <option value="">Select seniority</option>
+                    <option value="Junior">Junior</option>
+                    <option value="Mid-level">Mid-level</option>
+                    <option value="Senior">Senior</option>
+                    <option value="Lead">Lead</option>
+                    <option value="Specialist">Specialist</option>
+                  </select>
+                </label>
+
+                <label>
+                  <span>Availability</span>
+                  <select id="hiringAvailability" name="availability">
+                    <option value="">To be selected</option>
+                    <option value="Immediately">Immediately</option>
+                    <option value="Within 2 weeks">Within 2 weeks</option>
+                    <option value="Within 1 month">Within 1 month</option>
+                    <option value="More than 1 month">More than 1 month</option>
+                    <option value="To be discussed">To be discussed</option>
+                  </select>
+                </label>
 
                 <div class="field-row">
-                  <label>
-                    <span>Availability</span>
-                    <select id="hiringAvailability" name="availability">
-                      <option value="">To be selected</option>
-                      <option value="Immediately">Immediately</option>
-                      <option value="Within 2 weeks">Within 2 weeks</option>
-                      <option value="Within 1 month">Within 1 month</option>
-                      <option value="More than 1 month">More than 1 month</option>
-                      <option value="To be discussed">To be discussed</option>
-                    </select>
-                  </label>
                   <label>
                     <span>Currency</span>
                     <select id="hiringCurrency" name="currency" data-hiring-required>
@@ -640,29 +630,12 @@
                       <option value="Other">Other</option>
                     </select>
                   </label>
-                </div>
-
-                <div class="field-row">
                   <label>
-                    <span>Expected Rate Min</span>
-                    <input type="number" id="hiringRateMin" name="rateMin" min="1" step="0.01" placeholder="25" data-hiring-required />
-                  </label>
-                  <label>
-                    <span>Expected Rate Max</span>
-                    <input type="number" id="hiringRateMax" name="rateMax" min="1" step="0.01" placeholder="35" />
+                    <span>Hourly Rate</span>
+                    <input type="number" id="hiringHourlyRate" name="hourlyRate" min="1" step="1" inputmode="decimal" placeholder="25" data-hiring-required />
+                    <small class="field-helper">Your expected freelance rate per hour.</small>
                   </label>
                 </div>
-
-                <label>
-                  <span>Rate Basis</span>
-                  <select id="hiringRateBasis" name="rateBasis" data-hiring-required>
-                    <option value="">Select rate basis</option>
-                    <option value="Per hour">Per hour</option>
-                    <option value="Per day">Per day</option>
-                    <option value="Per month">Per month</option>
-                    <option value="Fixed project">Fixed project</option>
-                  </select>
-                </label>
 
                 <label>
                   <span>Portfolio URL</span>
