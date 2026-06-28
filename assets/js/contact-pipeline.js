@@ -1,4 +1,4 @@
-const CONTACT_ENDPOINT = 'PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+const CONTACT_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzmE6Zm1eD4ajMjQVW6_KqD-t0XdxyB341gvDZ8beWkA3EZEvieblkq1BZ53y6gqnp4/exec';
 const MIN_SUBMIT_DELAY_MS = 2500;
 const MAX_FIELD_LENGTHS = {
   name: 120,
