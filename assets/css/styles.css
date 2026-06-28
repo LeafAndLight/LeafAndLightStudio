@@ -268,3 +268,8 @@ button,input,textarea,select{font:inherit}
 .crew-work-item:hover .portfolio-open:after,.crew-work-item .portfolio-open:focus-visible:after{opacity:1;transform:translateY(0)}
 @media (max-width:780px){.approach-visual .orbit-outer{width:78%;height:62%}.approach-visual .orbit-middle{width:64%;height:48%}.approach-visual .orbit-inner{width:48%;height:32%}.approach-visual .orbit-node{font-size:9px;padding:6px 8px}.crew-work-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (prefers-reduced-motion:reduce){.approach-visual .talent-orbit,.approach-visual .orbit-node{animation:none!important}}
+/* JavaScript-driven solar system: rings float, labels follow their own ellipses */
+.approach-visual .talent-orbit{animation:none!important;transition:border-color .3s ease;will-change:transform}
+.approach-visual:hover .talent-orbit{animation:none!important}
+.approach-visual .orbit-node,.approach-visual .orbit-outer .orbit-node,.approach-visual .orbit-middle .orbit-node,.approach-visual .orbit-inner .orbit-node{left:50%;top:50%;offset-path:none;offset-distance:0;animation:none!important;transform:translate(-50%,-50%);transition:opacity .25s ease,box-shadow .25s ease,border-color .25s ease;will-change:left,top,opacity}
+@media (max-width:480px){.approach-visual .talent-orbit{width:62%}.approach-visual .orbit-middle{width:50%}.approach-visual .orbit-inner{width:38%}.approach-visual .orbit-node[data-mobile-secondary]{display:none}}

@@ -48,6 +48,131 @@ const contactName = document.getElementById('contactName');
 const contactEmail = document.getElementById('contactEmail');
 const contactMessage = document.getElementById('contactMessage');
 const submitButton = contactForm?.querySelector('.submit-btn');
+// Talent solar system: every label follows one ellipse while its ring only floats.
+const talentSystem = document.querySelector('.approach-visual');
+
+if (talentSystem) {
+  const talentRings = Array.from(talentSystem.querySelectorAll('.talent-orbit'));
+  const reducedTalentMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const ringPeriods = [56000, 52500, 49500];
+  const floatPeriods = [11200, 12800, 14500];
+  const floatPhases = [0.3, 2.1, 4.2];
+  let talentVisible = false;
+  let talentRunning = false;
+  let talentClock = 0;
+  let talentLastFrame = 0;
+  let talentFrameCount = 0;
+
+  const orbitingTalents = talentRings.flatMap((ring, ringIndex) =>
+    Array.from(ring.querySelectorAll('.orbit-node')).map(node => ({
+      node,
+      ring,
+      ringIndex,
+      baseAngle: Number(node.dataset.angle || 0),
+      speed: Number(node.dataset.speed || 1),
+      nudge: 0,
+      nudgeTarget: 0
+    }))
+  );
+
+  function visibleOrbitingTalents() {
+    return orbitingTalents.filter(talent => getComputedStyle(talent.node).display !== 'none');
+  }
+
+  function resolveTalentCollisions() {
+    const visibleTalents = visibleOrbitingTalents();
+    const rects = visibleTalents.map(talent => talent.node.getBoundingClientRect());
+
+    for (let i = 0; i < visibleTalents.length; i += 1) {
+      for (let j = i + 1; j < visibleTalents.length; j += 1) {
+        const a = rects[i];
+        const b = rects[j];
+        const padding = 5;
+        const overlaps = !(
+          a.right + padding < b.left ||
+          b.right + padding < a.left ||
+          a.bottom + padding < b.top ||
+          b.bottom + padding < a.top
+        );
+
+        if (!overlaps) continue;
+
+        const sameRing = visibleTalents[i].ringIndex === visibleTalents[j].ringIndex;
+        const correction = sameRing ? 0.028 : 0.018;
+        visibleTalents[i].nudgeTarget = Math.max(-0.2, visibleTalents[i].nudgeTarget - correction * 0.7);
+        visibleTalents[j].nudgeTarget = Math.min(0.2, visibleTalents[j].nudgeTarget + correction);
+      }
+    }
+  }
+
+  function renderTalentSystem(now) {
+    if (!talentVisible) {
+      talentRunning = false;
+      talentLastFrame = 0;
+      return;
+    }
+
+    if (!talentLastFrame) talentLastFrame = now;
+    talentClock += Math.min(now - talentLastFrame, 50);
+    talentLastFrame = now;
+
+    talentRings.forEach((ring, ringIndex) => {
+      const floatAngle = (talentClock / floatPeriods[ringIndex]) * Math.PI * 2 + floatPhases[ringIndex];
+      const offsetX = Math.cos(floatAngle) * (ringIndex === 1 ? 3 : 4);
+      const offsetY = Math.sin(floatAngle) * (ringIndex === 2 ? 2.5 : 3.5);
+      ring.style.transform = `translate(-50%, -50%) translate(${offsetX.toFixed(2)}px, ${offsetY.toFixed(2)}px)`;
+    });
+
+    visibleOrbitingTalents().forEach(talent => {
+      talent.nudge += (talent.nudgeTarget - talent.nudge) * 0.12;
+      talent.nudgeTarget *= 0.994;
+
+      const angle = talent.baseAngle +
+        (talentClock / ringPeriods[talent.ringIndex]) * Math.PI * 2 * talent.speed +
+        talent.nudge;
+      const centerX = talent.ring.clientWidth * 0.5;
+      const centerY = talent.ring.clientHeight * 0.5;
+      const x = centerX + centerX * Math.cos(angle);
+      const y = centerY + centerY * Math.sin(angle);
+      const depth = (Math.sin(angle) + 1) * 0.5;
+
+      talent.node.style.left = `${x.toFixed(2)}px`;
+      talent.node.style.top = `${y.toFixed(2)}px`;
+      talent.node.style.opacity = (0.78 + depth * 0.22).toFixed(3);
+      talent.node.style.zIndex = String(2 + Math.round(depth * 3));
+    });
+
+    talentFrameCount += 1;
+    if (talentFrameCount % 3 === 0) resolveTalentCollisions();
+
+    if (!reducedTalentMotion.matches) {
+      requestAnimationFrame(renderTalentSystem);
+    } else {
+      talentRunning = false;
+    }
+  }
+
+  function startTalentSystem() {
+    if (!talentVisible || talentRunning) return;
+    talentRunning = true;
+    talentLastFrame = 0;
+    requestAnimationFrame(renderTalentSystem);
+  }
+
+  const talentVisibilityObserver = new IntersectionObserver(entries => {
+    talentVisible = entries[0].isIntersecting;
+    if (talentVisible) startTalentSystem();
+  }, { rootMargin: '120px' });
+
+  const talentResizeObserver = new ResizeObserver(() => {
+    if (reducedTalentMotion.matches && talentVisible) startTalentSystem();
+  });
+
+  talentVisibilityObserver.observe(talentSystem);
+  talentResizeObserver.observe(talentSystem);
+  talentRings.forEach(ring => talentResizeObserver.observe(ring));
+  reducedTalentMotion.addEventListener('change', startTalentSystem);
+}
 
 function hasMessage(value) {
   return value.trim().length > 0;
