@@ -2,7 +2,7 @@
 // A ordem dos itens abaixo e a ordem da apresentacao no site.
 window.HERO_IMAGES = [
   {
-    src: 'assets/images/hero/car_crash_02.png',
+        src: 'assets/images/hero/01-car_crash.png',
     alt: 'Car Crash Arena car driving through the bone tunnel',
     position: 'center'
   },
