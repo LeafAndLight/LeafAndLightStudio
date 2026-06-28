@@ -154,9 +154,9 @@ button,input,textarea,select{font:inherit}
 .approach-visual:before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 20%,rgba(143,185,255,.05),transparent 72%);pointer-events:none}
 .talent-orbit{position:absolute;left:50%;top:50%;border:1px solid rgba(143,185,255,.18);border-radius:50%;transform:translate(-50%,-50%);transition:border-color .3s ease,filter .3s ease}
 .orbit-outer{width:78%;aspect-ratio:1.7/1;animation:orbit-spin 28s linear infinite}.orbit-inner{width:50%;aspect-ratio:1.45/1;animation:orbit-spin-reverse 19s linear infinite}
-.approach-visual:hover .talent-orbit{border-color:rgba(143,185,255,.42);filter:drop-shadow(0 0 16px rgba(82,143,255,.18))}.approach-visual:hover .orbit-outer{animation-duration:19s}.approach-visual:hover .orbit-inner{animation-duration:13s}
+.approach-visual:hover .talent-orbit{border-color:rgba(143,185,255,.42);filter:drop-shadow(0 0 16px rgba(82,143,255,.18))}
 .orbit-node{position:absolute;padding:10px 14px;border-radius:999px;background:rgba(22,32,43,.94);border:1px solid rgba(255,255,255,.16);box-shadow:0 12px 34px rgba(0,0,0,.32),0 0 18px rgba(86,143,255,.08);font-weight:750;font-size:13px;color:#edf4fb;white-space:nowrap;backdrop-filter:blur(12px)}
-.orbit-outer .orbit-node{animation:orbit-counter 28s linear infinite}.orbit-inner .orbit-node{animation:orbit-counter-reverse 19s linear infinite}.approach-visual:hover .orbit-outer .orbit-node{animation-duration:19s}.approach-visual:hover .orbit-inner .orbit-node{animation-duration:13s}
+.orbit-outer .orbit-node{animation:orbit-counter 28s linear infinite}.orbit-inner .orbit-node{animation:orbit-counter-reverse 19s linear infinite}
 .node-3d{left:7%;top:7%}.node-tech{right:-7%;top:42%}.node-sound{left:13%;bottom:2%}.node-gameplay{right:-13%;top:18%}.node-animation{left:-13%;bottom:14%}
 .core-node{position:absolute;left:50%;top:50%;width:190px;height:190px;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-radius:50%;padding:24px;background:radial-gradient(circle at 35% 28%,#fff,#dbe8f6 68%,#b8cae0);color:#10161d;border:7px solid rgba(255,255,255,.07);box-shadow:0 0 0 1px rgba(255,255,255,.28),0 24px 70px rgba(0,0,0,.42),0 0 42px rgba(113,166,255,.2);z-index:3;transition:transform .35s ease,box-shadow .35s ease}.approach-visual:hover .core-node{transform:translate(-50%,-50%) scale(1.055);box-shadow:0 0 0 1px rgba(255,255,255,.34),0 28px 80px rgba(0,0,0,.46),0 0 58px rgba(113,166,255,.32)}
 .core-node span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#4d6278;font-weight:900}.core-node strong{font-size:21px;line-height:1.05;margin:7px 0}.core-node small{font-size:11px;color:#52677b;line-height:1.35}.orbit-caption{position:absolute;left:24px;bottom:20px;display:flex;align-items:center;gap:9px;color:#93a7bb;font-size:12px;font-weight:700}.orbit-caption span{width:7px;height:7px;border-radius:50%;background:#70a9ff;box-shadow:0 0 16px #70a9ff}
@@ -185,7 +185,6 @@ button,input,textarea,select{font:inherit}
 .approach-visual{min-height:390px}
 .orbit-outer{width:76%}.orbit-inner{width:38%;animation:orbit-spin 28s linear infinite}
 .orbit-inner .orbit-node{animation:orbit-counter 28s linear infinite}
-.approach-visual:hover .orbit-inner,.approach-visual:hover .orbit-inner .orbit-node{animation-duration:19s}
 .orbit-node{padding:8px 11px;font-size:12px}
 .core-node{width:142px;height:142px;padding:16px;border-width:5px}
 .core-node strong{font-size:18px;margin:6px 0 0}
@@ -208,7 +207,7 @@ button,input,textarea,select{font:inherit}
 .core-node{width:118px;height:118px;padding:12px;border-width:4px}
 .core-node span{font-size:9px}.core-node strong{font-size:15px;margin-top:4px}
 .orbit-outer{width:84%}.orbit-inner{width:52%}
-.approach-visual:hover .orbit-outer,.approach-visual:hover .orbit-inner,.approach-visual:hover .orbit-outer .orbit-node,.approach-visual:hover .orbit-inner .orbit-node{animation-duration:28s}
+
 .brand{padding:6px 10px;border-radius:12px;transition:background .2s ease,color .2s ease,box-shadow .2s ease,transform .2s ease}
 .brand:hover,.brand:focus-visible{background:rgba(10,102,194,.12);color:#8fc1ff;box-shadow:0 0 0 1px rgba(79,156,255,.2);transform:translateY(-1px)}
 #contact{padding-bottom:24px}
@@ -249,9 +248,8 @@ button,input,textarea,select{font:inherit}
 .approach-visual .orbit-outer{width:76%;height:64%;aspect-ratio:auto}
 .approach-visual .orbit-middle{width:62%;height:50%;animation-delay:-2.5s}
 .approach-visual .orbit-inner{width:46%;height:34%;aspect-ratio:auto;animation-delay:-5s}
-.approach-visual:hover .talent-orbit{animation-duration:8s;filter:none}
+.approach-visual:hover .talent-orbit{filter:none}
 .approach-visual .orbit-node,.approach-visual .orbit-outer .orbit-node,.approach-visual .orbit-middle .orbit-node,.approach-visual .orbit-inner .orbit-node{left:0;top:0;offset-path:ellipse(50% 50% at 50% 50%);offset-anchor:center;offset-rotate:0deg;offset-distance:var(--start);animation:planet-orbit var(--duration) linear infinite;will-change:offset-distance}
-.approach-visual:hover .orbit-node{animation-duration:var(--duration)}
 @keyframes planet-orbit{from{offset-distance:var(--start)}to{offset-distance:calc(var(--start) + 100%)}}
 @keyframes orbit-breathe{0%,100%{border-color:rgba(143,185,255,.16);opacity:.76}50%{border-color:rgba(143,185,255,.28);opacity:1}}
 
