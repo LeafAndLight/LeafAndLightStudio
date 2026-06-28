@@ -1,3 +1,26 @@
+const heroBackground = document.querySelector('.hero-bg');
+const slideDots = document.querySelector('.slide-dots');
+const heroImages = Array.isArray(window.HERO_IMAGES) ? window.HERO_IMAGES : [];
+
+heroImages.forEach((image, index) => {
+  const slide = document.createElement('div');
+  slide.className = `hero-slide${index === 0 ? ' active' : ''}`;
+
+  const img = document.createElement('img');
+  img.src = image.src;
+  img.alt = image.alt || '';
+  img.style.objectPosition = image.position || 'center';
+  slide.appendChild(img);
+  heroBackground?.appendChild(slide);
+
+  const dot = document.createElement('button');
+  dot.type = 'button';
+  dot.className = index === 0 ? 'active' : '';
+  dot.dataset.index = String(index);
+  dot.setAttribute('aria-label', `Show slide ${index + 1}`);
+  slideDots?.appendChild(dot);
+});
+
 const slides = Array.from(document.querySelectorAll('.hero-slide'));
 const dots = Array.from(document.querySelectorAll('.slide-dots button'));
 let activeIndex = 0;
