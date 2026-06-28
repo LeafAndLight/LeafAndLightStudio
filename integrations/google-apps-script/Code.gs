@@ -117,6 +117,7 @@ function validateInquiry_(payload) {
     sourceUrl: cleanUrl_(payload.sourceUrl || '', false)
   };
   if (!inquiry.name) throw new Error('Name is required.');
+  if ((inquiry.type === 'Business' || inquiry.type === 'Partnership') && !inquiry.company) throw new Error('Company / Organization is required.');
   if (!inquiry.subject) throw new Error('Subject is required.');
   if (!inquiry.message) throw new Error('Message is required.');
   return inquiry;

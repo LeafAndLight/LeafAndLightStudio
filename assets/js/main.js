@@ -39,7 +39,7 @@ if (slides.length > 1) {
   setInterval(() => showSlide((activeIndex + 1) % slides.length), 5000);
 }
 
-const emailAddress = 'leafandlightstudio@gmail.com';
+const emailAddress = 'leafandlightcontac@gmail.com';
 const copyEmailBtn = document.getElementById('copyEmailBtn');
 const contactForm = document.getElementById('contactForm');
 const formNote = document.getElementById('formNote');

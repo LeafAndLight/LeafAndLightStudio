@@ -138,6 +138,7 @@ button,input,textarea,select{font:inherit}
 .gmail-icon{width:20px;height:20px;display:grid;place-items:center}.gmail-icon svg{width:20px;height:20px}
 .copy-icon-btn{display:grid;place-items:center;width:52px;height:52px;border-radius:999px;border:1px solid rgba(17,22,27,.12);background:rgba(17,22,27,.03);color:#11161b;cursor:pointer;transition:.2s ease}
 .copy-icon-btn:hover{transform:translateY(-2px);background:rgba(17,22,27,.06)}
+.copy-icon-btn.copied{background:#24c878;border-color:#24c878;color:#04120a;box-shadow:0 12px 26px rgba(36,200,120,.28)}
 .copy-icon-btn svg{width:20px;height:20px}
 .contact-form{position:relative;padding:24px;border-radius:28px;background:rgba(255,255,255,.5);border:1px solid rgba(17,22,27,.08);box-shadow:0 14px 40px rgba(17,22,27,.08)}
 .contact-form label{display:grid;gap:10px;margin-bottom:16px;font-weight:700;color:#1f2730}.contact-form span{font-size:14px}

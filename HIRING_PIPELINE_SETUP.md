@@ -21,7 +21,7 @@ Nenhum Google Workspace, Firebase, servidor pago, banco pago, senha, token ou ID
    - `SPREADSHEET_ID`: o ID da planilha.
    - `SPREADSHEET_URL`: a URL completa da planilha.
    - `CAREERS_EMAIL`: `leafandlightcareers@gmail.com`.
-   - `GENERAL_EMAIL`: `leafandlightstudio@gmail.com`.
+   - `GENERAL_EMAIL`: `leafandlightcontac@gmail.com`.
 
 ## 3. Preparar as abas
 
@@ -74,7 +74,7 @@ Depois faça commit e push para atualizar o GitHub Pages.
 2. Preencha Name, Email, Subject e Message.
 3. Envie o formulário.
 4. Confirme se uma linha nova apareceu em `General Inquiries`.
-5. Confirme se o e-mail chegou em `leafandlightstudio@gmail.com`.
+5. Confirme se o e-mail chegou em `leafandlightcontac@gmail.com`.
 
 ## Observações e limitações
 

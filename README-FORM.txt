@@ -1,7 +1,7 @@
 Automatic contact form note
 
 This version is wired to FormSubmit using:
-https://formsubmit.co/ajax/leafandlightstudio@gmail.com
+https://formsubmit.co/ajax/leafandlightcontac@gmail.com
 
 Important:
 1. FormSubmit usually requires a one-time activation/confirmation from the destination email inbox.

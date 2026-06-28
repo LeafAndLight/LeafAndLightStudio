@@ -21,7 +21,7 @@ The HTML includes a commented partner-card template inside the leadership sectio
 Contact
 -------
 The contact email was updated to:
-leafandlightstudio@gmail.com
+leafandlightcontac@gmail.com
 
 Upload
 ------

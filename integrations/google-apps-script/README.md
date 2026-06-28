@@ -16,7 +16,7 @@ Configure these manually in Apps Script:
 - `SPREADSHEET_ID`
 - `SPREADSHEET_URL`
 - `CAREERS_EMAIL` = `leafandlightcareers@gmail.com`
-- `GENERAL_EMAIL` = `leafandlightstudio@gmail.com`
+- `GENERAL_EMAIL` = `leafandlightcontac@gmail.com`
 
 No private IDs, tokens or credentials should be committed to this public repository.
 
