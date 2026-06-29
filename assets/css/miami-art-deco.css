@@ -248,7 +248,7 @@
 }
 
 .miami-deco-theme .tag:before{
-  content:"•";
+  content:"â€¢";
   margin-right:8px;
   color:var(--miami-gold);
 }
@@ -1149,4 +1149,61 @@
 .miami-deco-theme .copy-icon-btn:hover svg,
 .miami-deco-theme .copy-icon-btn:focus-visible svg{
   color:#07111d!important;
+}
+
+/* Miami production lock: one visual language, one gold accent and one display typeface. */
+.miami-deco-theme h1,
+.miami-deco-theme h2,
+.miami-deco-theme h3,
+.miami-deco-theme .brand-name,
+.miami-deco-theme .section-index,
+.miami-deco-theme .portfolio-chapter strong{
+  font-family:"Josefin Sans",Inter,sans-serif;
+}
+.miami-deco-theme h1,
+.miami-deco-theme h2,
+.miami-deco-theme h3{font-weight:700}
+.miami-deco-theme .section-index{font-weight:700;letter-spacing:.14em}
+.miami-deco-theme #portfolio .portfolio-chapter span{
+  color:#ffe1a3!important;
+  font-family:"Josefin Sans",Inter,sans-serif;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.18em;
+}
+.miami-deco-theme #portfolio .portfolio-chapter strong{
+  color:var(--miami-gold)!important;
+  font-size:clamp(22px,2.4vw,34px);
+  font-weight:700;
+  letter-spacing:.08em;
+  line-height:1;
+  text-transform:uppercase;
+}
+.miami-deco-theme #how-we-work .approach-pills span,
+.miami-deco-theme #how-we-work .approach-pills span:nth-child(2n),
+.miami-deco-theme #crew .leader-tags span,
+.miami-deco-theme #crew .leader-tags span:nth-child(2n),
+.miami-deco-theme #crew .skill-list span,
+.miami-deco-theme #crew .skill-list span:nth-child(2n){color:#ffe1a3!important}
+.miami-deco-theme #how-we-work .approach-pills span:before,
+.miami-deco-theme #how-we-work .approach-pills span:nth-child(2n):before,
+.miami-deco-theme #crew .leader-tags span:before,
+.miami-deco-theme #crew .leader-tags span:nth-child(2n):before,
+.miami-deco-theme #crew .skill-list span:before,
+.miami-deco-theme #crew .skill-list span:nth-child(2n):before{
+  background:var(--miami-gold)!important;
+  box-shadow:0 0 10px rgba(255,201,90,.5)!important;
+}
+.miami-deco-theme .leader-photo-link:hover .leader-photo,
+.miami-deco-theme .leader-photo-link:focus-visible .leader-photo{
+  border-color:var(--miami-gold);
+  box-shadow:0 18px 54px rgba(0,0,0,.3),0 0 0 5px rgba(255,201,90,.14);
+}
+.miami-deco-theme .photo-link-hint{background:var(--miami-gold);border-color:#12091f;color:#07111d}
+.miami-deco-theme .back-to-top-btn:hover,
+.miami-deco-theme .back-to-top-btn:focus-visible{
+  background:var(--miami-gold);
+  border-color:var(--miami-gold);
+  color:#07111d;
+  box-shadow:5px 5px 0 rgba(255,201,90,.18),0 14px 34px rgba(0,0,0,.28);
 }
