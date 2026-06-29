@@ -776,3 +776,377 @@
     justify-content:center;
   }
 }
+
+/* Miami final color harmonization: project identity, non-blue info labels and clickable controls */
+.miami-deco-theme{
+  --game-car:#ffb243;
+  --game-prison:#36e4dc;
+  --game-climb:#a8ff6d;
+  --miami-button:linear-gradient(135deg,var(--miami-gold),var(--miami-coral) 58%,var(--miami-pink));
+  --miami-button-dark:linear-gradient(135deg,rgba(255,201,90,.2),rgba(255,92,200,.12));
+}
+
+.miami-deco-theme #projects .project-card:nth-child(1){--accent:var(--game-car);--project-color:var(--game-car);--project-rgb:255,178,67}
+.miami-deco-theme #projects .project-card:nth-child(2){--accent:var(--game-prison);--project-color:var(--game-prison);--project-rgb:54,228,220}
+.miami-deco-theme #projects .project-card:nth-child(3){--accent:var(--game-climb);--project-color:var(--game-climb);--project-rgb:168,255,109}
+
+.miami-deco-theme #projects .project-card:nth-child(1) .project-title h3,
+.miami-deco-theme #portfolio .portfolio-chapter:first-of-type strong,
+.miami-deco-theme #portfolio .shot[data-project="Car Crash Arena"] figcaption span{
+  color:var(--game-car);
+}
+
+.miami-deco-theme #projects .project-card:nth-child(2) .project-title h3,
+.miami-deco-theme #portfolio .portfolio-chapter--prison strong,
+.miami-deco-theme #portfolio .shot[data-project="I'm Prisoner"] figcaption span{
+  color:var(--game-prison);
+}
+
+.miami-deco-theme #projects .project-card:nth-child(3) .project-title h3,
+.miami-deco-theme #portfolio .portfolio-chapter--climb strong,
+.miami-deco-theme #portfolio .shot[data-project="Infinity Climb"] figcaption span{
+  color:var(--game-climb);
+}
+
+.miami-deco-theme #projects .project-title h3{
+  text-shadow:0 0 18px color-mix(in srgb,var(--accent) 22%,transparent);
+}
+
+.miami-deco-theme #projects .project-kicker,
+.miami-deco-theme #projects .tag,
+.miami-deco-theme #projects .tag:before,
+.miami-deco-theme #projects .project-body:before,
+.miami-deco-theme #projects .project-mark,
+.miami-deco-theme #projects .project-dot{
+  border-color:color-mix(in srgb,var(--accent) 58%,rgba(255,244,216,.18));
+}
+
+.miami-deco-theme #projects .project-kicker{
+  color:color-mix(in srgb,var(--accent) 88%,#fff4d8);
+  background:color-mix(in srgb,var(--accent) 12%,rgba(7,17,29,.72));
+}
+
+.miami-deco-theme #projects .tag,
+.miami-deco-theme #projects .tag:before{
+  color:color-mix(in srgb,var(--accent) 82%,#fff4d8);
+}
+
+.miami-deco-theme #projects .tag:before{
+  background:var(--accent);
+  box-shadow:0 0 8px color-mix(in srgb,var(--accent) 42%,transparent);
+}
+
+.miami-deco-theme #projects .video-bar{
+  background:linear-gradient(90deg,var(--accent),color-mix(in srgb,var(--accent) 58%,var(--miami-pink)))!important;
+}
+
+.miami-deco-theme #portfolio .portfolio-chapter:first-of-type:after,
+.miami-deco-theme #portfolio .shot[data-project="Car Crash Arena"]{
+  --portfolio-accent:var(--game-car);
+}
+
+.miami-deco-theme #portfolio .portfolio-chapter--prison:after,
+.miami-deco-theme #portfolio .shot[data-project="I'm Prisoner"]{
+  --portfolio-accent:var(--game-prison);
+}
+
+.miami-deco-theme #portfolio .portfolio-chapter--climb:after,
+.miami-deco-theme #portfolio .shot[data-project="Infinity Climb"]{
+  --portfolio-accent:var(--game-climb);
+}
+
+.miami-deco-theme #portfolio .portfolio-chapter:after{
+  background:linear-gradient(90deg,rgba(255,244,216,.12),color-mix(in srgb,var(--portfolio-accent, var(--miami-gold)) 55%,transparent),rgba(255,244,216,.12));
+}
+
+.miami-deco-theme #portfolio .shot[data-project]{
+  outline-color:color-mix(in srgb,var(--portfolio-accent, var(--miami-gold)) 24%,rgba(255,244,216,.1));
+}
+
+.miami-deco-theme #portfolio .shot[data-project]:hover{
+  outline-color:color-mix(in srgb,var(--portfolio-accent, var(--miami-gold)) 54%,rgba(255,244,216,.18));
+  box-shadow:7px 7px 0 color-mix(in srgb,var(--portfolio-accent, var(--miami-gold)) 16%,transparent),0 26px 72px rgba(0,0,0,.42);
+}
+
+.miami-deco-theme #how-we-work .approach-pills,
+.miami-deco-theme #crew .leader-tags,
+.miami-deco-theme #crew .skill-list{
+  gap:10px 18px;
+}
+
+.miami-deco-theme #how-we-work .approach-pills span,
+.miami-deco-theme #crew .leader-tags span,
+.miami-deco-theme #crew .skill-list span{
+  position:relative;
+  padding:0 0 0 13px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  color:#ffe1a3;
+  font-size:13px;
+  font-weight:850;
+  text-shadow:0 0 10px rgba(255,201,90,.12);
+}
+
+.miami-deco-theme #how-we-work .approach-pills span:before,
+.miami-deco-theme #crew .leader-tags span:before,
+.miami-deco-theme #crew .skill-list span:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:.55em;
+  width:5px;
+  height:5px;
+  border-radius:0 3px 0 3px;
+  background:var(--miami-gold);
+  box-shadow:0 0 10px rgba(255,201,90,.5);
+}
+
+.miami-deco-theme #crew .skill-list span:nth-child(even),
+.miami-deco-theme #crew .leader-tags span:nth-child(even),
+.miami-deco-theme #how-we-work .approach-pills span:nth-child(even){
+  color:#ffc2d8;
+}
+
+.miami-deco-theme #crew .skill-list span:nth-child(even):before,
+.miami-deco-theme #crew .leader-tags span:nth-child(even):before,
+.miami-deco-theme #how-we-work .approach-pills span:nth-child(even):before{
+  background:var(--miami-pink);
+  box-shadow:0 0 10px rgba(255,92,200,.48);
+}
+
+.miami-deco-theme .node,
+.miami-deco-theme .orbit-node{
+  border-color:rgba(255,201,90,.26);
+  color:#fff4d8;
+  background:rgba(7,17,29,.72);
+}
+
+.miami-deco-theme .orbit-caption,
+.miami-deco-theme .orbit-caption span{
+  color:#ffe1a3;
+}
+
+.miami-deco-theme .btn,
+.miami-deco-theme .btn.primary,
+.miami-deco-theme .btn.dark,
+.miami-deco-theme .store-link,
+.miami-deco-theme .leader-actions .btn,
+.miami-deco-theme .social-link,
+.miami-deco-theme .submit-btn.is-ready,
+.miami-deco-theme .contact-quick-actions .btn.primary{
+  border-radius:0 16px 0 16px;
+  border-color:rgba(255,201,90,.42)!important;
+  background:var(--miami-button-dark)!important;
+  color:#fff4d8!important;
+  box-shadow:5px 5px 0 rgba(49,231,216,.12),0 14px 34px rgba(0,0,0,.2)!important;
+}
+
+.miami-deco-theme .btn:hover,
+.miami-deco-theme .btn.primary:hover,
+.miami-deco-theme .btn.dark:hover,
+.miami-deco-theme .store-link:hover,
+.miami-deco-theme .leader-actions .btn:hover,
+.miami-deco-theme .social-link:hover,
+.miami-deco-theme .submit-btn.is-ready:hover,
+.miami-deco-theme .contact-quick-actions .btn.primary:hover,
+.miami-deco-theme .copy-icon-btn:hover,
+.miami-deco-theme .copy-icon-btn.copied{
+  border-color:#fff4d8!important;
+  background:var(--miami-button)!important;
+  color:#07111d!important;
+  box-shadow:6px 6px 0 rgba(49,231,216,.34),0 16px 42px rgba(255,92,200,.24)!important;
+}
+
+.miami-deco-theme .copy-icon-btn,
+.miami-deco-theme .contact-email{
+  border-color:rgba(255,201,90,.32)!important;
+  background:rgba(255,201,90,.08)!important;
+  color:#fff4d8!important;
+}
+
+.miami-deco-theme .copy-icon-btn.copied svg,
+.miami-deco-theme .copy-icon-btn:hover svg{
+  color:#07111d!important;
+}
+
+.miami-deco-theme .leader-actions .btn.primary,
+.miami-deco-theme .social-link{
+  min-width:unset;
+}
+
+.miami-deco-theme .linkedin-link:hover,
+.miami-deco-theme .meta-link:hover{
+  background:var(--miami-button)!important;
+  border-color:#fff4d8!important;
+  color:#07111d!important;
+}
+
+/* Miami polish lock: single project accents and no leftover blue controls */
+.miami-deco-theme #projects .project-card:nth-child(1),
+.miami-deco-theme #projects .project-card:nth-child(1) .project-body,
+.miami-deco-theme #projects .project-card:nth-child(1) .project-video,
+.miami-deco-theme #portfolio .shot[data-project="Car Crash Arena"]{
+  --accent:var(--game-car);
+  --project-color:var(--game-car);
+  --portfolio-color:var(--game-car);
+  --portfolio-accent:var(--game-car);
+}
+
+.miami-deco-theme #projects .project-card:nth-child(2),
+.miami-deco-theme #projects .project-card:nth-child(2) .project-body,
+.miami-deco-theme #projects .project-card:nth-child(2) .project-video,
+.miami-deco-theme #portfolio .shot[data-project="I'm Prisoner"]{
+  --accent:var(--game-prison);
+  --project-color:var(--game-prison);
+  --portfolio-color:var(--game-prison);
+  --portfolio-accent:var(--game-prison);
+}
+
+.miami-deco-theme #projects .project-card:nth-child(3),
+.miami-deco-theme #projects .project-card:nth-child(3) .project-body,
+.miami-deco-theme #projects .project-card:nth-child(3) .project-video,
+.miami-deco-theme #portfolio .shot[data-project="Infinity Climb"]{
+  --accent:var(--game-climb);
+  --project-color:var(--game-climb);
+  --portfolio-color:var(--game-climb);
+  --portfolio-accent:var(--game-climb);
+}
+
+.miami-deco-theme #projects .project-card{
+  border-color:color-mix(in srgb,var(--accent) 34%,rgba(255,244,216,.1))!important;
+}
+
+.miami-deco-theme #projects .project-card:hover{
+  border-color:color-mix(in srgb,var(--accent) 58%,#fff4d8)!important;
+}
+
+.miami-deco-theme #projects .project-title h3{
+  color:#fff8e7!important;
+}
+
+.miami-deco-theme #projects .project-body:before{
+  background:linear-gradient(180deg,var(--accent),transparent 48%,var(--accent))!important;
+}
+
+.miami-deco-theme #projects .project-mark{
+  border-color:color-mix(in srgb,var(--accent) 28%,rgba(255,244,216,.1))!important;
+  border-left-color:var(--accent)!important;
+}
+
+.miami-deco-theme #projects .tag-row{
+  border-top-color:color-mix(in srgb,var(--accent) 18%,transparent)!important;
+  border-bottom-color:color-mix(in srgb,var(--accent) 12%,transparent)!important;
+}
+
+.miami-deco-theme #projects .tag{
+  color:color-mix(in srgb,var(--accent) 84%,#fff4d8)!important;
+}
+
+.miami-deco-theme #projects .tag:before{
+  background:var(--accent)!important;
+  box-shadow:0 0 10px color-mix(in srgb,var(--accent) 54%,transparent)!important;
+}
+
+.miami-deco-theme #projects .project-video{
+  border-color:color-mix(in srgb,var(--accent) 30%,rgba(255,244,216,.12))!important;
+}
+
+.miami-deco-theme #projects .video-bar{
+  background:var(--accent)!important;
+}
+
+.miami-deco-theme .hero-cover-control .slide-dots button:not(.active),
+.miami-deco-theme .hero-side .slide-dots button:not(.active){
+  background:rgba(216,220,222,.32)!important;
+  box-shadow:none!important;
+}
+
+.miami-deco-theme #how-we-work .approach-pills,
+.miami-deco-theme #crew .leader-tags,
+.miami-deco-theme #crew .skill-list{
+  gap:10px 18px!important;
+}
+
+.miami-deco-theme #how-we-work .approach-pills span,
+.miami-deco-theme #crew .leader-tags span,
+.miami-deco-theme #crew .skill-list span{
+  pointer-events:none;
+  padding:0 0 0 13px!important;
+  border:0!important;
+  border-radius:0!important;
+  background:transparent!important;
+  color:#ffe1a3!important;
+  box-shadow:none!important;
+}
+
+.miami-deco-theme #how-we-work .approach-pills span:before,
+.miami-deco-theme #crew .leader-tags span:before,
+.miami-deco-theme #crew .skill-list span:before{
+  width:5px!important;
+  height:5px!important;
+  border-radius:0 3px 0 3px!important;
+  background:var(--miami-gold)!important;
+  box-shadow:0 0 10px rgba(255,201,90,.5)!important;
+}
+
+.miami-deco-theme #how-we-work .approach-pills span:nth-child(2n),
+.miami-deco-theme #crew .leader-tags span:nth-child(2n),
+.miami-deco-theme #crew .skill-list span:nth-child(2n){
+  color:#ffc2d8!important;
+}
+
+.miami-deco-theme #how-we-work .approach-pills span:nth-child(2n):before,
+.miami-deco-theme #crew .leader-tags span:nth-child(2n):before,
+.miami-deco-theme #crew .skill-list span:nth-child(2n):before{
+  background:var(--miami-pink)!important;
+  box-shadow:0 0 10px rgba(255,92,200,.48)!important;
+}
+
+.miami-deco-theme .orbit-caption span{
+  background:var(--miami-gold)!important;
+  box-shadow:0 0 12px rgba(255,201,90,.48)!important;
+}
+
+.miami-deco-theme .btn,
+.miami-deco-theme .btn.primary,
+.miami-deco-theme .btn.dark,
+.miami-deco-theme .store-link,
+.miami-deco-theme .leader-actions .btn,
+.miami-deco-theme .social-link,
+.miami-deco-theme .copy-icon-btn,
+.miami-deco-theme .submit-btn.is-ready,
+.miami-deco-theme .contact-quick-actions .btn.primary{
+  border-radius:0 16px 0 16px!important;
+  border-color:rgba(255,201,90,.42)!important;
+  background:var(--miami-button-dark)!important;
+  color:#fff4d8!important;
+  box-shadow:5px 5px 0 rgba(49,231,216,.12),0 14px 34px rgba(0,0,0,.2)!important;
+}
+
+.miami-deco-theme .btn:hover,
+.miami-deco-theme .btn:focus-visible,
+.miami-deco-theme .store-link:hover,
+.miami-deco-theme .store-link:focus-visible,
+.miami-deco-theme .leader-actions .btn:hover,
+.miami-deco-theme .leader-actions .btn:focus-visible,
+.miami-deco-theme .social-link:hover,
+.miami-deco-theme .social-link:focus-visible,
+.miami-deco-theme .copy-icon-btn:hover,
+.miami-deco-theme .copy-icon-btn:focus-visible,
+.miami-deco-theme .copy-icon-btn.copied,
+.miami-deco-theme .submit-btn.is-ready:hover,
+.miami-deco-theme .submit-btn.is-ready:focus-visible,
+.miami-deco-theme .contact-quick-actions .btn.primary:hover,
+.miami-deco-theme .contact-quick-actions .btn.primary:focus-visible{
+  border-color:#fff4d8!important;
+  background:var(--miami-button)!important;
+  color:#07111d!important;
+  box-shadow:6px 6px 0 rgba(49,231,216,.34),0 16px 42px rgba(255,92,200,.24)!important;
+}
+
+.miami-deco-theme .copy-icon-btn.copied svg,
+.miami-deco-theme .copy-icon-btn:hover svg,
+.miami-deco-theme .copy-icon-btn:focus-visible svg{
+  color:#07111d!important;
+}
