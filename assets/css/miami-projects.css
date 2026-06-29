@@ -877,3 +877,38 @@
     aspect-ratio:16/10;
   }
 }
+
+/* Final color correction: stronger headline gradient, harmonious Infinity green and quieter project marks. */
+.miami-deco-theme{
+  --game-climb:#a8d67a;
+}
+.miami-deco-theme .hero-copy h1,
+.miami-deco-theme .section-head h2,
+.miami-deco-theme .approach-copy h2,
+.miami-deco-theme .contact-copy-block h2{
+  background:linear-gradient(180deg,#fff5df 0%,#ffdda0 42%,#ff9eb6 70%,#f270c5 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 0 26px rgba(242,112,197,.13);
+}
+.miami-deco-theme #projects .project-card:nth-child(3){
+  --accent:#a8d67a;
+  --project-color:#a8d67a;
+  --project-rgb:168,214,122;
+}
+.miami-deco-theme #portfolio .shot[data-project="Infinity Climb"]{
+  --portfolio-color:#a8d67a;
+  --portfolio-rgb:168,214,122;
+}
+.miami-deco-theme #portfolio .portfolio-chapter--climb{
+  --chapter-color:#a8d67a;
+}
+.miami-deco-theme #projects .project-identity{
+  border:0;
+  border-radius:14px;
+  background:rgba(9,8,20,.42);
+  box-shadow:0 8px 20px rgba(0,0,0,.24);
+  backdrop-filter:blur(8px);
+  opacity:.92;
+}
