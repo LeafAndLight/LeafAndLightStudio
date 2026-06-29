@@ -43,3 +43,92 @@
 .miami-deco-theme #projects .project-actions .store-link:after{content:"";position:absolute;inset:auto 12px 7px 12px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55}
 .miami-deco-theme #projects .project-trailer--visible .video-embed{outline:1px solid rgba(255,92,200,.1);outline-offset:4px}
 @media (max-width:780px){.miami-deco-theme #projects .project-card--compact .project-media{height:200px;min-height:200px}}
+
+/* Current clean media pass: keep the page frame, but let the game artwork read cleanly. */
+.miami-deco-theme #projects .project-card--compact .project-media{
+  overflow:hidden;
+  background:#060b14;
+}
+.miami-deco-theme #projects .project-card--compact .project-media:before{
+  content:none;
+  display:none;
+}
+.miami-deco-theme #projects .project-card--compact .project-media:after{
+  background:linear-gradient(180deg,rgba(5,8,17,0) 48%,rgba(5,8,17,.76) 100%);
+  mix-blend-mode:normal;
+}
+.miami-deco-theme #projects .project-card--compact .project-media img{
+  filter:none;
+}
+.miami-deco-theme #projects .project-card--compact:hover .project-media img{
+  transform:scale(1.015);
+  filter:none;
+}
+.miami-deco-theme #projects .project-identity{
+  left:14px;
+  bottom:14px;
+  width:48px;
+  height:48px;
+  background:rgba(5,10,19,.74);
+  box-shadow:0 10px 24px rgba(0,0,0,.3);
+}
+.miami-deco-theme #projects .project-status{
+  top:12px;
+  right:12px;
+  border-radius:999px;
+  background:rgba(5,10,19,.74);
+  box-shadow:none;
+}
+
+.miami-deco-theme #portfolio .shot.cinema-shot:before,
+.miami-deco-theme #portfolio .shot.cinema-feature:before,
+.miami-deco-theme #portfolio .shot:after{
+  content:none;
+  display:none;
+}
+.miami-deco-theme #portfolio .shot img{
+  filter:none;
+}
+.miami-deco-theme #portfolio .shot:hover img{
+  transform:scale(1.015);
+  filter:none;
+}
+.miami-deco-theme #portfolio .shot figcaption{
+  left:14px;
+  right:14px;
+  bottom:14px;
+  gap:10px;
+  padding:0;
+  border:0;
+  align-items:flex-end;
+}
+.miami-deco-theme #portfolio .shot figcaption span{
+  padding:5px 8px;
+  border:1px solid color-mix(in srgb,var(--portfolio-accent, var(--miami-gold)) 36%,rgba(255,244,216,.18));
+  border-radius:999px;
+  background:rgba(5,9,14,.66);
+  backdrop-filter:blur(10px);
+  font-size:9px;
+  line-height:1;
+  box-shadow:none;
+}
+.miami-deco-theme #portfolio .shot figcaption strong{
+  max-width:62%;
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.05;
+  letter-spacing:-.03em;
+  text-transform:none;
+  text-shadow:0 2px 14px rgba(0,0,0,.72);
+}
+
+@media (max-width:780px){
+  .miami-deco-theme #portfolio .shot figcaption{
+    left:12px;
+    right:12px;
+    bottom:12px;
+  }
+  .miami-deco-theme #portfolio .shot figcaption strong{
+    font-size:15px;
+  }
+}
