@@ -503,3 +503,43 @@ button,input,textarea,select{font:inherit}
 .hero-cover-control span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:900;color:#a8bad0}.hero-cover-control .slide-dots{margin:0}
 @media (max-width:980px){.nav{flex-wrap:wrap}.hero-cover-control{justify-self:stretch;justify-content:center}}
 @media (max-width:780px){.hero-cover-control{width:100%;margin-top:2px}}
+
+/* Current-only contact cleanup: clearer hiring flow, lighter sections and no version switcher. */
+body.miami-deco-theme .version-switcher{display:none}
+.miami-deco-theme .contact-layout{grid-template-columns:minmax(280px,.62fr) minmax(520px,1fr);gap:clamp(28px,4.2vw,58px)}
+.miami-deco-theme .contact-copy-block h2{max-width:620px;font-size:clamp(42px,4.7vw,70px);line-height:.94}
+.miami-deco-theme .contact-copy-block p{max-width:650px;font-size:clamp(17px,1.45vw,20px);line-height:1.62;color:#d2deea}
+.miami-deco-theme .contact-form{display:grid;gap:14px;padding:clamp(20px,2.4vw,30px);background:linear-gradient(145deg,rgba(5,13,25,.82),rgba(4,10,20,.72));box-shadow:0 20px 60px rgba(0,0,0,.24),inset 0 0 34px rgba(84,200,255,.035)}
+.miami-deco-theme .contact-form label{margin-bottom:0}
+.miami-deco-theme .contact-form.is-hiring{gap:12px}
+.miami-deco-theme .contact-form.is-hiring #subjectField[hidden],
+.miami-deco-theme .contact-form.is-hiring #companyField[hidden]{display:none!important}
+.miami-deco-theme .hiring-fields{display:grid;gap:12px;margin:0;padding:0;border:0;background:transparent;overflow:visible}
+.miami-deco-theme .hiring-fields[hidden]{display:none}
+.miami-deco-theme .hiring-group{position:relative;display:grid;gap:12px;padding:16px;border:1px solid rgba(var(--hiring-rgb),.18);border-radius:18px;background:linear-gradient(145deg,rgba(var(--hiring-rgb),.08),rgba(255,255,255,.022));box-shadow:inset 0 1px 0 rgba(255,255,255,.035)}
+.miami-deco-theme .hiring-group--role{--hiring-rgb:84,200,255;--hiring-color:#84d9ff}
+.miami-deco-theme .hiring-group--rate{--hiring-rgb:255,180,76;--hiring-color:#ffc36f}
+.miami-deco-theme .hiring-group--links{--hiring-rgb:167,124,255;--hiring-color:#c4a8ff}
+.miami-deco-theme .hiring-group-label{margin:0;color:var(--hiring-color);letter-spacing:.16em}
+.miami-deco-theme .hiring-group-label:not(:first-child){margin-top:0;padding-top:0;border-top:0}
+.miami-deco-theme .hiring-group-label:before{background:var(--hiring-color);box-shadow:0 0 12px rgba(var(--hiring-rgb),.58)}
+.miami-deco-theme .hiring-group label{margin-bottom:0}
+.miami-deco-theme .hiring-group .field-row{gap:12px}
+.miami-deco-theme .field-helper{color:#95a8bb}
+.miami-deco-theme .contact-form.is-hiring .message-field{position:relative;margin:0;padding:16px;border:1px solid rgba(99,255,189,.16);border-radius:18px;background:linear-gradient(145deg,rgba(99,255,189,.07),rgba(255,255,255,.018))}
+.miami-deco-theme .contact-form.is-hiring .message-field>span{color:#9ef7cb;letter-spacing:.14em;text-transform:uppercase}
+.miami-deco-theme .contact-form.is-hiring .message-field textarea{min-height:118px}
+.miami-deco-theme .consent-field{margin-top:0!important;background:rgba(255,255,255,.035);border-color:rgba(var(--hiring-rgb),.16)}
+.miami-deco-theme .form-actions{margin-top:4px}
+@media (max-width:1100px){
+  .miami-deco-theme .contact-layout{grid-template-columns:1fr}
+}
+@media (min-width:1180px){
+  .miami-deco-theme .contact-form.is-hiring .hiring-fields{grid-template-columns:1fr 1fr;align-items:start}
+  .miami-deco-theme .contact-form.is-hiring .hiring-group--role{grid-column:1/-1}
+}
+@media (max-width:780px){
+  .miami-deco-theme .contact-copy-block h2{font-size:clamp(38px,12vw,54px)}
+  .miami-deco-theme .contact-form{padding:18px}
+  .miami-deco-theme .hiring-group{padding:14px}
+}

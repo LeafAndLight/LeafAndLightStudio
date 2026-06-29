@@ -8,18 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Josefin+Sans:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260629160348-1441277f922b" />
-  <link rel="stylesheet" href="assets/css/miami-layout.css?v=20260629160348-1441277f922b" />
-  <link rel="stylesheet" href="assets/css/miami-art-deco.css?v=20260629160348-1441277f922b" />
-  <link rel="stylesheet" href="assets/css/miami-projects.css?v=20260629160348-1441277f922b" />
-  <link rel="stylesheet" href="assets/css/version-switcher.css?v=20260629160348-1441277f922b" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260629162401-911bdeca4ae3" />
+  <link rel="stylesheet" href="assets/css/miami-layout.css?v=20260629162401-911bdeca4ae3" />
+  <link rel="stylesheet" href="assets/css/miami-art-deco.css?v=20260629162401-911bdeca4ae3" />
+  <link rel="stylesheet" href="assets/css/miami-projects.css?v=20260629162401-911bdeca4ae3" />
+  <link rel="stylesheet" href="assets/css/version-switcher.css?v=20260629162401-911bdeca4ae3" />
 </head>
 <body class="miami-deco-theme">
-  <nav class="version-switcher" aria-label="Choose site version">
-    <span class="version-switcher__label">Compare</span>
-    <a class="is-active" href="index.html" aria-current="page">Current</a>
-    <a href="miami-v2.html">Miami V2</a>
-  </nav>
   <header class="header">
     <div class="container nav">
       <a class="brand" href="https://www.linkedin.com/company/leaf-light-studio/" target="_blank" rel="noreferrer" aria-label="Open Leaf & Light Studio on LinkedIn">
@@ -421,10 +416,9 @@
           <div class="contact-layout">
             <div class="contact-copy-block">
               <div class="eyebrow contact-eyebrow section-index">06 / Contact</div>
-              <h2>Have an idea, a project or a game already in motion?</h2>
+              <h2>Build with us — or join the team.</h2>
               <p>
-                We can help shape the concept, build the prototype, continue an existing project or take development all the way to the final build.
-                Contact us for more information.
+                Send project details, partnership notes or a hiring application. The form adapts to your inquiry so we only ask for what matters.
               </p>
 
               <div class="contact-quick-actions">
@@ -470,118 +464,124 @@
                 <span>Company / Organization</span>
                 <input type="text" id="contactCompany" name="company" placeholder="Your company or organization" maxlength="120" />
               </label>
-              <label>
+              <label id="subjectField">
                 <span>Subject</span>
                 <input type="text" id="contactSubject" name="subject" maxlength="160" placeholder="Project Inquiry - Full-Cycle Game Development" autocomplete="off" />
               </label>
 
               <div class="hiring-fields" id="hiringFields" hidden>
-                <div class="hiring-group-label">Location and role</div>
-                <div class="field-row">
-                  <label>
-                    <span>Country / Region</span>
-                    <input type="text" id="hiringCountry" name="country" placeholder="Brazil" data-hiring-required />
-                  </label>
-                  <label>
-                    <span>Time Zone</span>
-                    <input type="text" id="hiringTimeZone" name="timeZone" list="timeZoneOptions" placeholder="America/Sao_Paulo" autocomplete="off" />
-                    <datalist id="timeZoneOptions"></datalist>
-                    <small class="field-helper">Detected from your device. You can change it.</small>
-                  </label>
-                </div>
+                <section class="hiring-group hiring-group--role" aria-labelledby="hiringGroupRole">
+                  <div class="hiring-group-label" id="hiringGroupRole">Location and role</div>
+                  <div class="field-row">
+                    <label>
+                      <span>Country / Region</span>
+                      <input type="text" id="hiringCountry" name="country" placeholder="Brazil" data-hiring-required />
+                    </label>
+                    <label>
+                      <span>Time Zone</span>
+                      <input type="text" id="hiringTimeZone" name="timeZone" list="timeZoneOptions" placeholder="America/Sao_Paulo" autocomplete="off" />
+                      <datalist id="timeZoneOptions"></datalist>
+                      <small class="field-helper">Detected from your device. You can change it.</small>
+                    </label>
+                  </div>
 
-                <div class="field-row">
+                  <div class="field-row">
+                    <label>
+                      <span>Role Category</span>
+                      <select id="hiringRoleCategory" name="roleCategory" data-hiring-required>
+                        <option value="">Select a category</option>
+                        <option value="Programming">Programming</option>
+                        <option value="3D Art">3D Art</option>
+                        <option value="2D / Concept Art">2D / Concept Art</option>
+                        <option value="Animation / Rigging">Animation / Rigging</option>
+                        <option value="Technical Art / VFX">Technical Art / VFX</option>
+                        <option value="UI / UX">UI / UX</option>
+                        <option value="Game Design">Game Design</option>
+                        <option value="Audio">Audio</option>
+                        <option value="Production / QA">Production / QA</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </label>
+                    <label>
+                      <span>Role Title</span>
+                      <input type="text" id="hiringRoleTitle" name="roleTitle" placeholder="3D Environment Artist" data-hiring-required />
+                    </label>
+                  </div>
+
                   <label>
-                    <span>Role Category</span>
-                    <select id="hiringRoleCategory" name="roleCategory" data-hiring-required>
-                      <option value="">Select a category</option>
-                      <option value="Programming">Programming</option>
-                      <option value="3D Art">3D Art</option>
-                      <option value="2D / Concept Art">2D / Concept Art</option>
-                      <option value="Animation / Rigging">Animation / Rigging</option>
-                      <option value="Technical Art / VFX">Technical Art / VFX</option>
-                      <option value="UI / UX">UI / UX</option>
-                      <option value="Game Design">Game Design</option>
-                      <option value="Audio">Audio</option>
-                      <option value="Production / QA">Production / QA</option>
-                      <option value="Other">Other</option>
+                    <span>Seniority</span>
+                    <select id="hiringSeniority" name="seniority" data-hiring-required>
+                      <option value="">Select seniority</option>
+                      <option value="Junior">Junior</option>
+                      <option value="Mid-level">Mid-level</option>
+                      <option value="Senior">Senior</option>
+                      <option value="Lead">Lead</option>
+                      <option value="Specialist">Specialist</option>
                     </select>
                   </label>
+                </section>
+
+                <section class="hiring-group hiring-group--rate" aria-labelledby="hiringGroupRate">
+                  <div class="hiring-group-label" id="hiringGroupRate">Availability and rate</div>
                   <label>
-                    <span>Role Title</span>
-                    <input type="text" id="hiringRoleTitle" name="roleTitle" placeholder="3D Environment Artist" data-hiring-required />
-                  </label>
-                </div>
-
-                <label>
-                  <span>Seniority</span>
-                  <select id="hiringSeniority" name="seniority" data-hiring-required>
-                    <option value="">Select seniority</option>
-                    <option value="Junior">Junior</option>
-                    <option value="Mid-level">Mid-level</option>
-                    <option value="Senior">Senior</option>
-                    <option value="Lead">Lead</option>
-                    <option value="Specialist">Specialist</option>
-                  </select>
-                </label>
-
-                <div class="hiring-group-label">Availability and rate</div>
-                <label>
-                  <span>Availability</span>
-                  <select id="hiringAvailability" name="availability">
-                    <option value="">To be selected</option>
-                    <option value="Immediately">Immediately</option>
-                    <option value="Within 2 weeks">Within 2 weeks</option>
-                    <option value="Within 1 month">Within 1 month</option>
-                    <option value="More than 1 month">More than 1 month</option>
-                    <option value="To be discussed">To be discussed</option>
-                  </select>
-                </label>
-
-                <div class="field-row">
-                  <label>
-                    <span>Currency</span>
-                    <select id="hiringCurrency" name="currency" data-hiring-required>
-                      <option value="">Select currency</option>
-                      <option value="USD">USD</option>
-                      <option value="EUR">EUR</option>
-                      <option value="BRL">BRL</option>
-                      <option value="GBP">GBP</option>
-                      <option value="CAD">CAD</option>
-                      <option value="AUD">AUD</option>
-                      <option value="Other">Other</option>
+                    <span>Availability</span>
+                    <select id="hiringAvailability" name="availability">
+                      <option value="">To be selected</option>
+                      <option value="Immediately">Immediately</option>
+                      <option value="Within 2 weeks">Within 2 weeks</option>
+                      <option value="Within 1 month">Within 1 month</option>
+                      <option value="More than 1 month">More than 1 month</option>
+                      <option value="To be discussed">To be discussed</option>
                     </select>
                   </label>
-                  <label>
-                    <span>Hourly Rate</span>
-                    <input type="number" id="hiringHourlyRate" name="hourlyRate" min="1" step="1" inputmode="decimal" placeholder="25" data-hiring-required />
-                    <small class="field-helper">Your expected freelance rate per hour.</small>
-                  </label>
-                </div>
 
-                <div class="hiring-group-label">Professional links</div>
-                <label>
-                  <span>Portfolio URL</span>
-                  <input type="url" id="hiringPortfolioUrl" name="portfolioUrl" placeholder="https://www.artstation.com/yourprofile" data-hiring-required />
-                </label>
+                  <div class="field-row">
+                    <label>
+                      <span>Currency</span>
+                      <select id="hiringCurrency" name="currency" data-hiring-required>
+                        <option value="">Select currency</option>
+                        <option value="USD">USD</option>
+                        <option value="EUR">EUR</option>
+                        <option value="BRL">BRL</option>
+                        <option value="GBP">GBP</option>
+                        <option value="CAD">CAD</option>
+                        <option value="AUD">AUD</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </label>
+                    <label>
+                      <span>Hourly Rate</span>
+                      <input type="number" id="hiringHourlyRate" name="hourlyRate" min="1" step="1" inputmode="decimal" placeholder="25" data-hiring-required />
+                      <small class="field-helper">Expected freelance rate per hour.</small>
+                    </label>
+                  </div>
+                </section>
 
-                <div class="field-row">
+                <section class="hiring-group hiring-group--links" aria-labelledby="hiringGroupLinks">
+                  <div class="hiring-group-label" id="hiringGroupLinks">Professional links</div>
                   <label>
-                    <span>LinkedIn URL</span>
-                    <input type="url" id="hiringLinkedinUrl" name="linkedinUrl" placeholder="https://www.linkedin.com/in/yourprofile" />
+                    <span>Portfolio URL</span>
+                    <input type="url" id="hiringPortfolioUrl" name="portfolioUrl" placeholder="https://www.artstation.com/yourprofile" data-hiring-required />
                   </label>
-                  <label>
-                    <span>Resume / CV URL</span>
-                    <input type="url" id="hiringResumeUrl" name="resumeUrl" placeholder="https://..." />
-                  </label>
-                </div>
 
-                <label class="consent-field">
-                  <input type="checkbox" id="hiringConsent" name="consent" value="yes" />
-                  <span>I agree that Leaf &amp; Light Studio may store and review the information submitted for hiring purposes.</span>
-                </label>
+                  <div class="field-row">
+                    <label>
+                      <span>LinkedIn URL</span>
+                      <input type="url" id="hiringLinkedinUrl" name="linkedinUrl" placeholder="https://www.linkedin.com/in/yourprofile" />
+                    </label>
+                    <label>
+                      <span>Resume / CV URL</span>
+                      <input type="url" id="hiringResumeUrl" name="resumeUrl" placeholder="https://..." />
+                    </label>
+                  </div>
+
+                  <label class="consent-field">
+                    <input type="checkbox" id="hiringConsent" name="consent" value="yes" />
+                    <span>I agree that Leaf &amp; Light Studio may store and review the information submitted for hiring purposes.</span>
+                  </label>
+                </section>
               </div>
-              <label>
+              <label class="message-field">
                 <span>Message</span>
                 <textarea id="contactMessage" name="message" rows="5" placeholder="Tell us a bit about your project or message."></textarea>
               </label>
