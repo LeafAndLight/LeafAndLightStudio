@@ -1,6 +1,6 @@
-/* Miami Art Deco experimental skin.
-   Loaded after the VR/AI theme so the 01 / Projects structure stays intact. */
-.vr-ai-theme.miami-deco-theme{
+/* Miami Art Deco production styling.
+   Loaded after the Miami structural foundation. */
+.miami-deco-theme{
   --miami-ink:#07111d;
   --miami-night:#12091f;
   --miami-deep:#061b2d;
@@ -24,7 +24,7 @@
   color:#fffaf0;
 }
 
-.vr-ai-theme.miami-deco-theme:before{
+.miami-deco-theme:before{
   background:
     linear-gradient(rgba(49,231,216,.055) 1px,transparent 1px),
     linear-gradient(90deg,rgba(255,201,90,.052) 1px,transparent 1px),
@@ -33,7 +33,7 @@
   mask-image:linear-gradient(180deg,rgba(0,0,0,.9),rgba(0,0,0,.5) 58%,rgba(0,0,0,.18));
 }
 
-.vr-ai-theme.miami-deco-theme:after{
+.miami-deco-theme:after{
   background:
     radial-gradient(ellipse at 50% 16%,rgba(255,201,90,.12),transparent 18rem),
     repeating-linear-gradient(180deg,rgba(255,255,255,.018) 0 1px,transparent 1px 6px),
@@ -684,22 +684,7 @@
   }
 }
 
-/* Theme switcher and detached cover loop in Miami skin */
-.miami-deco-theme .theme-switcher{
-  border-radius:0 14px 0 14px;
-  border-color:rgba(255,201,90,.32);
-  background:linear-gradient(135deg,rgba(255,201,90,.08),rgba(255,92,200,.08));
-  box-shadow:4px 4px 0 rgba(49,231,216,.08),0 12px 28px rgba(0,0,0,.16);
-}
-
-.miami-deco-theme .theme-dot{
-  border-radius:0 6px 0 6px;
-}
-
-.miami-deco-theme .theme-dot.is-active{
-  box-shadow:0 0 0 4px rgba(255,201,90,.1),0 0 18px currentColor,3px 3px 0 rgba(255,92,200,.35);
-}
-
+/* Detached cover loop in Miami skin */
 .miami-deco-theme .hero-copy{
   overflow:visible;
 }
@@ -1206,4 +1191,28 @@
   border-color:var(--miami-gold);
   color:#07111d;
   box-shadow:5px 5px 0 rgba(255,201,90,.18),0 14px 34px rgba(0,0,0,.28);
+}
+/* Strong Art Deco typography: uppercase display copy with deliberate spacing. */
+.miami-deco-theme h1,
+.miami-deco-theme h2,
+.miami-deco-theme h3,
+.miami-deco-theme .brand-name,
+.miami-deco-theme .section-index,
+.miami-deco-theme .portfolio-chapter strong{
+  font-family:Inter,Arial,sans-serif;
+  font-weight:900;
+  text-transform:uppercase;
+}
+.miami-deco-theme .hero-copy h1{letter-spacing:.015em;text-transform:uppercase}
+.miami-deco-theme .section-head h2,
+.miami-deco-theme .approach-copy h2,
+.miami-deco-theme .contact-copy-block h2{letter-spacing:.035em}
+.miami-deco-theme .side-card strong,
+.miami-deco-theme .project-title h3,
+.miami-deco-theme .service-card h3,
+.miami-deco-theme .info-card h3{letter-spacing:.045em}
+.miami-deco-theme #crew .leader-copy h3{
+  margin-bottom:22px;
+  letter-spacing:.11em;
+  line-height:1.12;
 }

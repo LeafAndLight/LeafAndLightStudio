@@ -326,8 +326,5 @@ document.addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft') updateLightbox(lightboxIndex - 1);
   if (event.key === 'ArrowRight') updateLightbox(lightboxIndex + 1);
 });
-const themeClassNames = ['vr-ai-theme', 'miami-deco-theme', 'arcade-theme'];
-document.body.classList.remove(...themeClassNames);
-document.body.classList.add('vr-ai-theme', 'miami-deco-theme');
+document.body.classList.add('miami-deco-theme');
 document.body.dataset.theme = 'miami';
-localStorage.removeItem('leafLightTheme');
