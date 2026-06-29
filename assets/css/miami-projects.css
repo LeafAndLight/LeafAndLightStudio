@@ -1,0 +1,45 @@
+/* Unified Miami Vice presentation for the three project cards. */
+.miami-deco-theme{--game-prison:#b96cff}
+
+/* All three cards now use the same deliberate Miami Deco construction. */
+.miami-deco-theme #projects .project-card--compact{isolation:isolate;border-width:1px;background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 8%,rgba(7,17,29,.98)),rgba(18,9,31,.98) 58%),repeating-linear-gradient(135deg,rgba(255,255,255,.025) 0 1px,transparent 1px 12px)}
+.miami-deco-theme #projects .project-card--compact:before{content:"";position:absolute;z-index:5;inset:8px 8px auto auto;width:48px;height:48px;border-top:2px solid var(--accent);border-right:2px solid var(--accent);clip-path:polygon(0 0,100% 0,100% 100%,82% 100%,82% 18%,0 18%);pointer-events:none;opacity:.8}
+.miami-deco-theme #projects .project-card--compact:after{content:"";position:absolute;z-index:5;inset:auto auto 8px 8px;width:48px;height:48px;border-bottom:2px solid var(--accent);border-left:2px solid var(--accent);clip-path:polygon(0 0,18% 0,18% 82%,100% 82%,100% 100%,0 100%);pointer-events:none;opacity:.8}
+.miami-deco-theme #projects .project-card--compact .project-media{height:210px;min-height:210px}
+.miami-deco-theme #projects .project-card--compact .project-media:before{content:"";position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--accent),transparent 35%) left bottom/100% 2px no-repeat,repeating-linear-gradient(90deg,transparent 0 38px,rgba(255,244,216,.12) 38px 39px);mix-blend-mode:screen}
+.miami-deco-theme #projects .project-card--compact .project-body{position:relative;padding:28px 24px 24px}
+.miami-deco-theme #projects .project-card--compact .project-title{align-items:center;text-align:center}
+.miami-deco-theme #projects .project-card--compact .project-kicker{position:relative;padding:8px 14px;border:1px solid color-mix(in srgb,var(--accent) 62%,transparent);border-radius:0 10px 0 10px}
+.miami-deco-theme #projects .project-card--compact .project-kicker:before,.miami-deco-theme #projects .project-card--compact .project-kicker:after{content:"";position:absolute;top:50%;width:22px;height:1px;background:linear-gradient(90deg,transparent,var(--accent))}
+.miami-deco-theme #projects .project-card--compact .project-kicker:before{right:calc(100% + 8px)}
+.miami-deco-theme #projects .project-card--compact .project-kicker:after{left:calc(100% + 8px);transform:rotate(180deg)}
+.miami-deco-theme #projects .project-card--compact .project-title h3,.miami-deco-theme #projects .project-card:nth-child(2) .project-title h3{color:color-mix(in srgb,var(--accent) 68%,#fff4d8)!important}
+.miami-deco-theme #projects .project-card:nth-child(2){--accent:var(--game-prison);--project-color:var(--game-prison);--project-rgb:185,108,255}
+.miami-deco-theme #projects .project-card--compact .tag-row{justify-content:center}
+.miami-deco-theme #projects .project-actions{display:flex;flex-direction:column;gap:12px;width:100%}
+.miami-deco-theme #projects .project-actions .store-link{width:100%;min-height:46px}
+.miami-deco-theme #projects .project-trailer--visible{display:block;width:100%}
+.miami-deco-theme #projects .project-trailer--visible .video-embed{position:relative;aspect-ratio:16/9;margin:0;overflow:hidden;border:1px solid color-mix(in srgb,var(--accent) 50%,transparent);border-radius:0 16px 0 16px;background:#050811;box-shadow:5px 5px 0 color-mix(in srgb,var(--accent) 14%,transparent)}
+.miami-deco-theme #projects .project-trailer--visible .video-embed:before{content:"TRAILER // PLAY";position:absolute;z-index:2;left:8px;top:8px;padding:4px 6px;background:rgba(5,8,17,.78);color:var(--accent);font:900 7px/1 Inter,Arial,sans-serif;letter-spacing:.12em;pointer-events:none}
+.miami-deco-theme #projects .project-trailer--visible iframe{display:block;width:100%;height:100%;border:0}
+
+/* Shared Miami Vice language: identical geometry, neon treatment and spacing. */
+.miami-deco-theme #projects .project-card--compact{
+  border-radius:0 28px 0 28px;
+  background:linear-gradient(155deg,rgba(13,10,31,.98),rgba(5,13,27,.98) 68%);
+  box-shadow:8px 8px 0 rgba(255,92,200,.09),12px 12px 0 color-mix(in srgb,var(--accent) 10%,transparent),0 24px 64px rgba(0,0,0,.4);
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease;
+}
+.miami-deco-theme #projects .project-card--compact:hover{
+  box-shadow:8px 8px 0 rgba(255,92,200,.16),13px 13px 0 color-mix(in srgb,var(--accent) 16%,transparent),0 30px 72px rgba(0,0,0,.46);
+}
+.miami-deco-theme #projects .project-card--compact .project-media img{filter:saturate(1.08) contrast(1.04)}
+.miami-deco-theme #projects .project-card--compact .project-media:after{background:linear-gradient(180deg,rgba(6,8,20,.02) 28%,rgba(8,7,23,.88) 100%),linear-gradient(90deg,color-mix(in srgb,var(--accent) 16%,transparent),transparent 42%,rgba(255,92,200,.12))}
+.miami-deco-theme #projects .project-card--compact .project-body{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 4%,transparent),transparent 38%),radial-gradient(circle at 92% 96%,rgba(255,92,200,.055),transparent 34%)}
+.miami-deco-theme #projects .project-status{border-radius:0;padding:7px 10px;background:rgba(7,8,22,.88);box-shadow:3px 3px 0 color-mix(in srgb,var(--accent) 22%,transparent)}
+.miami-deco-theme #projects .project-card--compact .project-kicker{box-shadow:3px 3px 0 rgba(255,92,200,.1)}
+.miami-deco-theme #projects .project-card--compact .project-title h3{text-shadow:0 0 18px color-mix(in srgb,var(--accent) 28%,transparent),2px 2px 0 rgba(255,92,200,.1)}
+.miami-deco-theme #projects .project-actions .store-link{position:relative;overflow:hidden;background:linear-gradient(110deg,color-mix(in srgb,var(--accent) 10%,rgba(7,17,29,.9)),rgba(255,92,200,.045))!important}
+.miami-deco-theme #projects .project-actions .store-link:after{content:"";position:absolute;inset:auto 12px 7px 12px;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.55}
+.miami-deco-theme #projects .project-trailer--visible .video-embed{outline:1px solid rgba(255,92,200,.1);outline-offset:4px}
+@media (max-width:780px){.miami-deco-theme #projects .project-card--compact .project-media{height:200px;min-height:200px}}

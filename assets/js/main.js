@@ -1,26 +1,6 @@
 const heroBackground = document.querySelector('.hero-bg');
 const slideDots = document.querySelector('.slide-dots');
 const heroImages = Array.isArray(window.HERO_IMAGES) ? window.HERO_IMAGES : [];
-const layoutButtons = Array.from(document.querySelectorAll('[data-layout]'));
-
-function applyLayout(layout, persist = true) {
-  const selectedLayout = layout === 'survival' ? 'survival' : 'miami';
-  document.body.classList.toggle('survival-arcade-theme', selectedLayout === 'survival');
-  document.body.dataset.layout = selectedLayout;
-  layoutButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.layout === selectedLayout)));
-
-  if (persist) {
-    try {
-      localStorage.setItem('leaf-layout', selectedLayout);
-    } catch (error) {
-      // The visual switch still works for this visit when storage is blocked.
-    }
-  }
-}
-
-layoutButtons.forEach(button => button.addEventListener('click', () => applyLayout(button.dataset.layout)));
-applyLayout(document.body.classList.contains('survival-arcade-theme') ? 'survival' : 'miami', false);
-
 heroImages.forEach((image, index) => {
   const slide = document.createElement('div');
   slide.className = `hero-slide${index === 0 ? ' active' : ''}`;
