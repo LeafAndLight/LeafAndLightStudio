@@ -912,3 +912,226 @@
   backdrop-filter:blur(8px);
   opacity:.92;
 }
+
+/* Stronger store destination: explicit Meta Store CTA with icon and directional cue. */
+.miami-deco-theme #projects .project-actions .store-link--meta{
+  display:grid;
+  grid-template-columns:30px minmax(0,1fr) 30px;
+  align-items:center;
+  gap:12px;
+  min-height:58px;
+  padding:9px 14px;
+  border-radius:16px;
+  font-size:12px;
+  letter-spacing:.055em;
+  text-transform:uppercase;
+  isolation:isolate;
+}
+.miami-deco-theme #projects .store-link--meta:before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  inset:0;
+  background:linear-gradient(115deg,transparent 0 32%,rgba(255,255,255,.34) 45%,transparent 58% 100%);
+  transform:translateX(-120%);
+  transition:transform .55s ease;
+}
+.miami-deco-theme #projects .store-link--meta:hover:before,
+.miami-deco-theme #projects .store-link--meta:focus-visible:before{
+  transform:translateX(120%);
+}
+.miami-deco-theme #projects .store-link--meta .meta-store-icon{
+  width:28px;
+  height:28px;
+  padding:4px;
+  border-radius:10px;
+  background:rgba(15,9,24,.12);
+}
+.miami-deco-theme #projects .store-link--meta > span{
+  line-height:1.2;
+}
+.miami-deco-theme #projects .store-link--meta .store-link-arrow{
+  display:grid;
+  place-items:center;
+  width:28px;
+  height:28px;
+  border-radius:50%;
+  background:rgba(15,9,24,.12);
+  font-size:17px;
+  transition:transform .22s ease;
+}
+.miami-deco-theme #projects .store-link--meta:hover .store-link-arrow,
+.miami-deco-theme #projects .store-link--meta:focus-visible .store-link-arrow{
+  transform:translate(2px,-2px);
+}
+
+/* Every expandable image uses a substantial palette border instead of the plus badge. */
+.miami-deco-theme .portfolio-open:after{
+  content:""!important;
+  inset:0;
+  width:auto;
+  height:auto;
+  border:4px solid color-mix(in srgb,var(--image-focus,var(--portfolio-color,var(--studio-pink))) 88%,var(--studio-cream));
+  border-radius:inherit;
+  background:linear-gradient(145deg,color-mix(in srgb,var(--image-focus,var(--portfolio-color,var(--studio-pink))) 9%,transparent),transparent 42%);
+  box-shadow:inset 0 0 24px color-mix(in srgb,var(--image-focus,var(--portfolio-color,var(--studio-pink))) 18%,transparent),0 0 24px color-mix(in srgb,var(--image-focus,var(--portfolio-color,var(--studio-pink))) 16%,transparent);
+  color:transparent;
+  opacity:0;
+  transform:none;
+  pointer-events:none;
+  transition:opacity .22s ease,box-shadow .22s ease;
+  backdrop-filter:none;
+}
+.miami-deco-theme .shot:hover .portfolio-open:after,
+.miami-deco-theme .shot .portfolio-open:focus-visible:after,
+.miami-deco-theme .crew-work-item:hover .portfolio-open:after,
+.miami-deco-theme .crew-work-item .portfolio-open:focus-visible:after{
+  opacity:1;
+  transform:none;
+}
+.miami-deco-theme #crew .crew-work-item:nth-child(1){--image-focus:var(--studio-gold)}
+.miami-deco-theme #crew .crew-work-item:nth-child(2){--image-focus:var(--studio-rose)}
+.miami-deco-theme #crew .crew-work-item:nth-child(3){--image-focus:var(--studio-pink)}
+.miami-deco-theme #crew .crew-work-item:nth-child(4){--image-focus:var(--studio-violet)}
+.miami-deco-theme #crew .crew-work-item:nth-child(5){--image-focus:var(--studio-gold)}
+.miami-deco-theme #crew .crew-work-item:nth-child(6){--image-focus:var(--studio-rose)}
+.miami-deco-theme #crew .crew-work-item:nth-child(7){--image-focus:var(--studio-violet)}
+
+/* Cleaner top shortcuts: color and depth without the thin outline. */
+.miami-deco-theme .menu a,
+.miami-deco-theme .menu .cta{
+  border:0!important;
+  box-shadow:none;
+}
+.miami-deco-theme .menu .cta{
+  background:linear-gradient(135deg,rgba(245,198,111,.1),rgba(173,123,212,.15));
+  box-shadow:0 8px 22px rgba(10,6,18,.24);
+}
+
+/* The third cover marker belongs to Infinity Climb and follows its green. */
+.miami-deco-theme .hero-side .slide-dots button:nth-child(3),
+.miami-deco-theme .hero-side .slide-dots button:nth-child(3).active,
+.miami-deco-theme .hero-cover-control .slide-dots button:nth-child(3),
+.miami-deco-theme .hero-cover-control .slide-dots button:nth-child(3).active{
+  background:var(--game-climb);
+  box-shadow:0 0 14px color-mix(in srgb,var(--game-climb) 66%,transparent);
+}
+
+/* Footer becomes a deliberate closing surface, with a brand button and real shortcuts. */
+.miami-deco-theme .footer{
+  padding:30px 0 42px;
+}
+.miami-deco-theme .footer-row{
+  grid-template-columns:minmax(300px,1fr) auto minmax(300px,1fr);
+  gap:24px;
+  padding-top:28px;
+}
+.miami-deco-theme .footer-brand-wrap{
+  display:grid;
+  justify-items:start;
+  gap:9px;
+}
+.miami-deco-theme .footer-brand-card{
+  display:grid;
+  grid-template-columns:42px minmax(0,1fr) 32px;
+  align-items:center;
+  gap:12px;
+  min-width:290px;
+  padding:11px 13px;
+  border-radius:16px;
+  background:linear-gradient(135deg,rgba(245,198,111,.12),rgba(173,123,212,.12));
+  color:var(--studio-cream);
+  box-shadow:5px 5px 0 rgba(223,112,176,.13),0 14px 32px rgba(0,0,0,.22);
+  transition:transform .22s ease,background .22s ease,box-shadow .22s ease,color .22s ease;
+}
+.miami-deco-theme .footer-brand-card:hover,
+.miami-deco-theme .footer-brand-card:focus-visible{
+  transform:translateY(-3px);
+  color:#160e20;
+  outline:none;
+  background:linear-gradient(135deg,var(--studio-gold),var(--studio-apricot) 58%,var(--studio-pink));
+  box-shadow:7px 7px 0 rgba(173,123,212,.22),0 18px 38px rgba(223,112,176,.2);
+}
+.miami-deco-theme .footer-brand-card img{
+  width:42px;
+  height:42px;
+  border-radius:12px;
+}
+.miami-deco-theme .footer-brand-card > span:not(.footer-brand-arrow){
+  display:grid;
+  gap:3px;
+}
+.miami-deco-theme .footer-brand-card strong{
+  font-size:14px;
+  letter-spacing:.035em;
+  text-transform:uppercase;
+}
+.miami-deco-theme .footer-brand-card small{
+  color:#baa9bb;
+  font-size:10px;
+}
+.miami-deco-theme .footer-brand-card:hover small,
+.miami-deco-theme .footer-brand-card:focus-visible small{
+  color:rgba(22,14,32,.72);
+}
+.miami-deco-theme .footer-brand-arrow{
+  display:grid;
+  place-items:center;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:rgba(255,255,255,.08);
+  font-size:16px;
+}
+.miami-deco-theme .footer-copyright{
+  color:#8f8194;
+  font-size:11px;
+}
+.miami-deco-theme .footer-links{
+  display:flex;
+  justify-content:flex-end;
+  gap:7px;
+  flex-wrap:wrap;
+}
+.miami-deco-theme .footer-links a{
+  padding:8px 10px;
+  border:0;
+  border-radius:999px;
+  background:rgba(255,255,255,.03);
+  color:#cbbdca;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+  transition:transform .2s ease,background .2s ease,color .2s ease;
+}
+.miami-deco-theme .footer-links a:hover,
+.miami-deco-theme .footer-links a:focus-visible{
+  transform:translateY(-2px);
+  outline:none;
+  color:#160e20;
+  background:linear-gradient(135deg,var(--studio-gold),var(--studio-pink));
+}
+
+@media (max-width:1100px){
+  .miami-deco-theme .footer-row{
+    grid-template-columns:1fr;
+    justify-items:start;
+  }
+  .miami-deco-theme .footer-links{
+    justify-content:flex-start;
+  }
+}
+
+@media (max-width:780px){
+  .miami-deco-theme #projects .project-actions .store-link--meta{
+    grid-template-columns:26px minmax(0,1fr) 26px;
+    gap:9px;
+    min-height:54px;
+    font-size:10px;
+  }
+  .miami-deco-theme .footer-brand-card{
+    min-width:0;
+    width:100%;
+  }
+}
