@@ -8,17 +8,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Josefin+Sans:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260629114444-10dda1aa0607" />
-  <link rel="stylesheet" href="assets/css/miami-layout.css?v=20260629114444-10dda1aa0607" />
-  <link rel="stylesheet" href="assets/css/miami-art-deco.css?v=20260629114444-10dda1aa0607" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260629121050-fe784416e2d6" />
+  <link rel="stylesheet" href="assets/css/miami-layout.css?v=20260629121050-fe784416e2d6" />
+  <link rel="stylesheet" href="assets/css/miami-art-deco.css?v=20260629121050-fe784416e2d6" />
+  <link rel="stylesheet" href="assets/css/survival-arcade.css?v=20260629121050-fe784416e2d6" />
 </head>
 <body class="miami-deco-theme">
+  <script>
+    try {
+      if (localStorage.getItem('leaf-layout') === 'survival') document.body.classList.add('survival-arcade-theme');
+    } catch (error) {
+      // The default Miami layout remains available when storage is blocked.
+    }
+  </script>
   <header class="header">
     <div class="container nav">
       <a class="brand" href="https://www.linkedin.com/company/leaf-light-studio/" target="_blank" rel="noreferrer" aria-label="Open Leaf & Light Studio on LinkedIn">
         <img src="assets/images/leaf_and_light_logo.png" alt="Leaf & Light Studio logo" />
         <div class="brand-name">Leaf & Light Studio</div>
       </a>
+      <div class="layout-switcher" role="group" aria-label="Choose the site visual style">
+        <span class="layout-switcher__label">Visual mode</span>
+        <button type="button" data-layout="miami" aria-pressed="true">Miami</button>
+        <button type="button" data-layout="survival" aria-pressed="false">Survival Arcade</button>
+      </div>
       <nav class="menu">
         <a href="#projects">Projects</a>
         <a href="#services">Services</a>
@@ -92,7 +105,7 @@
               <div class="tag-row"><span class="tag">Meta Quest</span><span class="tag">Arena survival</span><span class="tag">Single player</span></div>
               <div class="project-actions">
                 <a class="store-link store-link--meta" href="https://www.meta.com/experiences/car-crash-arena/26991548930529478/" target="_blank" rel="noreferrer"><span>View on Meta</span></a>
-                <details class="project-trailer"><summary>Watch trailer</summary><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/zTKtXHv1lbI?rel=0&playsinline=1" title="Car Crash Arena trailer" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></details>
+                <div class="project-trailer project-trailer--visible"><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/zTKtXHv1lbI?rel=0&playsinline=1" title="Car Crash Arena trailer" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
               </div>
             </div>
           </article>
@@ -109,7 +122,7 @@
               <div class="tag-row"><span class="tag">Meta Quest</span><span class="tag">1-6 players</span><span class="tag">Co-op escape</span></div>
               <div class="project-actions">
                 <a class="store-link store-link--meta" href="https://www.meta.com/experiences/game-im-prisoner/25657930913826702/" target="_blank" rel="noreferrer"><span>View on Meta</span></a>
-                <details class="project-trailer"><summary>Watch trailer</summary><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/jClY-se4Meo?rel=0&playsinline=1" title="I'm Prisoner trailer" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></details>
+                <div class="project-trailer project-trailer--visible"><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/jClY-se4Meo?rel=0&playsinline=1" title="I'm Prisoner trailer" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
               </div>
             </div>
           </article>
@@ -126,7 +139,7 @@
               <div class="tag-row"><span class="tag">Meta Quest</span><span class="tag">Hand locomotion</span><span class="tag">Solo adventure</span></div>
               <div class="project-actions">
                 <a class="store-link store-link--meta" href="https://www.meta.com/experiences/game-infinity-climb/32367249162920119/" target="_blank" rel="noreferrer"><span>View on Meta</span></a>
-                <details class="project-trailer"><summary>Watch trailer</summary><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/mJ9uwHqM4RM?rel=0&playsinline=1" title="Infinity Climb trailer" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></details>
+                <div class="project-trailer project-trailer--visible"><div class="video-embed"><iframe src="https://www.youtube-nocookie.com/embed/mJ9uwHqM4RM?rel=0&playsinline=1" title="Infinity Climb trailer" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></div>
               </div>
             </div>
           </article>
