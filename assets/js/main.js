@@ -278,6 +278,9 @@ function updateLightbox(index) {
   const label = figure?.querySelector('figcaption span');
   const title = figure?.querySelector('figcaption strong');
 
+  document.querySelectorAll('#portfolio .shot.is-selected').forEach(item => item.classList.remove('is-selected'));
+  figure?.classList.add('is-selected');
+
   lightboxImage.src = sourceImage.src;
   lightboxImage.alt = sourceImage.alt;
   lightboxLabel.textContent = label?.textContent || '';

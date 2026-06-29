@@ -309,7 +309,7 @@ button,input,textarea,select{font:inherit}
 #projects .project-dot{border-color:transparent;background:rgba(var(--project-rgb),.1);box-shadow:none;color:var(--project-color);opacity:.8}
 #projects .project-dot img{opacity:.9;filter:saturate(.9)}
 #projects .project-card .tag{color:color-mix(in srgb,var(--project-color) 72%,white);border-color:rgba(var(--project-rgb),.3);background:rgba(var(--project-rgb),.06)}
-#projects .project-card .video-bar{background:rgba(255,255,255,.1)}
+#projects .project-card .video-bar{background:var(--project-color)}
 
 #crew .leadership-grid{gap:0;overflow:hidden;border:1px solid rgba(137,164,190,.14);border-radius:30px;background:linear-gradient(145deg,rgba(15,23,31,.96),rgba(9,15,21,.98));filter:drop-shadow(0 20px 60px rgba(0,0,0,.24))}
 #crew .leader-card,#crew .leadership-grid .info-card{border:0;border-radius:0;background:transparent;box-shadow:none}
@@ -320,7 +320,11 @@ button,input,textarea,select{font:inherit}
 #crew .leader-photo{width:116px;height:116px}
 #crew .leader-copy>.eyebrow{margin-bottom:10px;color:#91a9bf}
 #crew .leader-copy h3{margin-bottom:14px}
-#crew .leader-tags span,#crew .skill-list span{background:rgba(5,11,17,.52);border-color:rgba(137,164,190,.14)}
+#crew .leader-tags span,#crew .skill-list span{position:relative;padding:0 0 0 12px;border:0;background:transparent;color:#aebdcb;font-size:13px;font-weight:700}
+#crew .leader-tags span:before,#crew .skill-list span:before{content:"";position:absolute;left:0;top:.55em;width:4px;height:4px;border-radius:50%;background:#68839d}
+#crew .leader-tags,#crew .skill-list{gap:12px 18px}
+#crew .leader-actions .btn.primary{background:transparent;color:#eaf2fa;border-color:rgba(151,180,209,.34);box-shadow:none}
+#crew .leader-actions .btn.primary:hover,#crew .leader-actions .btn.primary:focus-visible{background:#fff;color:#0b1116;border-color:#fff;box-shadow:0 12px 28px rgba(255,255,255,.1)}
 #crew .crew-work-grid{gap:10px;margin-top:24px}
 #crew .crew-work-item{border-radius:12px;border-color:rgba(137,164,190,.12)}
 
@@ -333,13 +337,18 @@ button,input,textarea,select{font:inherit}
 #portfolio .shot[data-project="Infinity Climb"]{--portfolio-color:#9bdf45;--portfolio-rgb:155,223,69}
 #portfolio .shot[data-project]{border-color:rgba(var(--portfolio-rgb),.24)}
 #portfolio .shot[data-project]:hover{border-color:rgba(var(--portfolio-rgb),.5);box-shadow:0 18px 46px rgba(0,0,0,.3),0 0 22px rgba(var(--portfolio-rgb),.06)}
+#portfolio .shot[data-project].is-selected,#portfolio .shot[data-project]:focus-within{border-color:var(--portfolio-color);box-shadow:0 0 0 2px rgba(var(--portfolio-rgb),.2),0 20px 52px rgba(0,0,0,.34),0 0 28px rgba(var(--portfolio-rgb),.12)}
 #portfolio .shot[data-project] figcaption span{color:color-mix(in srgb,var(--portfolio-color) 74%,white)}
 #portfolio .shot:hover img{transform:scale(1.025);filter:saturate(1.06)}
 #portfolio .shot:hover figcaption{transform:none}
 #portfolio .portfolio-chapter{padding:12px 14px;border:1px solid rgba(137,164,190,.12);border-radius:14px;background:rgba(5,11,17,.42)}
 #portfolio .portfolio-chapter:first-child{border-left-color:rgba(233,154,47,.55)}
 #portfolio .portfolio-chapter--secondary{margin-top:14px;padding-top:12px;border-top-color:rgba(137,164,190,.12);border-left-color:rgba(67,184,255,.5)}
-#portfolio .portfolio-chapter--secondary strong:after{content:" · 3 project colors";color:#8397aa;font-size:11px;font-weight:700;letter-spacing:.04em}
+#portfolio .portfolio-chapter--prison{border-left:3px solid #43b8ff}
+#portfolio .portfolio-chapter--prison strong{color:#9edcff}
+#portfolio .portfolio-chapter--climb{border-left:3px solid #9bdf45}
+#portfolio .portfolio-chapter--climb strong{color:#c6f38d}
+#portfolio .portfolio-chapter--secondary strong:after{content:none}
 #portfolio .shot[data-project="I'm Prisoner"],#portfolio .shot[data-project="Infinity Climb"]{grid-column:span 6}
 
 .hiring-fields{padding:20px;background:rgba(3,9,14,.28);border-color:rgba(137,164,190,.12)}
@@ -364,6 +373,10 @@ button,input,textarea,select{font:inherit}
   #crew .leader-photo-link,#crew .leader-photo-wrap{flex-basis:auto}
   #portfolio .portfolio-grid{grid-template-columns:1fr;gap:12px}
   #portfolio .shot.cinema-shot,#portfolio .shot.cinema-feature{grid-column:1;aspect-ratio:16/10}
-  #portfolio .portfolio-chapter--secondary strong:after{display:none}
+  #portfolio .portfolio-chapter--secondary strong:after{content:none}
   .hiring-fields{padding:16px}
 }
+
+/* Clear store CTA and non-interactive crew labels */
+#projects .store-cta-row .store-link{min-width:164px;padding-inline:16px;background:rgba(31,111,255,.11);border-color:rgba(117,169,255,.38);box-shadow:none}
+#projects .store-cta-row .store-link:hover,#projects .store-cta-row .store-link:focus-visible{background:#1f6fff;border-color:#5d9bff;box-shadow:0 12px 28px rgba(31,111,255,.22)}
