@@ -396,3 +396,655 @@ p { color: var(--muted); }
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .reveal-ready .section > .container { opacity: 1; transform: none; }
 }
+
+/* Complete Miami V2 game-UI pass */
+body.miami-v2 .section-signal {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 16px;
+  color: var(--aqua);
+  text-shadow: 0 0 14px rgba(81,236,244,.28);
+}
+body.miami-v2 .section-signal::before {
+  width: 22px;
+  height: 5px;
+  content: "";
+  background: linear-gradient(90deg, var(--sun), var(--hot-pink));
+  box-shadow: 0 0 14px rgba(255,63,186,.55);
+  transform: skewX(-24deg);
+}
+
+body.miami-v2 .services-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  counter-reset: service-track;
+}
+body.miami-v2 .service-card {
+  --service: var(--coral);
+  position: relative;
+  min-height: 340px;
+  padding: 28px;
+  color: var(--paper);
+  border: 1px solid color-mix(in srgb, var(--service) 52%, var(--aqua) 18%);
+  border-radius: 5px;
+  background:
+    linear-gradient(155deg, color-mix(in srgb, var(--service) 12%, transparent), rgba(10,7,29,.96) 48%, rgba(21,10,47,.94)),
+    linear-gradient(90deg, rgba(81,236,244,.07) 1px, transparent 1px);
+  background-size: auto, 34px 34px;
+  box-shadow: 7px 7px 0 color-mix(in srgb, var(--service) 16%, transparent), 0 25px 55px rgba(0,0,0,.34);
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  counter-increment: service-track;
+}
+body.miami-v2 .service-card:nth-child(1) { --service: var(--orange); }
+body.miami-v2 .service-card:nth-child(2) { --service: var(--aqua); }
+body.miami-v2 .service-card:nth-child(3) { --service: var(--orchid); }
+body.miami-v2 .service-card > * {
+  position: relative;
+  z-index: 1;
+}
+body.miami-v2 .service-card::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: auto;
+  height: auto;
+  content: "";
+  border: 0;
+  border-radius: 0;
+  background:
+    radial-gradient(circle at 88% 88%, color-mix(in srgb, var(--service) 28%, transparent), transparent 26%),
+    linear-gradient(135deg, transparent 0 50%, rgba(255,255,255,.035) 50% 51%, transparent 51%);
+  box-shadow: none;
+  opacity: .9;
+  pointer-events: none;
+  transform: none;
+}
+body.miami-v2 .service-card::after {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  content: "";
+  background: linear-gradient(90deg, var(--service), var(--hot-pink), var(--aqua));
+  box-shadow: 0 0 18px color-mix(in srgb, var(--service) 58%, transparent);
+}
+body.miami-v2 .service-card:hover {
+  transform: translate(-3px,-7px);
+  border-color: color-mix(in srgb, var(--service) 78%, white);
+  background:
+    linear-gradient(155deg, color-mix(in srgb, var(--service) 18%, transparent), rgba(10,7,29,.97) 48%, rgba(24,10,51,.96)),
+    linear-gradient(90deg, rgba(81,236,244,.08) 1px, transparent 1px);
+  box-shadow: 11px 12px 0 color-mix(in srgb, var(--service) 20%, transparent), 0 34px 65px rgba(0,0,0,.42);
+}
+body.miami-v2 .service-card[aria-pressed="true"] {
+  border-color: color-mix(in srgb, var(--service) 88%, white);
+  background:
+    linear-gradient(155deg, color-mix(in srgb, var(--service) 24%, transparent), rgba(13,8,34,.98) 48%, rgba(30,11,58,.96)),
+    linear-gradient(90deg, rgba(81,236,244,.1) 1px, transparent 1px);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--service) 42%, transparent), 0 0 34px color-mix(in srgb, var(--service) 22%, transparent), 11px 12px 0 color-mix(in srgb, var(--service) 22%, transparent);
+}
+body.miami-v2 .service-product-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--paper);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .17em;
+}
+body.miami-v2 .service-product-label::before {
+  content: "0" counter(service-track) " //";
+  color: var(--service);
+  font-family: var(--display);
+  letter-spacing: .08em;
+}
+body.miami-v2 .service-icon {
+  width: 56px;
+  height: 56px;
+  margin: 34px 0 24px;
+  color: var(--service);
+  border: 1px solid color-mix(in srgb, var(--service) 65%, white);
+  border-radius: 4px;
+  background: rgba(7,6,22,.76);
+  box-shadow: 5px 5px 0 color-mix(in srgb, var(--service) 24%, transparent), inset 0 0 18px color-mix(in srgb, var(--service) 10%, transparent);
+}
+body.miami-v2 .service-card h3 {
+  max-width: 320px;
+  margin-bottom: 14px;
+  color: var(--paper);
+  font-size: clamp(28px, 2.4vw, 38px);
+  letter-spacing: -.04em;
+  line-height: .97;
+}
+body.miami-v2 .service-card p {
+  color: #d4cfe5;
+  font-size: 13px;
+  line-height: 1.55;
+}
+body.miami-v2 .service-scope {
+  display: inline-flex;
+  color: var(--service);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .12em;
+}
+body.miami-v2 .service-selected-note {
+  top: 21px;
+  right: 19px;
+  color: #0b0717;
+  border-radius: 2px;
+  background: linear-gradient(105deg, var(--service), color-mix(in srgb, var(--service) 60%, white));
+  box-shadow: 3px 3px 0 rgba(0,0,0,.38);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+body.miami-v2 .service-selection-status {
+  border-color: rgba(81,236,244,.38);
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(81,236,244,.1), rgba(255,63,186,.08));
+  box-shadow: inset 4px 0 0 var(--aqua);
+  font-weight: 800;
+}
+
+body.miami-v2 .process-wrap {
+  padding: 28px;
+  border-color: rgba(255,73,183,.54);
+  border-radius: 5px;
+  background: linear-gradient(145deg, rgba(12,8,34,.97), rgba(23,9,47,.9));
+  box-shadow: 8px 8px 0 rgba(81,236,244,.11), 0 22px 44px rgba(0,0,0,.34);
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+}
+body.miami-v2 .process-wrap::before {
+  position: absolute;
+  top: 0;
+  right: 4%;
+  left: 4%;
+  height: 3px;
+  content: "";
+  background: linear-gradient(90deg, var(--sun), var(--hot-pink), var(--aqua));
+}
+body.miami-v2 .flow-heading {
+  border-bottom-color: rgba(81,236,244,.25);
+}
+body.miami-v2 .flow-heading h3 {
+  color: transparent;
+  background: linear-gradient(105deg, var(--sun), var(--coral), var(--hot-pink), var(--aqua));
+  background-clip: text;
+  -webkit-background-clip: text;
+  letter-spacing: -.04em;
+}
+body.miami-v2 .flow-step {
+  border-color: rgba(81,236,244,.28);
+  border-radius: 4px;
+  background: linear-gradient(145deg, rgba(81,236,244,.06), rgba(255,63,186,.05));
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+body.miami-v2 .flow-step > span {
+  color: #0a0716;
+  border: 0;
+  border-radius: 3px;
+  background: linear-gradient(135deg, var(--sun), var(--hot-pink));
+  box-shadow: 3px 3px 0 rgba(81,236,244,.22);
+}
+body.miami-v2 .flow-step strong {
+  font-family: var(--display);
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+body.miami-v2 .journey-bridge {
+  border-color: rgba(81,236,244,.34);
+  border-radius: 4px;
+  background: linear-gradient(90deg, rgba(81,236,244,.09), rgba(255,63,186,.08));
+  box-shadow: inset 4px 0 0 var(--aqua);
+}
+body.miami-v2 .journey-progress {
+  color: var(--paper);
+}
+body.miami-v2 .journey-progress i {
+  height: 3px;
+  background: linear-gradient(90deg, var(--sun), var(--hot-pink), var(--aqua));
+  transform: skewX(-24deg);
+}
+body.miami-v2 .journey-cta {
+  color: #0b0717;
+  border-radius: 3px;
+  background: linear-gradient(105deg, var(--aqua), var(--sun));
+  box-shadow: 4px 4px 0 rgba(255,63,186,.3);
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+}
+
+body.miami-v2 .approach {
+  min-height: 650px;
+  grid-template-columns: minmax(0,.88fr) minmax(420px,1.12fr);
+}
+body.miami-v2 .approach-copy h2,
+body.miami-v2 .contact-copy-block h2 {
+  color: transparent;
+  background: linear-gradient(104deg, var(--sun), var(--orange) 26%, var(--coral) 51%, var(--hot-pink) 74%, var(--aqua));
+  background-clip: text;
+  -webkit-background-clip: text;
+  filter: drop-shadow(0 8px 22px rgba(255,63,186,.14));
+}
+body.miami-v2 .approach-copy p {
+  color: #d1cde0;
+  font-size: 14px;
+}
+body.miami-v2 .approach-visual {
+  width: min(100%, 590px);
+  border: 1px solid rgba(81,236,244,.35);
+  border-radius: 6px;
+  background:
+    radial-gradient(circle at center, rgba(255,63,186,.18), transparent 22%),
+    linear-gradient(rgba(81,236,244,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,63,186,.055) 1px, transparent 1px),
+    linear-gradient(145deg, rgba(9,7,30,.96), rgba(24,9,50,.92));
+  background-size: auto, 42px 42px, 42px 42px, auto;
+  box-shadow: 9px 9px 0 rgba(255,63,186,.11), inset 0 0 70px rgba(81,236,244,.05);
+  clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+  overflow: hidden;
+}
+body.miami-v2 .approach-visual::before,
+body.miami-v2 .approach-visual::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+body.miami-v2 .approach-visual::before {
+  inset: 18px;
+  border: 1px solid rgba(255,208,90,.26);
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+}
+body.miami-v2 .approach-visual::after {
+  right: -12%;
+  bottom: -14%;
+  width: 54%;
+  height: 54%;
+  border: 1px solid rgba(81,236,244,.28);
+  border-radius: 50%;
+  box-shadow: 0 0 0 22px rgba(81,236,244,.035), 0 0 0 46px rgba(255,63,186,.028);
+}
+body.miami-v2 .talent-orbit {
+  border-color: rgba(81,236,244,.28);
+  box-shadow: 0 0 28px rgba(81,236,244,.08);
+}
+body.miami-v2 .orbit-outer { border-color: rgba(255,208,90,.28); }
+body.miami-v2 .orbit-middle { border-color: rgba(81,236,244,.3); }
+body.miami-v2 .orbit-inner { border-color: rgba(255,63,186,.32); }
+body.miami-v2 .orbit-node {
+  color: var(--paper);
+  border-color: rgba(81,236,244,.38);
+  border-radius: 3px;
+  background: linear-gradient(135deg, rgba(10,8,34,.95), rgba(34,12,57,.88));
+  box-shadow: 4px 4px 0 rgba(255,63,186,.2), 0 0 18px rgba(81,236,244,.08);
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+}
+body.miami-v2 .core-node {
+  width: 164px;
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 6px;
+  background: linear-gradient(135deg, var(--sun), var(--orange), var(--hot-pink));
+  box-shadow: 0 0 0 7px rgba(255,63,186,.08), 0 0 58px rgba(255,63,186,.32);
+  clip-path: polygon(10% 0, 90% 0, 100% 10%, 100% 90%, 90% 100%, 10% 100%, 0 90%, 0 10%);
+}
+body.miami-v2 .core-node strong {
+  font-size: 18px;
+  letter-spacing: -.03em;
+}
+body.miami-v2 .orbit-caption {
+  color: var(--aqua);
+  font-weight: 900;
+  letter-spacing: .15em;
+}
+
+body.miami-v2 .leader-card {
+  position: relative;
+  padding: 28px;
+  border: 1px solid rgba(81,236,244,.26);
+  border-radius: 5px;
+  background: linear-gradient(145deg, rgba(17,10,44,.94), rgba(8,7,25,.96));
+  box-shadow: 8px 8px 0 rgba(255,63,186,.09);
+  clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+body.miami-v2 .leader-main {
+  gap: 34px;
+}
+body.miami-v2 .leader-photo-wrap {
+  border-color: rgba(255,73,183,.5);
+  border-radius: 5px;
+  box-shadow: 7px 7px 0 rgba(81,236,244,.13), 0 22px 42px rgba(0,0,0,.34);
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 0 100%);
+}
+body.miami-v2 .leader-photo-wrap::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: linear-gradient(to top, rgba(9,7,28,.4), transparent 55%);
+  pointer-events: none;
+}
+body.miami-v2 .leader-photo {
+  filter: saturate(1.08) contrast(1.06);
+}
+body.miami-v2 .country-flag {
+  right: 13px;
+  bottom: 13px;
+  border-color: rgba(255,255,255,.78);
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 rgba(0,0,0,.35);
+}
+body.miami-v2 .photo-link-hint {
+  border-radius: 3px;
+  background: linear-gradient(135deg, var(--aqua), var(--orchid));
+  box-shadow: 3px 3px 0 rgba(255,63,186,.36);
+}
+body.miami-v2 .leader-copy h3 {
+  color: transparent;
+  background: linear-gradient(103deg, var(--sun), var(--orange), var(--hot-pink), var(--aqua));
+  background-clip: text;
+  -webkit-background-clip: text;
+  line-height: .92;
+}
+body.miami-v2 .leader-copy > p {
+  color: #d4d0e1;
+}
+body.miami-v2 .leader-actions .btn.small {
+  min-height: 42px;
+}
+body.miami-v2 .leader-actions .btn.small + .btn.small {
+  color: var(--paper);
+  border: 1px solid rgba(81,236,244,.5);
+  background: linear-gradient(135deg, rgba(81,236,244,.16), rgba(182,83,255,.2));
+  box-shadow: 5px 5px 0 rgba(81,236,244,.14);
+}
+body.miami-v2 .crew-work-grid {
+  gap: 11px;
+}
+body.miami-v2 .crew-work-item {
+  border-color: rgba(81,236,244,.22);
+  border-radius: 4px;
+  background: rgba(7,6,23,.76);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+}
+body.miami-v2 .crew-work-item:hover {
+  border-color: rgba(255,63,186,.58);
+  box-shadow: 0 0 22px rgba(255,63,186,.13);
+}
+body.miami-v2 .crew-work-item figcaption {
+  background: linear-gradient(180deg, rgba(9,7,28,.96), rgba(16,9,40,.96));
+}
+body.miami-v2 .crew-work-item figcaption span,
+body.miami-v2 .shot figcaption span {
+  color: var(--aqua);
+}
+body.miami-v2 .crew-work-item figcaption strong {
+  color: var(--paper);
+  font-weight: 900;
+  text-transform: uppercase;
+}
+body.miami-v2 .info-card {
+  padding: 28px;
+  border-color: rgba(255,73,183,.34);
+  border-radius: 5px;
+  background: linear-gradient(145deg, rgba(13,8,36,.96), rgba(24,9,48,.88));
+  box-shadow: 7px 7px 0 rgba(81,236,244,.09);
+  clip-path: polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 0 100%);
+}
+body.miami-v2 .info-card h3 {
+  color: var(--paper);
+  letter-spacing: -.035em;
+}
+body.miami-v2 .skill-group {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid rgba(81,236,244,.2);
+  border-radius: 4px;
+  background: rgba(7,6,24,.56);
+}
+body.miami-v2 .skill-group > strong {
+  color: var(--sun);
+}
+
+body.miami-v2 .portfolio-shell {
+  overflow: visible !important;
+}
+body.miami-v2 .portfolio-chapter {
+  position: relative;
+  min-height: 135px;
+  padding: 28px;
+  border: 1px solid color-mix(in srgb, var(--chapter) 50%, var(--aqua) 18%);
+  border-radius: 5px;
+  background:
+    linear-gradient(105deg, color-mix(in srgb, var(--chapter) 22%, transparent), rgba(10,7,29,.9) 45%, transparent),
+    linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px);
+  background-size: auto, 38px 38px;
+  box-shadow: 7px 7px 0 color-mix(in srgb, var(--chapter) 14%, transparent);
+  clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 20px 100%, 0 calc(100% - 20px));
+}
+body.miami-v2 .portfolio-chapter::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 4px;
+  content: "";
+  background: linear-gradient(90deg, var(--chapter), var(--hot-pink), var(--aqua));
+}
+body.miami-v2 .portfolio-chapter span {
+  color: color-mix(in srgb, var(--chapter) 76%, white);
+  font-weight: 900;
+}
+body.miami-v2 .portfolio-chapter strong {
+  color: var(--paper);
+  letter-spacing: -.055em;
+  text-shadow: 4px 4px 0 rgba(255,63,186,.18);
+}
+body.miami-v2 .shot {
+  border-color: color-mix(in srgb, var(--shot-accent) 30%, var(--aqua) 16%);
+  border-radius: 5px;
+  background: #060519;
+  box-shadow: 6px 6px 0 color-mix(in srgb, var(--shot-accent) 12%, transparent);
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+}
+body.miami-v2 .shot::before {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 3px;
+  content: "";
+  background: linear-gradient(90deg, var(--shot-accent), var(--aqua));
+}
+body.miami-v2 .shot:hover {
+  border-color: color-mix(in srgb, var(--shot-accent) 74%, white);
+  box-shadow: 9px 9px 0 color-mix(in srgb, var(--shot-accent) 18%, transparent), 0 24px 48px rgba(0,0,0,.36);
+}
+body.miami-v2 .shot.is-visible {
+  opacity: 1;
+  transform: none;
+}
+body.miami-v2 .shot figcaption {
+  padding: 48px 18px 16px;
+  background: linear-gradient(transparent, rgba(8,5,24,.96));
+}
+body.miami-v2 .shot figcaption strong {
+  color: var(--paper);
+  text-transform: uppercase;
+  letter-spacing: -.035em;
+}
+body.miami-v2 .portfolio-lightbox {
+  background: rgba(4,3,14,.96);
+}
+body.miami-v2 .lightbox-figure img {
+  border-color: rgba(81,236,244,.42);
+  border-radius: 4px;
+  box-shadow: 9px 9px 0 rgba(255,63,186,.15), var(--shadow);
+}
+body.miami-v2 .lightbox-close,
+body.miami-v2 .lightbox-nav {
+  border-color: rgba(81,236,244,.45);
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(81,236,244,.14), rgba(255,63,186,.16));
+  box-shadow: 4px 4px 0 rgba(255,63,186,.22);
+}
+
+body.miami-v2 .contact-card {
+  position: relative;
+  padding: clamp(24px,4.5vw,48px);
+  border: 1px solid rgba(81,236,244,.28);
+  border-radius: 5px;
+  background: linear-gradient(145deg, rgba(12,8,34,.96), rgba(23,9,48,.9));
+  box-shadow: 8px 8px 0 rgba(255,63,186,.09), inset 0 0 80px rgba(81,236,244,.04);
+  clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+}
+body.miami-v2 .contact-card::before {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  left: 5%;
+  height: 3px;
+  content: "";
+  background: linear-gradient(90deg, var(--sun), var(--hot-pink), var(--aqua));
+  box-shadow: 0 0 18px rgba(255,63,186,.42);
+}
+body.miami-v2 .contact-orb {
+  filter: blur(4px);
+  opacity: .2;
+}
+body.miami-v2 .orb-one { background: var(--hot-pink); }
+body.miami-v2 .orb-two { background: var(--aqua); }
+body.miami-v2 .orb-three {
+  border-color: rgba(255,208,90,.45);
+  border-radius: 6px;
+  transform: rotate(18deg);
+}
+body.miami-v2 .plane-flight {
+  opacity: .11;
+  filter: drop-shadow(0 0 22px rgba(81,236,244,.2));
+}
+body.miami-v2 .contact-copy-block p {
+  color: #d4d0e1;
+}
+body.miami-v2 .contact-quick-actions {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+body.miami-v2 .contact-email {
+  padding: 9px 13px 9px 9px;
+  border: 1px solid rgba(81,236,244,.34);
+  border-radius: 4px;
+  background: rgba(7,6,24,.72);
+  box-shadow: 5px 5px 0 rgba(255,63,186,.13);
+  clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 0 100%);
+  font-weight: 900;
+}
+body.miami-v2 .gmail-icon,
+body.miami-v2 .copy-icon-btn {
+  border-radius: 3px;
+  background: linear-gradient(135deg, var(--sun), var(--hot-pink));
+  box-shadow: 3px 3px 0 rgba(81,236,244,.2);
+}
+body.miami-v2 .copy-icon-btn {
+  color: var(--paper);
+  border-color: rgba(81,236,244,.42);
+  background: linear-gradient(135deg, rgba(81,236,244,.14), rgba(182,83,255,.22));
+}
+body.miami-v2 .contact-form {
+  border-color: rgba(255,73,183,.34);
+  border-radius: 5px;
+  background: linear-gradient(145deg, rgba(7,6,23,.9), rgba(17,9,39,.86));
+  box-shadow: 7px 7px 0 rgba(81,236,244,.08);
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+}
+body.miami-v2 .contact-form label {
+  color: #f0ecfb;
+  font-weight: 900;
+}
+body.miami-v2 .contact-form input,
+body.miami-v2 .contact-form select,
+body.miami-v2 .contact-form textarea {
+  border-color: rgba(81,236,244,.26);
+  border-radius: 4px;
+  background: rgba(6,5,20,.78);
+  box-shadow: inset 4px 0 0 rgba(255,63,186,.16);
+}
+body.miami-v2 .contact-form input:focus,
+body.miami-v2 .contact-form select:focus,
+body.miami-v2 .contact-form textarea:focus {
+  border-color: var(--aqua);
+  box-shadow: inset 4px 0 0 var(--hot-pink), 0 0 0 3px rgba(81,236,244,.13);
+}
+body.miami-v2 .hiring-fields {
+  border-color: rgba(182,83,255,.36);
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(182,83,255,.08), rgba(81,236,244,.045));
+}
+body.miami-v2 .hiring-group-label {
+  color: var(--sun);
+}
+body.miami-v2 .field-helper,
+body.miami-v2 .form-note {
+  color: #b9b7ce;
+}
+body.miami-v2 .consent-field input {
+  accent-color: var(--hot-pink);
+}
+body.miami-v2 .back-to-top-btn,
+body.miami-v2 .social-link {
+  border: 1px solid rgba(81,236,244,.3);
+  border-radius: 4px;
+  background: linear-gradient(135deg, rgba(81,236,244,.1), rgba(255,63,186,.12));
+  box-shadow: 4px 4px 0 rgba(255,63,186,.18);
+}
+body.miami-v2 .back-to-top-btn {
+  color: var(--paper);
+  text-decoration: none;
+}
+body.miami-v2 .footer-row {
+  border-top-color: rgba(81,236,244,.25);
+}
+body.miami-v2 .footer-mini img {
+  filter: drop-shadow(0 0 14px rgba(81,236,244,.15));
+}
+
+@media (max-width: 1050px) {
+  body.miami-v2 .services-grid { grid-template-columns: 1fr; }
+  body.miami-v2 .service-card { min-height: 250px; }
+  body.miami-v2 .approach { grid-template-columns: 1fr; }
+  body.miami-v2 .approach-visual { width: min(100%, 620px); }
+  body.miami-v2 .leader-main { grid-template-columns: 250px minmax(0,1fr); }
+  body.miami-v2 .contact-layout { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  body.miami-v2 .section-signal { margin-bottom: 14px; font-size: 8px; }
+  body.miami-v2 .service-card { min-height: 0; padding: 23px; }
+  body.miami-v2 .service-icon { margin: 24px 0 18px; }
+  body.miami-v2 .process-wrap { padding: 20px; }
+  body.miami-v2 .flow-step { padding: 15px 15px 15px 57px; }
+  body.miami-v2 .approach { gap: 30px; }
+  body.miami-v2 .approach-visual { aspect-ratio: 1 / 1.08; transform: none; }
+  body.miami-v2 .leader-main { grid-template-columns: 1fr; padding: 22px; }
+  body.miami-v2 .leader-photo-link { width: min(100%, 330px); }
+  body.miami-v2 .leader-copy h3 { font-size: 43px; }
+  body.miami-v2 .info-card { padding: 22px; }
+  body.miami-v2 .portfolio-chapter { flex-direction: column; align-items: flex-start; gap: 10px; min-height: 108px; }
+  body.miami-v2 .portfolio-chapter strong { font-size: 34px; line-height: .92; }
+  body.miami-v2 .contact-card { padding: 22px 16px; }
+  body.miami-v2 .contact-email { max-width: 100%; overflow-wrap: anywhere; }
+  body.miami-v2 .footer-row { align-items: flex-start; flex-direction: column; }
+}
+
+@media (max-width: 430px) {
+  body.miami-v2 .service-card h3 { font-size: 28px; }
+  body.miami-v2 .approach-visual { width: 100%; margin-left: 0; }
+  body.miami-v2 .core-node { width: 120px; }
+  body.miami-v2 .core-node strong { font-size: 14px; }
+  body.miami-v2 .orbit-node { padding: 5px 7px; font-size: 6px; }
+  body.miami-v2 .crew-work-grid { grid-template-columns: 1fr 1fr; }
+  body.miami-v2 .contact-quick-actions { width: 100%; max-width: calc(100vw - 96px); display: grid; grid-template-columns: 1fr; align-items: stretch; }
+  body.miami-v2 .contact-email { width: 100%; max-width: calc(100vw - 96px); padding-right: 10px; font-size: 10px; }
+  body.miami-v2 .contact-email span:last-child { min-width: 0; overflow-wrap: anywhere; }
+  body.miami-v2 .copy-icon-btn { width: 44px; height: 44px; justify-self: start; }
+}
