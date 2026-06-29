@@ -47,6 +47,33 @@ const contactName = document.getElementById('contactName');
 const contactEmail = document.getElementById('contactEmail');
 const contactMessage = document.getElementById('contactMessage');
 const submitButton = contactForm?.querySelector('.submit-btn');
+const projectCards = Array.from(document.querySelectorAll('#projects .project-card--compact'));
+
+function selectProjectCard(selectedCard) {
+  projectCards.forEach(card => {
+    const isSelected = card === selectedCard;
+    card.classList.toggle('is-selected', isSelected);
+    card.setAttribute('aria-selected', String(isSelected));
+  });
+}
+
+projectCards.forEach(card => {
+  card.tabIndex = 0;
+  card.addEventListener('click', event => {
+    if (event.target.closest('a, iframe, button')) return;
+    selectProjectCard(card);
+  });
+  card.addEventListener('focusin', () => selectProjectCard(card));
+  card.addEventListener('pointerenter', () => selectProjectCard(card));
+  card.addEventListener('keydown', event => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    selectProjectCard(card);
+  });
+});
+
+if (projectCards.length) selectProjectCard(projectCards[0]);
+
 // Talent solar system: every label follows one ellipse while its ring only floats.
 const talentSystem = document.querySelector('.approach-visual');
 

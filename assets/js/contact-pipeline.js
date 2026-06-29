@@ -20,6 +20,10 @@ const contactWebsite = document.getElementById('contactWebsite');
 const formOpenedAt = document.getElementById('formOpenedAt');
 const hiringFields = document.getElementById('hiringFields');
 const timeZoneOptions = document.getElementById('timeZoneOptions');
+const inquiryChoiceCards = Array.from(document.querySelectorAll('[data-inquiry-choice]'));
+const inquiryDetailLabel = document.getElementById('inquiryDetailLabel');
+const inquiryDetailTitle = document.getElementById('inquiryDetailTitle');
+const inquiryDetailCopy = document.getElementById('inquiryDetailCopy');
 const serviceCards = Array.from(document.querySelectorAll('.service-select-card'));
 const serviceSelectionStatus = document.getElementById('serviceSelectionStatus');
 const serviceFlow = document.getElementById('serviceFlow');
@@ -57,6 +61,28 @@ const serviceFlows = Object.freeze({
       ['Test & Learn', 'Playtest the core loop, observe friction and separate strong signals from expensive distractions.'],
       ['Production Map', 'Deliver the prototype with findings, priorities, scope options and a cost-effective next-step plan.']
     ]
+  }
+});
+const inquiryDetails = Object.freeze({
+  Business: {
+    label: 'Business inquiry',
+    title: 'Bring a game, prototype or production challenge.',
+    copy: 'Share the project stage, target platform and the support you need. We will reply with a focused next step.'
+  },
+  Partnership: {
+    label: 'Partnership inquiry',
+    title: 'Combine strengths around a clear opportunity.',
+    copy: 'Tell us what you are building, what you bring to the table and what a strong partnership would unlock.'
+  },
+  Hiring: {
+    label: 'Hiring profile',
+    title: 'Show us the work you want to be known for.',
+    copy: 'Add your role, location, availability, rate and strongest professional links. Your profile stays structured and easy to review.'
+  },
+  General: {
+    label: 'General message',
+    title: 'Start with the part that matters most.',
+    copy: 'Use this path for studio questions, press, community messages or anything that does not fit the other options.'
   }
 });
 const hiringInputs = {
@@ -154,6 +180,22 @@ function needsCompany() {
   return contactType?.value === 'Business' || contactType?.value === 'Partnership';
 }
 
+function syncInquiryChoiceCards() {
+  const type = contactType?.value || 'Business';
+  const detail = inquiryDetails[type] || inquiryDetails.Business;
+
+  inquiryChoiceCards.forEach(card => {
+    const isActive = card.dataset.inquiryChoice === type;
+    card.classList.toggle('is-selected', isActive);
+    card.setAttribute('aria-pressed', String(isActive));
+  });
+
+  if (inquiryDetailLabel) inquiryDetailLabel.textContent = detail.label;
+  if (inquiryDetailTitle) inquiryDetailTitle.textContent = detail.title;
+  if (inquiryDetailCopy) inquiryDetailCopy.textContent = detail.copy;
+  if (contactForm) contactForm.dataset.inquiry = type.toLowerCase();
+}
+
 function setNote(message, state = '') {
   if (!formNote) return;
   formNote.textContent = message;
@@ -246,6 +288,15 @@ function selectService(card) {
 serviceCards.forEach(card => {
   card.addEventListener('click', () => selectService(card));
 });
+
+inquiryChoiceCards.forEach(card => {
+  card.addEventListener('click', () => {
+    if (!contactType) return;
+    contactType.value = card.dataset.inquiryChoice || 'Business';
+    contactType.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+});
+
 if (contactSubject) {
   contactSubject.addEventListener('input', () => {
     if (subjectInternalUpdate) return;
@@ -256,6 +307,7 @@ if (contactSubject) {
 
 function syncInquiryVisibility() {
   const hiring = isHiringMode();
+  syncInquiryChoiceCards();
   if (hiringFields) hiringFields.hidden = !hiring;
   contactForm?.classList.toggle('is-hiring', hiring);
   if (subjectField) subjectField.hidden = hiring;
