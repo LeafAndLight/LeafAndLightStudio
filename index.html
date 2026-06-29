@@ -8,9 +8,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=flow-20260628" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=theme-switcher-20260629" />
+  <link rel="stylesheet" href="assets/css/vintage-arcade.css?v=20260629-switcher" />
   <link rel="stylesheet" href="assets/css/vr-ai-tech.css?v=20260629" />
-  <link rel="stylesheet" href="assets/css/miami-art-deco.css?v=20260629-refine" />
+  <link rel="stylesheet" href="assets/css/miami-art-deco.css?v=theme-switcher-20260629" />
 </head>
 <body class="vr-ai-theme miami-deco-theme">
   <header class="header">
@@ -19,6 +20,12 @@
         <img src="assets/images/leaf_and_light_logo.png" alt="Leaf & Light Studio logo" />
         <div class="brand-name">Leaf & Light Studio</div>
       </a>
+      <div class="theme-switcher" aria-label="Choose site visual style">
+        <button type="button" class="theme-dot" data-theme="base" aria-label="Use base style" title="Base"></button>
+        <button type="button" class="theme-dot" data-theme="vr" aria-label="Use VR AI style" title="VR AI"></button>
+        <button type="button" class="theme-dot" data-theme="retro" aria-label="Use retro arcade style" title="Retro"></button>
+        <button type="button" class="theme-dot" data-theme="miami" aria-label="Use Miami Art Deco style" title="Miami Art Deco"></button>
+      </div>
       <nav class="menu">
         <a href="#projects">Projects</a>
         <a href="#services">Services</a>
@@ -60,8 +67,10 @@
             <div class="label">Platforms</div>
             <strong>VR, Steam and beyond</strong>
             <p>Stylized worlds, readable interaction and practical performance for Meta Quest 2, Meta Quest 3, PC and future multiplatform releases.</p>
-            <div class="slide-dots">
-            </div>
+          </div>
+          <div class="hero-cover-control" aria-label="Hero cover loop">
+            <span>Cover loop</span>
+            <div class="slide-dots"></div>
           </div>
         </div>
       </div>

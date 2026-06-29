@@ -683,3 +683,96 @@
     padding:14px 16px;
   }
 }
+
+/* Theme switcher and detached cover loop in Miami skin */
+.miami-deco-theme .theme-switcher{
+  border-radius:0 14px 0 14px;
+  border-color:rgba(255,201,90,.32);
+  background:linear-gradient(135deg,rgba(255,201,90,.08),rgba(255,92,200,.08));
+  box-shadow:4px 4px 0 rgba(49,231,216,.08),0 12px 28px rgba(0,0,0,.16);
+}
+
+.miami-deco-theme .theme-dot{
+  border-radius:0 6px 0 6px;
+}
+
+.miami-deco-theme .theme-dot.is-active{
+  box-shadow:0 0 0 4px rgba(255,201,90,.1),0 0 18px currentColor,3px 3px 0 rgba(255,92,200,.35);
+}
+
+.miami-deco-theme .hero-copy{
+  overflow:visible;
+}
+
+.miami-deco-theme .hero-copy h1{
+  line-height:.98;
+  margin-bottom:26px;
+  padding-bottom:.08em;
+}
+
+.miami-deco-theme .hero-copy p{
+  position:relative;
+  z-index:2;
+}
+
+.miami-deco-theme .hero-cover-control{
+  width:max-content;
+  border-radius:0 18px 0 18px;
+  border-color:rgba(255,201,90,.34);
+  background:linear-gradient(135deg,rgba(7,17,29,.82),rgba(23,10,35,.78));
+  box-shadow:5px 5px 0 rgba(255,92,200,.18),0 16px 38px rgba(0,0,0,.24);
+}
+
+.miami-deco-theme .hero-cover-control span{
+  color:#fff4d8;
+  letter-spacing:.16em;
+}
+
+.miami-deco-theme .hero-cover-control .slide-dots{
+  gap:12px;
+}
+
+.miami-deco-theme .hero-cover-control .slide-dots button,
+.miami-deco-theme .hero-cover-control .slide-dots button:nth-child(1),
+.miami-deco-theme .hero-cover-control .slide-dots button:nth-child(2),
+.miami-deco-theme .hero-cover-control .slide-dots button:nth-child(3){
+  width:13px;
+  height:13px;
+  border-radius:0 6px 0 6px;
+  background:rgba(216,220,222,.32);
+  border:1px solid rgba(255,244,216,.18);
+  box-shadow:none;
+  opacity:.72;
+}
+
+.miami-deco-theme .hero-cover-control .slide-dots button.active{
+  opacity:1;
+  transform:scale(1.16) rotate(45deg);
+}
+
+.miami-deco-theme .hero-cover-control .slide-dots button:nth-child(1).active{
+  background:var(--miami-gold);
+  box-shadow:0 0 14px rgba(255,201,90,.74),0 0 0 4px rgba(255,201,90,.08);
+}
+
+.miami-deco-theme .hero-cover-control .slide-dots button:nth-child(2).active{
+  background:var(--miami-teal);
+  box-shadow:0 0 14px rgba(49,231,216,.74),0 0 0 4px rgba(49,231,216,.08);
+}
+
+.miami-deco-theme .hero-cover-control .slide-dots button:nth-child(3).active{
+  background:#a8ff6d;
+  box-shadow:0 0 14px rgba(168,255,109,.74),0 0 0 4px rgba(168,255,109,.08);
+}
+
+@media (max-width:780px){
+  .miami-deco-theme .hero-copy h1{
+    line-height:1;
+    padding-bottom:.1em;
+  }
+
+  .miami-deco-theme .hero-cover-control{
+    width:100%;
+    justify-content:center;
+  }
+}

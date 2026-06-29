@@ -326,3 +326,33 @@ document.addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft') updateLightbox(lightboxIndex - 1);
   if (event.key === 'ArrowRight') updateLightbox(lightboxIndex + 1);
 });
+const themeButtons = Array.from(document.querySelectorAll('.theme-dot'));
+const themeClassNames = ['vr-ai-theme', 'miami-deco-theme', 'arcade-theme'];
+const themeMap = {
+  base: [],
+  vr: ['vr-ai-theme'],
+  retro: ['arcade-theme'],
+  miami: ['vr-ai-theme', 'miami-deco-theme']
+};
+
+function applyTheme(themeName, shouldStore = true) {
+  const nextTheme = Object.prototype.hasOwnProperty.call(themeMap, themeName) ? themeName : 'miami';
+  document.body.classList.remove(...themeClassNames);
+  document.body.classList.add(...themeMap[nextTheme]);
+  document.body.dataset.theme = nextTheme;
+  themeButtons.forEach(button => {
+    const isActive = button.dataset.theme === nextTheme;
+    button.classList.toggle('is-active', isActive);
+    button.setAttribute('aria-pressed', String(isActive));
+  });
+  if (shouldStore) {
+    localStorage.setItem('leafLightTheme', nextTheme);
+  }
+}
+
+const savedTheme = localStorage.getItem('leafLightTheme') || 'miami';
+applyTheme(savedTheme, false);
+
+themeButtons.forEach(button => {
+  button.addEventListener('click', () => applyTheme(button.dataset.theme || 'miami'));
+});
