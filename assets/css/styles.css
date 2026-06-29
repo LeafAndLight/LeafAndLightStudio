@@ -432,3 +432,30 @@ button,input,textarea,select{font:inherit}
   #services .service-number{right:24px;top:28px}
   #services .flow-wrap{padding:20px}
 }
+
+/* Border consistency, durable portfolio clipping, highlighted crew data and project dots */
+#services .service-card--pillar{border:1px solid rgba(var(--service-rgb),.24)}
+#services .service-card--pillar:before{display:none}
+#services .service-card--pillar:hover{border-color:rgba(var(--service-rgb),.38)}
+#services .service-select-card[aria-pressed="true"]{border-color:rgba(var(--service-rgb),.62)}
+#services .flow-step{border:1px solid rgba(var(--flow-rgb),.18)}
+#services .flow-step:before{display:none}
+#services .flow-step:hover{border-color:rgba(var(--flow-rgb),.32)}
+#services .flow-step--final{border-color:rgba(87,216,88,.28)}
+
+#crew .leader-tags span,#crew .skill-list span{color:#9fcfff}
+#crew .leader-tags span:before,#crew .skill-list span:before{background:#43b8ff;box-shadow:0 0 8px rgba(67,184,255,.42)}
+
+#portfolio .shot.cinema-shot,#portfolio .shot[data-project],#portfolio .shot[data-project]:hover,#portfolio .shot[data-project].is-selected,#portfolio .shot[data-project]:focus-within{overflow:hidden;border:0!important;border-radius:20px!important;clip-path:inset(0 round 20px);box-shadow:none;isolation:isolate;transform:translateZ(0)}
+#portfolio .shot.cinema-shot img{border-radius:20px;transform-origin:center}
+#portfolio .portfolio-open{overflow:hidden;border-radius:20px!important;outline:0!important}
+#portfolio .portfolio-open:focus-visible{outline:0!important;border-radius:20px!important}
+#portfolio .shot[data-project]:hover,#portfolio .shot[data-project].is-selected,#portfolio .shot[data-project]:focus-within{filter:brightness(1.045)}
+#portfolio .shot[data-project]:hover img{transform:scale(1.025)}
+
+.hero-side .slide-dots button:nth-child(1){background:rgba(233,154,47,.42)}
+.hero-side .slide-dots button:nth-child(2){background:rgba(67,184,255,.42)}
+.hero-side .slide-dots button:nth-child(3){background:rgba(155,223,69,.42)}
+.hero-side .slide-dots button:nth-child(1).active{background:#e99a2f;box-shadow:0 0 14px rgba(233,154,47,.72)}
+.hero-side .slide-dots button:nth-child(2).active{background:#43b8ff;box-shadow:0 0 14px rgba(67,184,255,.72)}
+.hero-side .slide-dots button:nth-child(3).active{background:#9bdf45;box-shadow:0 0 14px rgba(155,223,69,.72)}
