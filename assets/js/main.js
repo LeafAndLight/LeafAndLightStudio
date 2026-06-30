@@ -49,26 +49,27 @@ const contactMessage = document.getElementById('contactMessage');
 const submitButton = contactForm?.querySelector('.submit-btn');
 const projectCards = Array.from(document.querySelectorAll('#projects .project-card--compact'));
 
-function selectProjectCard(selectedCard) {
+function selectProjectCard(selectedCard, { playTheme = false } = {}) {
   projectCards.forEach(card => {
     const isSelected = card === selectedCard;
     card.classList.toggle('is-selected', isSelected);
     card.setAttribute('aria-selected', String(isSelected));
   });
+
+  if (playTheme) playProjectTheme(projectCards.indexOf(selectedCard));
 }
 
 projectCards.forEach(card => {
   card.tabIndex = 0;
   card.addEventListener('click', event => {
     if (event.target.closest('a, iframe, button')) return;
-    selectProjectCard(card);
+    selectProjectCard(card, { playTheme: true });
   });
   card.addEventListener('focusin', () => selectProjectCard(card));
-  card.addEventListener('pointerenter', () => selectProjectCard(card));
   card.addEventListener('keydown', event => {
     if (event.key !== 'Enter' && event.key !== ' ') return;
     event.preventDefault();
-    selectProjectCard(card);
+    selectProjectCard(card, { playTheme: true });
   });
 });
 
@@ -353,47 +354,147 @@ document.addEventListener('keydown', event => {
   if (event.key === 'ArrowRight') updateLightbox(lightboxIndex + 1);
 });
 
-// Low-volume ambient loop. It starts only after a user click.
+// Project themes start only after an explicit user action.
 const ambientToggle = document.querySelector('.ambient-toggle');
 const ambientVolume = document.getElementById('ambientVolume');
 const ambientTrack = document.getElementById('ambientTrack');
-let ambientEnabled = false;
+const ambientLabel = ambientToggle?.querySelector('.ambient-label');
+const ambientTrackLabel = ambientToggle?.querySelector('.ambient-track');
+const projectThemes = [
+  { game: 'Car Crash Arena', title: 'Hard Luck Shine', src: 'assets/audio/hard-luck-shine-car-crash-arena.mp3', start: 106 },
+  { game: "I'm Prisoner", title: 'Escape Route', src: 'assets/audio/escape-route-im-prisoner.mp3', start: 126 },
+  { game: 'Infinity Climb', title: 'Rare Biome', src: 'assets/audio/rare-biome-infinity-climb.mp3', start: 0 }
+];
+const themePlayers = projectThemes.map(theme => {
+  const player = new Audio(theme.src);
+  player.loop = true;
+  player.preload = 'metadata';
+  player.volume = 0;
+  return player;
+});
+const fadeFrames = new WeakMap();
+const playingYouTubeVideos = new Set();
+let activeThemeIndex = -1;
+let musicEnabled = false;
 
-function updateAmbientVolume() {
-  if (!ambientTrack) return;
-  const sliderValue = Number(ambientVolume?.value || 18) / 100;
-  ambientTrack.volume = Math.min(sliderValue, 0.45);
-  ambientTrack.muted = !ambientEnabled;
+function selectedVolume() {
+  return Math.min(Number(ambientVolume?.value || 18) / 100, 0.55);
 }
 
-ambientToggle?.addEventListener('click', async () => {
-  if (!ambientTrack) return;
+function effectiveVolume() {
+  return playingYouTubeVideos.size ? selectedVolume() * 0.12 : selectedVolume();
+}
 
-  ambientEnabled = !ambientEnabled;
-  updateAmbientVolume();
+function fadeAudio(player, target, duration = 480, onComplete) {
+  if (!player) return;
+  const previousFrame = fadeFrames.get(player);
+  if (previousFrame) cancelAnimationFrame(previousFrame);
 
-  if (ambientEnabled) {
-    try {
-      await ambientTrack.play();
-    } catch (error) {
-      ambientEnabled = false;
-      updateAmbientVolume();
+  const initial = player.volume;
+  const startedAt = performance.now();
+  const step = now => {
+    const progress = Math.min((now - startedAt) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    player.volume = Math.max(0, Math.min(1, initial + (target - initial) * eased));
+    if (progress < 1) {
+      fadeFrames.set(player, requestAnimationFrame(step));
+    } else {
+      fadeFrames.delete(player);
+      onComplete?.();
     }
-  } else {
-    ambientTrack.pause();
+  };
+  fadeFrames.set(player, requestAnimationFrame(step));
+}
+
+function updateMusicUI() {
+  const theme = projectThemes[activeThemeIndex];
+  ambientToggle?.setAttribute('aria-pressed', String(musicEnabled));
+  ambientToggle?.setAttribute('aria-label', musicEnabled ? 'Pause project theme music' : 'Play a project theme');
+  if (ambientLabel) ambientLabel.textContent = musicEnabled ? 'Theme music' : 'Theme music';
+  if (ambientTrackLabel) ambientTrackLabel.textContent = theme ? `${theme.title} · ${theme.game}` : 'Choose a project';
+  if (ambientTrack) ambientTrack.dataset.activeTheme = theme?.title || '';
+}
+
+async function playProjectTheme(index) {
+  const theme = projectThemes[index];
+  const nextPlayer = themePlayers[index];
+  if (!theme || !nextPlayer) return;
+
+  const previousIndex = activeThemeIndex;
+  const previousPlayer = themePlayers[previousIndex];
+  activeThemeIndex = index;
+  musicEnabled = true;
+
+  if (previousPlayer && previousPlayer !== nextPlayer) {
+    fadeAudio(previousPlayer, 0, 360, () => previousPlayer.pause());
   }
 
-  ambientToggle.setAttribute('aria-pressed', String(ambientEnabled));
-  ambientToggle.setAttribute('aria-label', ambientEnabled ? 'Mute ambient background audio' : 'Play ambient background audio');
-  const ambientLabel = ambientToggle.querySelector('.ambient-label');
-  if (ambientLabel) ambientLabel.textContent = ambientEnabled ? 'Mute' : 'Ambient';
+  if (nextPlayer.paused) {
+    const seekToHighlight = () => {
+      if (Number.isFinite(nextPlayer.duration) && theme.start < nextPlayer.duration) nextPlayer.currentTime = theme.start;
+    };
+    if (nextPlayer.readyState >= 1) seekToHighlight();
+    else nextPlayer.addEventListener('loadedmetadata', seekToHighlight, { once: true });
+    nextPlayer.volume = 0;
+    try {
+      await nextPlayer.play();
+    } catch (error) {
+      musicEnabled = false;
+    }
+  }
+
+  if (musicEnabled) fadeAudio(nextPlayer, effectiveVolume(), 560);
+  updateMusicUI();
+}
+
+function pauseThemeMusic() {
+  musicEnabled = false;
+  const player = themePlayers[activeThemeIndex];
+  if (player) fadeAudio(player, 0, 320, () => player.pause());
+  updateMusicUI();
+}
+
+ambientToggle?.addEventListener('click', () => {
+  if (musicEnabled) {
+    pauseThemeMusic();
+    return;
+  }
+  const randomTheme = Math.random() < 0.5 ? 0 : 1;
+  playProjectTheme(randomTheme);
+  selectProjectCard(projectCards[randomTheme]);
 });
 
 ambientVolume?.addEventListener('input', () => {
-  updateAmbientVolume();
+  if (!musicEnabled) return;
+  const player = themePlayers[activeThemeIndex];
+  if (player) fadeAudio(player, effectiveVolume(), 180);
 });
 
-updateAmbientVolume();
+function updateThemePriority() {
+  if (!musicEnabled) return;
+  const player = themePlayers[activeThemeIndex];
+  if (player) fadeAudio(player, effectiveVolume(), 260);
+}
+
+function setupYouTubePriority() {
+  if (!window.YT?.Player) return;
+  document.querySelectorAll('#projects .video-embed iframe').forEach((iframe, index) => {
+    new window.YT.Player(iframe, {
+      events: {
+        onStateChange(event) {
+          if (event.data === window.YT.PlayerState.PLAYING) playingYouTubeVideos.add(index);
+          else playingYouTubeVideos.delete(index);
+          updateThemePriority();
+        }
+      }
+    });
+  });
+}
+
+if (window.YT?.Player) setupYouTubePriority();
+else window.onYouTubeIframeAPIReady = setupYouTubePriority;
+
+updateMusicUI();
 
 document.body.classList.add('miami-deco-theme');
 document.body.dataset.theme = 'miami';

@@ -103,17 +103,11 @@
   align-items:flex-end;
 }
 .miami-deco-theme #portfolio .shot figcaption span{
-  padding:5px 8px;
-  border:1px solid color-mix(in srgb,var(--portfolio-accent, var(--miami-gold)) 36%,rgba(255,244,216,.18));
-  border-radius:999px;
-  background:rgba(5,9,14,.66);
-  backdrop-filter:blur(10px);
-  font-size:9px;
-  line-height:1;
-  box-shadow:none;
+  display:none;
 }
 .miami-deco-theme #portfolio .shot figcaption strong{
-  max-width:62%;
+  max-width:78%;
+  margin-left:auto;
   font-family:var(--sans);
   font-size:16px;
   line-height:1.05;
@@ -921,11 +915,26 @@
 }
 .miami-deco-theme #projects .project-identity{
   border:0;
-  border-radius:14px;
+  width:58px;
+  height:58px;
+  padding:0;
+  border-radius:17px;
   background:rgba(9,8,20,.42);
   box-shadow:0 8px 20px rgba(0,0,0,.24);
   backdrop-filter:blur(8px);
-  opacity:.92;
+  opacity:1;
+  overflow:hidden;
+}
+.miami-deco-theme #projects .project-identity--logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  border-radius:inherit;
+  transform:none!important;
+}
+.miami-deco-theme #projects .project-card--compact.is-selected .project-identity{
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 76%,white),0 12px 30px rgba(0,0,0,.4),0 0 24px color-mix(in srgb,var(--accent) 34%,transparent);
 }
 
 /* Stronger store destination: explicit Meta Store CTA with icon and directional cue. */
@@ -1017,7 +1026,7 @@
   box-shadow:0 0 22px color-mix(in srgb,var(--studio-gold) 24%,transparent);
 }
 
-/* Low-volume generated ambience: explicit user control, no autoplay surprise. */
+/* Project theme player: explicit user control, no autoplay surprise. */
 .miami-deco-theme .ambient-audio{
   position:fixed;
   z-index:80;
@@ -1048,6 +1057,26 @@
   text-transform:uppercase;
   cursor:pointer;
   transition:transform .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease;
+}
+.miami-deco-theme .ambient-copy{
+  display:grid;
+  gap:3px;
+  min-width:132px;
+  text-align:left;
+}
+.miami-deco-theme .ambient-track{
+  max-width:190px;
+  overflow:hidden;
+  color:#c8b7c7;
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:.02em;
+  text-overflow:ellipsis;
+  text-transform:none;
+  white-space:nowrap;
+}
+.miami-deco-theme .ambient-toggle[aria-pressed="true"] .ambient-track{
+  color:rgba(22,14,32,.74);
 }
 .miami-deco-theme .ambient-toggle:hover,
 .miami-deco-theme .ambient-toggle:focus-visible,
@@ -1090,6 +1119,12 @@
   .miami-deco-theme .ambient-label,
   .miami-deco-theme .ambient-volume span{
     display:none;
+  }
+  .miami-deco-theme .ambient-copy{
+    min-width:96px;
+  }
+  .miami-deco-theme .ambient-track{
+    max-width:120px;
   }
   .miami-deco-theme .ambient-volume input{
     width:72px;
