@@ -1321,3 +1321,13 @@
     width:100%;
   }
 }
+
+/* Updated contact labels are intentionally readable instead of truncated. */
+.miami-deco-theme .inquiry-choice{
+  min-height:92px;
+}
+.miami-deco-theme .inquiry-choice small{
+  overflow:visible;
+  text-overflow:clip;
+  white-space:normal;
+}

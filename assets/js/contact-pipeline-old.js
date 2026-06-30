@@ -30,62 +30,59 @@ const serviceFlow = document.getElementById('serviceFlow');
 const serviceFlowTitle = document.getElementById('serviceFlowTitle');
 const serviceFlowIntro = document.getElementById('serviceFlowIntro');
 const serviceFlowSteps = document.getElementById('serviceFlowSteps');
-const serviceFlowNote = document.getElementById('serviceFlowNote');
-const contactChoiceTriggers = Array.from(document.querySelectorAll('[data-contact-choice]'));
 
 const serviceFlows = Object.freeze({
-  prototypes: {
-    title: 'Concepts and Prototypes',
-    intro: 'A short production cycle that turns an idea into something playable, testable and easier to plan.',
+  'full-cycle': {
+    title: 'Full-Cycle Game Development',
+    intro: 'A lean, accountable pipeline from direction to a stable release build.',
     steps: [
-      ['Define', 'Clarify the goal, audience, platform and the main question the prototype must answer.'],
-      ['Build', 'Create the smallest playable version using only the systems and content needed to test the idea.'],
-      ['Test', 'Review the core experience, identify risks and improve the strongest parts.'],
-      ['Next Step', 'Deliver the prototype with findings, scope options and a practical recommendation for what comes next.']
-    ],
-    note: 'The prototype can remain a standalone result or move into VR production or full-cycle development.'
+      ['Scope', 'Define the audience, core loop, platform, production limits and the smallest strong version of the game.'],
+      ['Prove', 'Build and playtest the riskiest mechanics early before committing to full production.'],
+      ['Produce', 'Create systems, worlds and content through focused milestones, adding specialists only where needed.'],
+      ['Optimize & Ship', 'Profile, polish, test and prepare a stable store-ready build with practical handoff.']
+    ]
   },
   'vr-worlds': {
     title: 'VR Worlds and Experiences',
-    intro: 'An interactive VR production focused on purpose, presence, comfort and real device performance.',
+    intro: 'Presence and comfort are designed together with a measurable headset performance budget.',
     steps: [
-      ['Experience Brief', 'Define the purpose, audience, target headset, comfort rules and interaction goals.'],
-      ['Interaction Prototype', 'Test locomotion, hands, scale, feedback and usability directly inside the headset.'],
-      ['World Production', 'Build the environment, interactions, visual language and supporting systems.'],
-      ['Optimize and Deliver', 'Measure performance, refine the experience and prepare the final device build.']
+      ['Experience Map', 'Set the player fantasy, headset target, comfort rules and the interactions that must feel natural.'],
+      ['Interaction Lab', 'Prototype locomotion, hands, scale and feedback directly in-headset to validate presence early.'],
+      ['World Build', 'Produce the environment, gameplay and visual language around readable VR interaction.'],
+      ['Profile & Deploy', 'Measure CPU and GPU cost, optimize the expensive paths and validate the final device build.']
     ]
   },
-  'full-cycle': {
-    title: 'Full-Cycle Game Development',
-    intro: 'One connected production path from the first plan to a complete, stable build.',
+  prototypes: {
+    title: 'Concepts and Prototypes',
+    intro: 'A short validation cycle that turns uncertainty into a playable production decision.',
     steps: [
-      ['Scope and Direction', 'Define the audience, core loop, platform, production limits and release goals.'],
-      ['Prototype and Validate', 'Build and test the highest-risk mechanics before committing to full production.'],
-      ['Production', 'Create the systems, worlds, art and content through focused milestones.'],
-      ['Optimize and Deliver', 'Profile, polish, test and prepare a stable build with a practical project handoff.']
+      ['Frame', 'Turn the idea into one clear player promise, one core question and a strict prototype boundary.'],
+      ['Build Fast', 'Create the smallest playable version with temporary assets and only the systems needed to learn.'],
+      ['Test & Learn', 'Playtest the core loop, observe friction and separate strong signals from expensive distractions.'],
+      ['Production Map', 'Deliver the prototype with findings, priorities, scope options and a cost-effective next-step plan.']
     ]
   }
 });
 const inquiryDetails = Object.freeze({
   Business: {
-    label: 'Project inquiry',
-    title: 'Tell us what you want to build.',
-    copy: 'Share the project stage, target platform, timeline, budget range and the kind of support you need. We will reply with a clear next step.'
+    label: 'Business inquiry',
+    title: 'Bring a game, prototype or production challenge.',
+    copy: 'Share the project stage, target platform and the support you need. We will reply with a focused next step.'
   },
   Partnership: {
     label: 'Partnership inquiry',
-    title: 'Let\'s explore a possible fit.',
-    copy: 'Tell us whether you are considering investment, publishing, co-development or another type of partnership. Share what you are looking for and which project caught your attention.'
+    title: 'Combine strengths around a clear opportunity.',
+    copy: 'Tell us what you are building, what you bring to the table and what a strong partnership would unlock.'
   },
   Hiring: {
-    label: 'Specialist network',
-    title: 'Share your work with the studio.',
-    copy: 'Submit your role, portfolio, availability and rate range for future project opportunities.'
+    label: 'Hiring profile',
+    title: 'Show us the work you want to be known for.',
+    copy: 'Add your role, location, availability, rate and strongest professional links. Your profile stays structured and easy to review.'
   },
   General: {
-    label: 'General inquiry',
-    title: 'Start a conversation.',
-    copy: 'Send your question or message and we will get back to you.'
+    label: 'General message',
+    title: 'Start with the part that matters most.',
+    copy: 'Use this path for studio questions, press, community messages or anything that does not fit the other options.'
   }
 });
 const hiringInputs = {
@@ -220,14 +217,15 @@ function clearInvalidStates() {
 function buildAutoSubject() {
   const type = contactType?.value || 'Business';
   if (type === 'Hiring') {
-    return 'Specialist Network Application';
+    const seniority = fieldValue(hiringInputs.seniority);
+    const roleTitle = fieldValue(hiringInputs.roleTitle);
+    const country = fieldValue(hiringInputs.country);
+    const role = [seniority, roleTitle].filter(Boolean).join(' ').trim() || 'Candidate';
+    return ['Hiring Application', role, country].filter(Boolean).join(' — ');
   }
 
-  if (type === 'Partnership') return 'Partnership Inquiry';
-  if (type === 'General') return 'General Inquiry';
-
-  const typeLabel = 'Business Inquiry';
-  return selectedService ? `${typeLabel}: ${selectedService}` : typeLabel;
+  const typeLabel = type === 'General' ? 'General Inquiry' : `${type} Inquiry`;
+  return selectedService ? `${typeLabel} — ${selectedService}` : typeLabel;
 }
 
 function applyAutoSubject({ force = false } = {}) {
@@ -264,11 +262,6 @@ function renderServiceFlow(card) {
     return step;
   }));
 
-  if (serviceFlowNote) {
-    serviceFlowNote.textContent = flow.note || '';
-    serviceFlowNote.hidden = !flow.note;
-  }
-
   serviceFlow.hidden = false;
   serviceFlow.classList.remove('is-visible');
   requestAnimationFrame(() => serviceFlow.classList.add('is-visible'));
@@ -287,7 +280,7 @@ function selectService(card) {
   updateContactFormState();
 
   if (serviceSelectionStatus) {
-    serviceSelectionStatus.textContent = `${selectedService} selected. Your project email is prepared below. Continue whenever you are ready.`;
+    serviceSelectionStatus.textContent = `${selectedService} selected. Your project email is prepared below - continue whenever you are ready.`;
     serviceSelectionStatus.hidden = false;
   }
 }
@@ -300,14 +293,6 @@ inquiryChoiceCards.forEach(card => {
   card.addEventListener('click', () => {
     if (!contactType) return;
     contactType.value = card.dataset.inquiryChoice || 'Business';
-    contactType.dispatchEvent(new Event('change', { bubbles: true }));
-  });
-});
-
-contactChoiceTriggers.forEach(trigger => {
-  trigger.addEventListener('click', () => {
-    if (!contactType) return;
-    contactType.value = trigger.dataset.contactChoice || 'Business';
     contactType.dispatchEvent(new Event('change', { bubbles: true }));
   });
 });

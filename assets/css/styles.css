@@ -543,3 +543,23 @@ body.miami-deco-theme .version-switcher{display:none}
   .miami-deco-theme .contact-form{padding:18px}
   .miami-deco-theme .hiring-group{padding:14px}
 }
+
+/* Text update support: comparison switcher, platform icons, compact qualifications and partnerships. */
+.platform-icon-row{display:flex;align-items:center;gap:10px;margin-top:16px}
+.platform-icon-row span{display:grid;place-items:center;width:34px;height:34px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:#d8e9ff}
+.platform-icon-row svg{width:19px;height:19px}
+#services .service-selection-status--static{margin-top:22px}
+#services .flow-note{margin:18px 0 0;color:#b8c5d1;font-size:12px;line-height:1.55}
+#crew .skill-groups--qualifications{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+#crew .skill-groups--qualifications .skill-group strong{font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+#crew .skill-groups--qualifications .skill-list{gap:8px 12px}
+#crew .skill-groups--qualifications .skill-list span{font-size:12px;line-height:1.35}
+#partnerships .partnerships-shell{padding:clamp(28px,4vw,48px)}
+#partnerships .section-head{margin-bottom:0}
+#partnerships .section-head p + p{margin-top:12px}
+.partnership-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+@media (max-width:780px){
+  #crew .skill-groups--qualifications{grid-template-columns:1fr}
+  .platform-icon-row{gap:8px}
+  .platform-icon-row span{width:32px;height:32px}
+}
