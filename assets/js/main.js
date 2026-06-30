@@ -106,6 +106,31 @@ if (talentSystem) {
     return orbitingTalents.filter(talent => getComputedStyle(talent.node).display !== 'none');
   }
 
+  let talentHighlightCursor = 0;
+  let talentHighlightPhase = 0;
+
+  function highlightTalentGroup() {
+    const visibleTalents = visibleOrbitingTalents();
+    if (!visibleTalents.length) return;
+
+    const groupSizes = [3, 2, 4];
+    const groupSize = Math.min(groupSizes[talentHighlightPhase % groupSizes.length], visibleTalents.length);
+    const activeNodes = new Set();
+
+    for (let index = 0; index < groupSize; index += 1) {
+      activeNodes.add(visibleTalents[(talentHighlightCursor + index * 2) % visibleTalents.length].node);
+    }
+
+    orbitingTalents.forEach(talent => talent.node.classList.toggle('is-active', activeNodes.has(talent.node)));
+    talentHighlightCursor = (talentHighlightCursor + 3) % visibleTalents.length;
+    talentHighlightPhase += 1;
+  }
+
+  highlightTalentGroup();
+  window.setInterval(() => {
+    if (!reducedTalentMotion.matches) highlightTalentGroup();
+  }, 3600);
+
   function resolveTalentCollisions() {
     const visibleTalents = visibleOrbitingTalents();
     const rects = visibleTalents.map(talent => talent.node.getBoundingClientRect());
