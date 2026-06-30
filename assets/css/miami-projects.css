@@ -723,7 +723,8 @@
   place-items:center;
   width:46px;
   height:46px;
-  padding:7px;
+  padding:0;
+  overflow:hidden;
   border:1px solid color-mix(in srgb,var(--chapter-color) 58%,transparent);
   border-radius:50%;
   background:color-mix(in srgb,var(--chapter-color) 11%,rgba(10,8,20,.86));
@@ -732,7 +733,7 @@
 .miami-deco-theme #portfolio .portfolio-chapter-mark img{
   width:100%;
   height:100%;
-  object-fit:contain;
+  object-fit:cover;
   border-radius:50%;
 }
 .miami-deco-theme #portfolio .portfolio-chapter strong{
