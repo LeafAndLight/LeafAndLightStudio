@@ -952,20 +952,33 @@
   box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 76%,white),0 12px 30px rgba(0,0,0,.4),0 0 24px color-mix(in srgb,var(--accent) 34%,transparent);
 }
 
-/* Stronger store destination: explicit Meta Store CTA with icon and directional cue. */
+/* Compact Meta destination: a circular logo button above each trailer. */
 .miami-deco-theme #projects .project-actions .store-link--meta{
-  display:grid;
-  grid-template-columns:28px minmax(0,1fr);
+  display:flex;
   align-items:center;
   justify-content:center;
-  gap:10px;
-  min-height:46px;
-  padding:8px 16px;
-  border-radius:14px;
-  font-size:11px;
-  letter-spacing:.085em;
-  text-transform:uppercase;
+  align-self:flex-start;
+  width:44px;
+  min-width:44px;
+  height:44px;
+  min-height:44px;
+  padding:0;
+  border-radius:50%!important;
+  color:#0866ff!important;
+  background:#f4f6f8!important;
+  border:1px solid rgba(8,102,255,.22);
+  box-shadow:0 8px 20px rgba(0,0,0,.2);
+  clip-path:none!important;
   isolation:isolate;
+}
+.miami-deco-theme #projects .store-link--meta:after{
+  content:none;
+}
+.miami-deco-theme #projects .store-link--meta:hover,
+.miami-deco-theme #projects .store-link--meta:focus-visible{
+  color:#0866ff!important;
+  background:#fff!important;
+  border-color:rgba(8,102,255,.58);
 }
 .miami-deco-theme #projects .store-link--meta:before{
   content:"";
@@ -981,14 +994,11 @@
   transform:translateX(120%);
 }
 .miami-deco-theme #projects .store-link--meta .meta-store-icon{
-  width:28px;
-  height:28px;
-  padding:4px;
-  border-radius:10px;
-  background:rgba(15,9,24,.12);
-}
-.miami-deco-theme #projects .store-link--meta > span{
-  line-height:1.2;
+  width:26px;
+  height:26px;
+  padding:0;
+  border-radius:0;
+  background:transparent;
 }
 /* Every expandable image uses a substantial palette border instead of the plus badge. */
 .miami-deco-theme .portfolio-open:after{
@@ -1295,10 +1305,10 @@
 
 @media (max-width:780px){
   .miami-deco-theme #projects .project-actions .store-link--meta{
-    grid-template-columns:26px minmax(0,1fr);
-    gap:9px;
-    min-height:44px;
-    font-size:10px;
+    width:42px;
+    min-width:42px;
+    height:42px;
+    min-height:42px;
   }
   .miami-deco-theme .footer-brand-card{
     min-width:0;
