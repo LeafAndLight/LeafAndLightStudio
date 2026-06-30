@@ -1322,12 +1322,17 @@
   }
 }
 
-/* Updated contact labels are intentionally readable instead of truncated. */
-.miami-deco-theme .inquiry-choice{
-  min-height:92px;
-}
-.miami-deco-theme .inquiry-choice small{
-  overflow:visible;
-  text-overflow:clip;
-  white-space:normal;
+/* Branching service order: prototype first, larger production paths below. */
+@media (min-width:901px){
+  .miami-deco-theme #services .service-pillars--branching{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    max-width:min(980px,100%);
+    margin-inline:auto;
+    align-items:stretch;
+  }
+  .miami-deco-theme #services .service-pillars--branching .service-select-card[data-flow="prototypes"]{
+    grid-column:1/-1;
+    width:min(520px,100%);
+    justify-self:center;
+  }
 }

@@ -68,24 +68,24 @@ const serviceFlows = Object.freeze({
 });
 const inquiryDetails = Object.freeze({
   Business: {
-    label: 'Project inquiry',
-    title: 'Tell us what you want to build.',
-    copy: 'Share the project stage, target platform, timeline, budget range and the kind of support you need. We will reply with a clear next step.'
+    label: 'Business inquiry',
+    title: 'Bring a game, prototype or production challenge.',
+    copy: 'Share the project stage, target platform and the support you need. We will reply with a focused next step.'
   },
   Partnership: {
     label: 'Partnership inquiry',
-    title: 'Let\'s explore a possible fit.',
-    copy: 'Tell us whether you are considering investment, publishing, co-development or another type of partnership. Share what you are looking for and which project caught your attention.'
+    title: 'Combine strengths around a clear opportunity.',
+    copy: 'Tell us what you are building, what you bring to the table and what a strong partnership would unlock.'
   },
   Hiring: {
-    label: 'Specialist network',
-    title: 'Share your work with the studio.',
-    copy: 'Submit your role, portfolio, availability and rate range for future project opportunities.'
+    label: 'Hiring profile',
+    title: 'Show us the work you want to be known for.',
+    copy: 'Add your role, location, availability, rate and strongest professional links. Your profile stays structured and easy to review.'
   },
   General: {
-    label: 'General inquiry',
-    title: 'Start a conversation.',
-    copy: 'Send your question or message and we will get back to you.'
+    label: 'General message',
+    title: 'Start with the part that matters most.',
+    copy: 'Use this path for studio questions, press, community messages or anything that does not fit the other options.'
   }
 });
 const hiringInputs = {
