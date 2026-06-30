@@ -241,11 +241,12 @@
   --choice-rgb:84,200,255;
   position:relative;
   display:grid;
-  grid-template-columns:48px minmax(0,1fr);
-  gap:13px;
+  grid-template-columns:54px minmax(0,1fr);
+  gap:16px;
   align-items:center;
   min-width:0;
-  padding:15px;
+  min-height:72px;
+  padding:15px 15px 15px 26px;
   border:1px solid rgba(var(--choice-rgb),.18);
   border-radius:18px;
   background:linear-gradient(145deg,rgba(var(--choice-rgb),.045),rgba(4,10,20,.78));
@@ -271,16 +272,30 @@
 .miami-deco-theme .inquiry-choice-icon{
   display:grid;
   place-items:center;
-  width:48px;
-  height:48px;
-  border:1px solid rgba(var(--choice-rgb),.28);
-  border-radius:15px;
-  background:rgba(var(--choice-rgb),.09);
+  width:62px;
+  height:62px;
+  margin-left:-14px;
+  border:1px solid rgba(var(--choice-rgb),.34);
+  border-radius:19px;
+  background:linear-gradient(145deg,rgba(var(--choice-rgb),.18),rgba(var(--choice-rgb),.055));
   color:rgb(var(--choice-rgb));
+  box-shadow:0 14px 28px rgba(0,0,0,.2),0 0 20px rgba(var(--choice-rgb),.08);
+  transform-origin:center;
+  transition:transform .22s ease,box-shadow .22s ease,background .22s ease,border-color .22s ease;
+}
+.miami-deco-theme .inquiry-choice:hover .inquiry-choice-icon,
+.miami-deco-theme .inquiry-choice:focus-visible .inquiry-choice-icon{
+  transform:translateY(-2px) scale(1.05);
+}
+.miami-deco-theme .inquiry-choice.is-selected .inquiry-choice-icon{
+  border-color:rgba(var(--choice-rgb),.68);
+  background:linear-gradient(145deg,rgba(var(--choice-rgb),.28),rgba(var(--choice-rgb),.09));
+  box-shadow:0 18px 34px rgba(0,0,0,.26),0 0 30px rgba(var(--choice-rgb),.18);
+  transform:scale(1.18);
 }
 .miami-deco-theme .inquiry-choice-icon svg{
-  width:25px;
-  height:25px;
+  width:30px;
+  height:30px;
 }
 .miami-deco-theme .inquiry-choice > span:last-child{
   display:grid;
@@ -984,11 +999,101 @@
 .miami-deco-theme #crew .crew-work-item:nth-child(7){--image-focus:var(--studio-violet)}
 .miami-deco-theme #crew .crew-work-item{
   border:0;
+  border-radius:20px;
+  clip-path:inset(0 round 20px);
+  overflow:hidden;
+  isolation:isolate;
+}
+.miami-deco-theme #crew .crew-work-item img,
+.miami-deco-theme #crew .portfolio-open{
+  border-radius:inherit;
 }
 .miami-deco-theme #crew .portfolio-open:after{
+  inset:0;
+  border-radius:inherit!important;
+  box-sizing:border-box;
   border-color:var(--studio-gold);
   background:transparent;
   box-shadow:0 0 22px color-mix(in srgb,var(--studio-gold) 24%,transparent);
+}
+
+/* Low-volume generated ambience: explicit user control, no autoplay surprise. */
+.miami-deco-theme .ambient-audio{
+  position:fixed;
+  z-index:80;
+  right:18px;
+  bottom:18px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:8px;
+  border:1px solid rgba(245,198,111,.2);
+  border-radius:999px;
+  background:rgba(12,9,22,.72);
+  box-shadow:0 18px 42px rgba(0,0,0,.32),0 0 24px rgba(223,112,176,.08);
+  backdrop-filter:blur(16px);
+}
+.miami-deco-theme .ambient-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  min-height:38px;
+  padding:8px 12px;
+  border:0;
+  border-radius:999px;
+  background:linear-gradient(135deg,rgba(245,198,111,.12),rgba(173,123,212,.14));
+  color:var(--studio-cream);
+  font:900 11px/1 var(--font-body);
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:transform .2s ease,background .2s ease,color .2s ease,box-shadow .2s ease;
+}
+.miami-deco-theme .ambient-toggle:hover,
+.miami-deco-theme .ambient-toggle:focus-visible,
+.miami-deco-theme .ambient-toggle[aria-pressed="true"]{
+  color:#160e20;
+  outline:none;
+  background:linear-gradient(135deg,var(--studio-gold),var(--studio-apricot) 58%,var(--studio-pink));
+  box-shadow:0 12px 26px rgba(223,112,176,.18);
+  transform:translateY(-1px);
+}
+.miami-deco-theme .ambient-icon{
+  display:grid;
+  place-items:center;
+  width:22px;
+  height:22px;
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+}
+.miami-deco-theme .ambient-volume{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding-right:7px;
+  color:#bdaebe;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.miami-deco-theme .ambient-volume input{
+  width:84px;
+  accent-color:var(--studio-gold);
+}
+@media (max-width:780px){
+  .miami-deco-theme .ambient-audio{
+    right:12px;
+    bottom:12px;
+    max-width:calc(100vw - 24px);
+  }
+  .miami-deco-theme .ambient-label,
+  .miami-deco-theme .ambient-volume span{
+    display:none;
+  }
+  .miami-deco-theme .ambient-volume input{
+    width:72px;
+  }
 }
 
 /* Cleaner top shortcuts: color and depth without the thin outline. */

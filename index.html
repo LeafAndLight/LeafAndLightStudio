@@ -8,11 +8,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Josefin+Sans:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260629210946-9b15f2a891a7" />
-  <link rel="stylesheet" href="assets/css/miami-layout.css?v=20260629210946-9b15f2a891a7" />
-  <link rel="stylesheet" href="assets/css/miami-art-deco.css?v=20260629210946-9b15f2a891a7" />
-  <link rel="stylesheet" href="assets/css/miami-projects.css?v=20260629210946-9b15f2a891a7" />
-  <link rel="stylesheet" href="assets/css/version-switcher.css?v=20260629210946-9b15f2a891a7" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260630055505-b90c318e113b" />
+  <link rel="stylesheet" href="assets/css/miami-layout.css?v=20260630055505-b90c318e113b" />
+  <link rel="stylesheet" href="assets/css/miami-art-deco.css?v=20260630055505-b90c318e113b" />
+  <link rel="stylesheet" href="assets/css/miami-projects.css?v=20260630055505-b90c318e113b" />
+  <link rel="stylesheet" href="assets/css/version-switcher.css?v=20260630055505-b90c318e113b" />
 </head>
 <body class="miami-deco-theme">
   <header class="header">
@@ -86,7 +86,7 @@
         <div class="project-grid project-catalog">
           <article class="project-card project-card--compact">
             <div class="project-media">
-              <img src="assets/images/car_crash_showcase_combat.jpg" alt="Car Crash Arena vehicle combat" />
+              <img src="assets/images/car_crash_showcase_gauntlet.jpg" alt="Car Crash Arena bone gauntlet route" />
               <div class="project-identity"><img src="assets/icons/car-crash-icon.png" alt="" aria-hidden="true" /></div>
               <span class="project-status">Releases July 15</span>
             </div>
@@ -106,7 +106,7 @@
 
           <article class="project-card project-card--compact">
             <div class="project-media">
-              <img src="assets/images/im_prisoner_03.png" alt="I'm Prisoner maximum-security facility" />
+              <img src="assets/images/portfolio/im-prisoner/im-prisoner-rooftop-yard.png" alt="I'm Prisoner rooftop escape yard" />
               <div class="project-identity"><img src="assets/icons/im-prisoner-icon.png" alt="" aria-hidden="true" /></div>
               <span class="project-status">In development</span>
             </div>
@@ -716,6 +716,17 @@
     </section>
     <div class="back-to-top-row">
       <a class="back-to-top-btn" href="#top" aria-label="Back to top" title="Back to top"><span aria-hidden="true">↑</span></a>
+    </div>
+    <div class="ambient-audio" aria-label="Ambient site audio controls">
+      <audio id="ambientTrack" src="assets/audio/leaf-light-ambient.mp3" loop preload="auto"></audio>
+      <button class="ambient-toggle" type="button" aria-pressed="false" aria-label="Play ambient background audio">
+        <span class="ambient-icon" aria-hidden="true">♪</span>
+        <span class="ambient-label">Ambient</span>
+      </button>
+      <label class="ambient-volume">
+        <span>Volume</span>
+        <input id="ambientVolume" type="range" min="0" max="100" value="18" />
+      </label>
     </div>
   </main>
 

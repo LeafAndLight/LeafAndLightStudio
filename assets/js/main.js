@@ -352,5 +352,48 @@ document.addEventListener('keydown', event => {
   if (event.key === 'ArrowLeft') updateLightbox(lightboxIndex - 1);
   if (event.key === 'ArrowRight') updateLightbox(lightboxIndex + 1);
 });
+
+// Low-volume ambient loop. It starts only after a user click.
+const ambientToggle = document.querySelector('.ambient-toggle');
+const ambientVolume = document.getElementById('ambientVolume');
+const ambientTrack = document.getElementById('ambientTrack');
+let ambientEnabled = false;
+
+function updateAmbientVolume() {
+  if (!ambientTrack) return;
+  const sliderValue = Number(ambientVolume?.value || 18) / 100;
+  ambientTrack.volume = Math.min(sliderValue, 0.45);
+  ambientTrack.muted = !ambientEnabled;
+}
+
+ambientToggle?.addEventListener('click', async () => {
+  if (!ambientTrack) return;
+
+  ambientEnabled = !ambientEnabled;
+  updateAmbientVolume();
+
+  if (ambientEnabled) {
+    try {
+      await ambientTrack.play();
+    } catch (error) {
+      ambientEnabled = false;
+      updateAmbientVolume();
+    }
+  } else {
+    ambientTrack.pause();
+  }
+
+  ambientToggle.setAttribute('aria-pressed', String(ambientEnabled));
+  ambientToggle.setAttribute('aria-label', ambientEnabled ? 'Mute ambient background audio' : 'Play ambient background audio');
+  const ambientLabel = ambientToggle.querySelector('.ambient-label');
+  if (ambientLabel) ambientLabel.textContent = ambientEnabled ? 'Mute' : 'Ambient';
+});
+
+ambientVolume?.addEventListener('input', () => {
+  updateAmbientVolume();
+});
+
+updateAmbientVolume();
+
 document.body.classList.add('miami-deco-theme');
 document.body.dataset.theme = 'miami';
