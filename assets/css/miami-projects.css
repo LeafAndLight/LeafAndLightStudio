@@ -703,18 +703,22 @@
   gap:13px;
   padding:24px 0 12px;
 }
-.miami-deco-theme #portfolio .portfolio-chapter--car{--chapter-color:var(--studio-gold)}
-.miami-deco-theme #portfolio .portfolio-chapter--prison{--chapter-color:var(--studio-violet)}
-.miami-deco-theme #portfolio .portfolio-chapter--climb{--chapter-color:var(--studio-rose)}
+.miami-deco-theme #portfolio .portfolio-chapter--car{--chapter-color:var(--studio-gold);--chapter-rgb:245,198,111}
+.miami-deco-theme #portfolio .portfolio-chapter--prison{--chapter-color:var(--studio-violet);--chapter-rgb:173,123,212}
+.miami-deco-theme #portfolio .portfolio-chapter--climb{--chapter-color:var(--studio-rose);--chapter-rgb:232,141,169}
 .miami-deco-theme #portfolio .portfolio-chapter .portfolio-chapter-label{
   grid-column:1;
   grid-row:1;
-  color:color-mix(in srgb,var(--chapter-color) 72%,var(--studio-cream));
+  color:color-mix(in srgb,var(--chapter-color) 86%,var(--studio-cream))!important;
+  text-shadow:0 0 16px rgba(var(--chapter-rgb),.24);
 }
 .miami-deco-theme #portfolio .portfolio-chapter:after{
   grid-column:2;
   grid-row:1;
-  background:linear-gradient(90deg,rgba(245,198,111,.1),color-mix(in srgb,var(--chapter-color) 38%,transparent),rgba(173,123,212,.1));
+  height:3px;
+  border-radius:999px;
+  background:linear-gradient(90deg,rgba(var(--chapter-rgb),.12),rgba(var(--chapter-rgb),.58),rgba(var(--chapter-rgb),.12));
+  box-shadow:0 0 18px rgba(var(--chapter-rgb),.28);
 }
 .miami-deco-theme #portfolio .portfolio-chapter .portfolio-chapter-mark{
   grid-column:3!important;
@@ -739,7 +743,7 @@
 .miami-deco-theme #portfolio .portfolio-chapter strong{
   grid-column:4;
   grid-row:1;
-  color:var(--chapter-color);
+  color:var(--chapter-color)!important;
   font-size:clamp(24px,2.6vw,38px);
   text-shadow:0 0 20px color-mix(in srgb,var(--chapter-color) 18%,transparent);
 }
@@ -928,6 +932,7 @@
 }
 .miami-deco-theme #portfolio .portfolio-chapter--climb{
   --chapter-color:#a8d67a;
+  --chapter-rgb:168,214,122;
 }
 .miami-deco-theme #projects .project-identity{
   border:0;
