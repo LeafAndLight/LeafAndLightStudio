@@ -7,13 +7,13 @@ window.HERO_IMAGES = [
     position: 'center'
   },
   {
-    src: 'assets/images/portfolio/im-prisoner/im-prisoner-main-cells.jpg',
+    src: 'assets/images/portfolio/im-prisoner/im-prisoner-main-cells-new.png',
     alt: "I'm Prisoner main cell block",
     position: 'center'
   },
   {
-    src: 'assets/images/portfolio/infinity-climb/infinity-climb-tower-close.jpg',
-    alt: 'Infinity Climb climbing wall',
+    src: 'assets/images/portfolio/infinity-climb/infinity-climb-main-cover.png',
+    alt: 'Infinity Climb tower rising above the forest',
     position: 'center'
   }
 ];
