@@ -387,7 +387,7 @@ const ambientLabel = ambientToggle?.querySelector('.ambient-label');
 const ambientTrackLabel = ambientToggle?.querySelector('.ambient-track');
 const projectThemes = [
   { game: 'Car Crash Arena', title: 'Hard Luck Shine', src: 'assets/audio/hard-luck-shine-car-crash-arena.mp3', start: 106 },
-  { game: "I'm Prisoner", title: 'Escape Route', src: 'assets/audio/escape-route-im-prisoner.mp3', start: 126 },
+  { game: "I'm Prisoner", title: 'Escape Route', src: 'assets/audio/escape-route-im-prisoner.mp3', start: 27 },
   { game: 'Infinity Climb', title: 'Rare Biome', src: 'assets/audio/rare-biome-infinity-climb.mp3', start: 0 }
 ];
 const themePlayers = projectThemes.map(theme => {
