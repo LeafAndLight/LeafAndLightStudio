@@ -390,9 +390,10 @@ const projectThemes = [
   { game: "I'm Prisoner", title: 'Escape Route', src: 'assets/audio/escape-route-im-prisoner.mp3', start: 27 },
   { game: 'Infinity Climb', title: 'Rare Biome', src: 'assets/audio/rare-biome-infinity-climb.mp3', start: 0 }
 ];
+const projectThemeQueue = [1, 0, 2];
 const themePlayers = projectThemes.map(theme => {
   const player = new Audio(theme.src);
-  player.loop = true;
+  player.loop = false;
   player.preload = 'metadata';
   player.volume = 0;
   return player;
@@ -440,6 +441,12 @@ function updateMusicUI() {
   if (ambientTrack) ambientTrack.dataset.activeTheme = theme?.title || '';
 }
 
+function nextProjectThemeIndex(index) {
+  const queueIndex = projectThemeQueue.indexOf(index);
+  if (queueIndex === -1) return projectThemeQueue[0] ?? 0;
+  return projectThemeQueue[(queueIndex + 1) % projectThemeQueue.length];
+}
+
 async function playProjectTheme(index) {
   const theme = projectThemes[index];
   const nextPlayer = themePlayers[index];
@@ -471,6 +478,15 @@ async function playProjectTheme(index) {
   if (musicEnabled) fadeAudio(nextPlayer, effectiveVolume(), 560);
   updateMusicUI();
 }
+
+themePlayers.forEach((player, index) => {
+  player.addEventListener('ended', () => {
+    if (!musicEnabled || activeThemeIndex !== index) return;
+    const nextIndex = nextProjectThemeIndex(index);
+    selectProjectCard(projectCards[nextIndex]);
+    playProjectTheme(nextIndex);
+  });
+});
 
 function pauseThemeMusic() {
   musicEnabled = false;
