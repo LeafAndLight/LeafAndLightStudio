@@ -1057,7 +1057,7 @@
   box-shadow:0 0 22px color-mix(in srgb,var(--studio-gold) 24%,transparent);
 }
 
-/* Project theme player: explicit user control, no autoplay surprise. */
+/* Project theme player: explicit user control, compact until actively adjusted. */
 .miami-deco-theme .ambient-audio{
   position:fixed;
   z-index:80;
@@ -1065,20 +1065,21 @@
   bottom:18px;
   display:flex;
   align-items:center;
-  gap:10px;
-  padding:8px;
+  gap:0;
+  padding:6px;
   border:1px solid rgba(245,198,111,.2);
   border-radius:999px;
-  background:rgba(12,9,22,.72);
+  background:rgba(12,9,22,.78);
   box-shadow:0 18px 42px rgba(0,0,0,.32),0 0 24px rgba(223,112,176,.08);
   backdrop-filter:blur(16px);
+  transition:border-color .2s ease,background .2s ease;
 }
 .miami-deco-theme .ambient-toggle{
   display:inline-flex;
   align-items:center;
   gap:8px;
-  min-height:38px;
-  padding:8px 12px;
+  min-height:36px;
+  padding:7px 10px;
   border:0;
   border-radius:999px;
   background:linear-gradient(135deg,rgba(245,198,111,.12),rgba(173,123,212,.14));
@@ -1091,24 +1092,30 @@
 }
 .miami-deco-theme .ambient-copy{
   display:grid;
-  gap:3px;
-  min-width:132px;
+  gap:0;
+  min-width:88px;
   text-align:left;
+  transition:min-width .22s ease;
 }
+.miami-deco-theme .ambient-label{white-space:nowrap}
 .miami-deco-theme .ambient-track{
-  max-width:190px;
+  display:block;
+  width:0;
+  height:0;
+  max-width:0;
   overflow:hidden;
+  opacity:0;
   color:#c8b7c7;
   font-size:9px;
   font-weight:700;
   letter-spacing:.02em;
+  line-height:1.25;
   text-overflow:ellipsis;
   text-transform:none;
   white-space:nowrap;
+  transition:width .22s ease,max-width .22s ease,height .22s ease,opacity .15s ease;
 }
-.miami-deco-theme .ambient-toggle[aria-pressed="true"] .ambient-track{
-  color:rgba(22,14,32,.74);
-}
+.miami-deco-theme .ambient-toggle[aria-pressed="true"] .ambient-track{color:rgba(22,14,32,.74)}
 .miami-deco-theme .ambient-toggle:hover,
 .miami-deco-theme .ambient-toggle:focus-visible,
 .miami-deco-theme .ambient-toggle[aria-pressed="true"]{
@@ -1130,38 +1137,34 @@
   display:flex;
   align-items:center;
   gap:7px;
-  padding-right:7px;
+  max-width:0;
+  margin:0;
+  padding:0;
+  overflow:hidden;
+  opacity:0;
   color:#bdaebe;
   font-size:10px;
   font-weight:800;
   letter-spacing:.08em;
   text-transform:uppercase;
+  white-space:nowrap;
+  pointer-events:none;
+  transition:max-width .24s ease,opacity .16s ease,padding .24s ease;
 }
-.miami-deco-theme .ambient-volume input{
-  width:84px;
-  accent-color:var(--studio-gold);
-}
+.miami-deco-theme .ambient-volume input{width:84px;accent-color:var(--studio-gold)}
+.miami-deco-theme .ambient-audio.is-playing:is(:hover,:focus-within){border-color:rgba(245,198,111,.38);background:rgba(12,9,22,.9)}
+.miami-deco-theme .ambient-audio.is-playing:is(:hover,:focus-within) .ambient-copy{min-width:132px}
+.miami-deco-theme .ambient-audio.is-playing:is(:hover,:focus-within) .ambient-track{width:132px;height:12px;max-width:132px;opacity:1}
+.miami-deco-theme .ambient-audio.is-playing:is(:hover,:focus-within) .ambient-volume{max-width:132px;padding:0 7px 0 10px;opacity:1;pointer-events:auto}
 @media (max-width:780px){
-  .miami-deco-theme .ambient-audio{
-    right:12px;
-    bottom:12px;
-    max-width:calc(100vw - 24px);
-  }
-  .miami-deco-theme .ambient-label,
-  .miami-deco-theme .ambient-volume span{
-    display:none;
-  }
-  .miami-deco-theme .ambient-copy{
-    min-width:96px;
-  }
-  .miami-deco-theme .ambient-track{
-    max-width:120px;
-  }
-  .miami-deco-theme .ambient-volume input{
-    width:72px;
-  }
+  .miami-deco-theme .ambient-audio{right:12px;bottom:12px;max-width:calc(100vw - 24px)}
+  .miami-deco-theme .ambient-copy{min-width:82px}
+  .miami-deco-theme .ambient-volume span{display:none}
+  .miami-deco-theme .ambient-audio.is-playing:is(:hover,:focus-within) .ambient-copy{min-width:98px}
+  .miami-deco-theme .ambient-audio.is-playing:is(:hover,:focus-within) .ambient-track{width:98px;max-width:98px}
+  .miami-deco-theme .ambient-volume input{width:72px}
+  .miami-deco-theme .ambient-audio.is-playing:is(:hover,:focus-within) .ambient-volume{max-width:92px;padding-left:8px}
 }
-
 /* Cleaner top shortcuts: color and depth without the thin outline. */
 .miami-deco-theme .menu a,
 .miami-deco-theme .menu .cta{
@@ -1182,12 +1185,12 @@
   box-shadow:0 0 14px color-mix(in srgb,var(--game-climb) 66%,transparent);
 }
 
-/* Footer becomes a deliberate closing surface, with a brand button and real shortcuts. */
+/* Footer closes with the studio identity and social links only. */
 .miami-deco-theme .footer{
   padding:30px 0 42px;
 }
 .miami-deco-theme .footer-row{
-  grid-template-columns:minmax(300px,1fr) auto minmax(300px,1fr);
+  grid-template-columns:minmax(300px,1fr) auto;
   gap:24px;
   padding-top:28px;
 }

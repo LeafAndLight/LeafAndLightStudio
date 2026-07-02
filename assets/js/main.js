@@ -380,6 +380,7 @@ document.addEventListener('keydown', event => {
 });
 
 // Project themes start only after an explicit user action.
+const ambientAudio = document.querySelector('.ambient-audio');
 const ambientToggle = document.querySelector('.ambient-toggle');
 const ambientVolume = document.getElementById('ambientVolume');
 const ambientTrack = document.getElementById('ambientTrack');
@@ -434,6 +435,7 @@ function fadeAudio(player, target, duration = 480, onComplete) {
 
 function updateMusicUI() {
   const theme = projectThemes[activeThemeIndex];
+  ambientAudio?.classList.toggle('is-playing', musicEnabled);
   ambientToggle?.setAttribute('aria-pressed', String(musicEnabled));
   ambientToggle?.setAttribute('aria-label', musicEnabled ? 'Pause project theme music' : 'Play a project theme');
   if (ambientLabel) ambientLabel.textContent = musicEnabled ? 'Theme music' : 'Theme music';
@@ -503,6 +505,12 @@ ambientToggle?.addEventListener('click', () => {
   const randomTheme = Math.random() < 0.5 ? 0 : 1;
   playProjectTheme(randomTheme);
   selectProjectCard(projectCards[randomTheme]);
+});
+
+ambientAudio?.addEventListener('pointerleave', event => {
+  if (event.pointerType === 'mouse' && ambientAudio.contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
 });
 
 ambientVolume?.addEventListener('input', () => {

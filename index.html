@@ -95,11 +95,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Josefin+Sans:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css?v=20260702100502-acb960f0bf3f" />
-  <link rel="stylesheet" href="assets/css/miami-layout.css?v=20260702100502-acb960f0bf3f" />
-  <link rel="stylesheet" href="assets/css/miami-art-deco.css?v=20260702100502-acb960f0bf3f" />
-  <link rel="stylesheet" href="assets/css/miami-projects.css?v=20260702100502-acb960f0bf3f" />
-  <link rel="stylesheet" href="assets/css/version-switcher.css?v=20260702100502-acb960f0bf3f" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=20260702104136-8bf68b8c5ad5" />
+  <link rel="stylesheet" href="assets/css/miami-layout.css?v=20260702104136-8bf68b8c5ad5" />
+  <link rel="stylesheet" href="assets/css/miami-art-deco.css?v=20260702104136-8bf68b8c5ad5" />
+  <link rel="stylesheet" href="assets/css/miami-projects.css?v=20260702104136-8bf68b8c5ad5" />
+  <link rel="stylesheet" href="assets/css/version-switcher.css?v=20260702104136-8bf68b8c5ad5" />
 </head>
 <body class="miami-deco-theme">
   <header class="header">
@@ -110,14 +110,28 @@
           <span class="brand-name">Leaf & Light Studio</span>
         </a>
       </div>
-      <nav class="menu">
-        <a href="#projects">Projects</a>
-        <a href="#services">Services</a>
-        <a href="#crew">Studio</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#partnerships">Partnerships</a>
-        <a href="#contact" class="cta">Contact</a>
-      </nav>
+      <div class="nav-actions">
+        <nav class="menu">
+          <a href="#projects">Projects</a>
+          <a href="#services">Services</a>
+          <a href="#crew">Studio</a>
+          <a href="#portfolio">Portfolio</a>
+          <a href="#partnerships">Partnerships</a>
+          <a href="#contact" class="cta">Contact</a>
+        </nav>
+        <div class="language-switcher" data-i18n-ignore>
+          <button class="language-toggle" type="button" aria-haspopup="menu" aria-expanded="false" aria-label="Choose language">
+            <span class="language-current">EN</span><span class="language-chevron" aria-hidden="true">⌄</span>
+          </button>
+          <div class="language-menu" role="menu" hidden>
+            <button type="button" role="menuitemradio" aria-checked="true" data-language="en"><span>EN</span> English</button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-language="pt-BR"><span>PT</span> Português (BR)</button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-language="es"><span>ES</span> Español</button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-language="de"><span>DE</span> Deutsch</button>
+            <button type="button" role="menuitemradio" aria-checked="false" data-language="zh-CN"><span>中</span> 中文（简体）</button>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -589,8 +603,8 @@
           <div class="eyebrow section-index">06 / Partnerships</div>
           <div>
             <h2>LET'S BUILD THE NEXT PROJECT TOGETHER.</h2>
-            <p>Leaf &amp; Light is open to commissioned development, co-development, publishing and investment partnerships for original VR and PC projects.</p>
-            <p>Whether the goal is to fund an original game, commission a new project or join an existing idea, each conversation starts with the project, the available scope and the most practical way to move forward.</p>
+            <p>Leaf &amp; Light is open to commissioned development and co-development opportunities, as well as partnerships with publishers and investors interested in supporting original VR and PC projects.</p>
+            <p>Whether the goal is to commission a new project, strengthen an existing production or fund an original game, each conversation starts with the project, its scope and the most practical path forward.</p>
             <p>The studio can start lean and scale production as the project grows.</p>
             <div class="partnership-actions">
               <a href="#contact" class="btn primary" data-contact-choice="Partnership">DISCUSS THE PARTNERSHIP</a>
@@ -612,7 +626,7 @@
           <article class="partnership-path">
             <span>Long-term collaboration</span>
             <h3>Built to grow with the project</h3>
-            <p>Explore publishing, funding and co-development opportunities, with a trusted network of programmers, artists and specialists ready to scale around the right project.</p>
+            <p>For the right project, Leaf &amp; Light welcomes collaboration with publishers, investors and co-development partners, supported by a trusted network of programmers, artists and specialists ready to scale with the production.</p>
           </article>
         </div>
       </div>
@@ -871,7 +885,7 @@
       </button>
       <label class="ambient-volume">
         <span>Volume</span>
-        <input id="ambientVolume" type="range" min="0" max="100" value="18" />
+        <input id="ambientVolume" type="range" min="0" max="100" value="18" aria-label="Theme music volume" />
       </label>
     </div>
   </main>
@@ -895,17 +909,15 @@
           <span>Meta</span>
         </a>
       </div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="#projects">Projects</a>
-        <a href="#services">Services</a>
-        <a href="#crew">Studio</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#partnerships">Partnerships</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
     </div>
   </footer>
 
+  <script src="assets/js/locales/pt-BR.js?v=20260702104136-8bf68b8c5ad5"></script>
+  <script src="assets/js/locales/es.js?v=20260702104136-8bf68b8c5ad5"></script>
+  <script src="assets/js/locales/de.js?v=20260702104136-8bf68b8c5ad5"></script>
+  <script src="assets/js/locales/zh-CN.js?v=20260702104136-8bf68b8c5ad5"></script>
+  <script src="assets/js/i18n.js?v=20260702104136-8bf68b8c5ad5"></script>
   <script src="https://www.youtube.com/iframe_api"></script>
   <script>
     const assetVersion = Date.now();
