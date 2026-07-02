@@ -921,6 +921,27 @@
   color:transparent;
   text-shadow:0 0 26px rgba(242,112,197,.13);
 }
+.miami-deco-theme .hero-copy h1,
+.miami-deco-theme .section-head h2,
+.miami-deco-theme .approach-copy h2,
+.miami-deco-theme .contact-copy-block h2{
+  overflow:visible;
+  padding-top:.14em;
+  padding-bottom:.08em;
+}
+.miami-deco-theme .section-head h2,
+.miami-deco-theme .approach-copy h2,
+.miami-deco-theme .contact-copy-block h2{
+  line-height:1;
+}
+@media (min-width:781px){
+  .miami-deco-theme #portfolio .shot.cinema-project-feature{
+    aspect-ratio:5/2;
+  }
+  .miami-deco-theme #portfolio .shot.cinema-thumb{
+    aspect-ratio:16/9;
+  }
+}
 .miami-deco-theme #projects .project-card:nth-child(3){
   --accent:#a8d67a;
   --project-color:#a8d67a;
@@ -1433,5 +1454,19 @@
   .miami-deco-theme #services .service-upgrade-arrows span:last-child:after{
     right:-7px;
     transform:rotate(-45deg);
+  }
+}
+
+/* Mobile hero width guard: keep translated headlines inside the viewport. */
+@media (max-width:780px){
+  .miami-deco-theme .hero-copy{
+    min-width:0;
+    width:100%;
+    max-width:100%;
+  }
+  .miami-deco-theme .hero-copy h1,
+  .miami-deco-theme .hero-copy > p{
+    width:100%;
+    max-width:100%;
   }
 }
