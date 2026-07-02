@@ -1165,7 +1165,33 @@
   .miami-deco-theme .ambient-volume input{width:72px}
   .miami-deco-theme .ambient-audio.is-playing:is(:hover,:focus-within) .ambient-volume{max-width:92px;padding-left:8px}
 }
-/* Cleaner top shortcuts: color and depth without the thin outline. */
+/* Cleaner top shortcuts: compact navigation with a distinct language control. */
+.miami-deco-theme .nav-actions{gap:0}
+.miami-deco-theme .language-switcher{margin-left:10px;padding-left:16px}
+.miami-deco-theme .language-switcher:before{
+  position:absolute;
+  top:7px;
+  bottom:7px;
+  left:0;
+  width:1px;
+  content:"";
+  background:linear-gradient(180deg,transparent,rgba(245,198,111,.34),transparent);
+}
+.miami-deco-theme .language-toggle{
+  min-width:52px;
+  border-color:rgba(245,198,111,.28);
+  background:linear-gradient(135deg,rgba(245,198,111,.09),rgba(173,123,212,.09));
+  box-shadow:0 8px 22px rgba(0,0,0,.2),inset 0 0 0 1px rgba(255,255,255,.025);
+}
+@media (min-width:781px){
+  .miami-deco-theme .menu{gap:7px}
+  .miami-deco-theme .menu a{padding:8px 10px;font-size:13px;letter-spacing:.045em}
+  .miami-deco-theme .menu .cta{padding:10px 16px}
+}
+@media (max-width:780px){
+  .miami-deco-theme .language-switcher{margin-left:5px;padding-left:11px}
+  .miami-deco-theme .language-toggle{min-width:48px}
+}
 .miami-deco-theme .menu a,
 .miami-deco-theme .menu .cta{
   border:0!important;
