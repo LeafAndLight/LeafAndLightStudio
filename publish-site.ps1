@@ -94,7 +94,7 @@ try {
     [System.IO.File]::WriteAllText($indexPath, $indexContent, (New-Object System.Text.UTF8Encoding($false)))
 
     Write-Host 'Alterações que serão publicadas:'
-    Invoke-Git -Arguments @('diff', '--', 'index.html', 'deploy-version.txt', 'AGENTS.md', 'publish-site.ps1')
+    Invoke-Git -Arguments @('diff', '--', 'index.html', 'deploy-version.txt', 'CNAME', 'AGENTS.md', 'publish-site.ps1')
 
     Invoke-Git -Arguments @('add', '-A')
     Invoke-Git -Arguments @('commit', '-m', $Message)
@@ -118,7 +118,7 @@ try {
         throw "Falha de confirmação do push: HEAD ($localHead) é diferente de origin/main ($remoteHead)."
     }
 
-    $pagesBaseUrl = 'https://leafandlight.github.io/LeafAndLightStudio'
+    $pagesBaseUrl = 'https://leaflight.com.br'
     $deadline = (Get-Date).AddMinutes(10)
     $published = $false
     Write-Host "Aguardando o GitHub Pages publicar o deploy $deployId..."
