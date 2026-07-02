@@ -13,8 +13,8 @@
   --radius:28px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:'Inter',system-ui,sans-serif;background:radial-gradient(circle at top,#122033 0%,#0a0f14 33%,#06090d 70%);color:var(--text)}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{margin:0;overflow-x:hidden;font-family:'Inter',system-ui,sans-serif;background:radial-gradient(circle at top,#122033 0%,#0a0f14 33%,#06090d 70%);color:var(--text)}
 a{text-decoration:none;color:inherit}
 img{max-width:100%;display:block}
 button,input,textarea,select{font:inherit}
@@ -553,7 +553,17 @@ button,input,textarea,select{font:inherit}
 #partnerships .section-head{margin-bottom:0}
 #partnerships .section-head p + p{margin-top:12px}
 .partnership-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.partnership-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:34px;padding-top:28px;border-top:1px solid rgba(255,255,255,.12)}
+.partnership-path{min-width:0;padding:0 28px}
+.partnership-path:first-child{padding-left:0}
+.partnership-path + .partnership-path{border-left:1px solid rgba(255,255,255,.12)}
+.partnership-path > span{display:block;margin-bottom:10px;color:#7fdcff;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.partnership-path h3{margin:0 0 10px;color:#fff;font-size:clamp(20px,2vw,28px);line-height:1.08;letter-spacing:0}
+.partnership-path p{margin:0;color:#9fb6c9;font-size:15px;line-height:1.65}
 @media (max-width:780px){
   .platform-icon-row{gap:8px}
   .platform-icon-row span{width:32px;height:32px}
+  .partnership-paths{grid-template-columns:1fr;padding-top:8px}
+  .partnership-path{padding:22px 0}
+  .partnership-path + .partnership-path{border-top:1px solid rgba(255,255,255,.12);border-left:0}
 }
