@@ -94,9 +94,9 @@ const INQUIRY_STATUS_STYLES = {
 
 const CANDIDATE_COLUMN_WIDTHS = [
   82, 190, 105, 185, 215, 145, 100, 145, 185, 95, 105, 125, 82, 82,
-  75, 105, 145, 145, 145, 260, 360, 185, 160, 85, 280, 180, 80
+  75, 105, 145, 145, 145, 260, 240, 185, 160, 85, 280, 180, 80
 ];
-const INQUIRY_COLUMN_WIDTHS = [82, 190, 105, 110, 175, 185, 215, 185, 260, 380, 150];
+const INQUIRY_COLUMN_WIDTHS = [82, 190, 105, 110, 175, 185, 215, 185, 260, 240, 150];
 
 function onOpen() {
   SpreadsheetApp.getUi()
@@ -117,9 +117,19 @@ function onOpen() {
 function onEdit(event) {
   try {
     if (!event || !event.range || !event.source) return;
-    const sheetName = event.range.getSheet().getName();
+    const range = event.range;
+    const sheetName = range.getSheet().getName();
     if ((sheetName === SHEET_NAMES.candidates || sheetName === SHEET_NAMES.inquiries) && event.range.getColumn() === 3) {
       refreshAllDashboards_(event.source);
+      return;
+    }
+    if (sheetName === SHEET_NAMES.candidateView && range.getRow() === 1 && range.getColumn() === 3) {
+      const candidateId = candidateIdFromSelectorLabel_(range.getSheet(), event.value);
+      syncCandidateViewStatus_(event.source, candidateId);
+      return;
+    }
+    if (sheetName === SHEET_NAMES.candidateView && range.getRow() === 7 && range.getColumn() <= 2) {
+      updateCandidateStatusFromView_(event.source, event.value);
     }
   } catch (error) {
     console.error('Dashboard refresh after edit failed: ' + error.message);
@@ -361,8 +371,8 @@ function ensureSheetSize_(sheet, requiredRows, requiredColumns) {
 function applySpreadsheetFormatting_(spreadsheet) {
   const candidates = spreadsheet.getSheetByName(SHEET_NAMES.candidates);
   const inquiries = spreadsheet.getSheetByName(SHEET_NAMES.inquiries);
-  if (candidates) formatDatabaseSheet_(candidates, CANDIDATE_HEADERS, CANDIDATE_COLUMN_WIDTHS, CANDIDATE_STATUS_OPTIONS, CANDIDATE_STATUS_STYLES, THEME.purple, [21, 25, 26], [17, 18, 19, 23]);
-  if (inquiries) formatDatabaseSheet_(inquiries, INQUIRY_HEADERS, INQUIRY_COLUMN_WIDTHS, INQUIRY_STATUS_OPTIONS, INQUIRY_STATUS_STYLES, THEME.blue, [9, 10], [11]);
+  if (candidates) formatDatabaseSheet_(candidates, CANDIDATE_HEADERS, CANDIDATE_COLUMN_WIDTHS, CANDIDATE_STATUS_OPTIONS, CANDIDATE_STATUS_STYLES, THEME.purple, [25, 26], [17, 18, 19, 21, 23]);
+  if (inquiries) formatDatabaseSheet_(inquiries, INQUIRY_HEADERS, INQUIRY_COLUMN_WIDTHS, INQUIRY_STATUS_OPTIONS, INQUIRY_STATUS_STYLES, THEME.blue, [9], [10, 11]);
 }
 
 function formatDatabaseSheet_(sheet, headers, widths, statuses, styles, tabColor, wrapColumns, clipColumns) {
@@ -390,7 +400,8 @@ function formatDatabaseSheet_(sheet, headers, widths, statuses, styles, tabColor
     .setFontFamily('Roboto')
     .setFontSize(10)
     .setFontColor('#111827')
-    .setVerticalAlignment('middle');
+    .setVerticalAlignment('middle')
+    .setWrapStrategy(SpreadsheetApp.WrapStrategy.CLIP);
 
   removeBandings_(sheet);
   const banding = sheet.getRange(1, 1, maxRows, columns).applyRowBanding();
@@ -411,6 +422,7 @@ function formatDatabaseSheet_(sheet, headers, widths, statuses, styles, tabColor
   clipColumns.forEach(function(column) {
     sheet.getRange(2, column, Math.max(maxRows - 1, 1), 1).setWrapStrategy(SpreadsheetApp.WrapStrategy.CLIP);
   });
+  sheet.setRowHeightsForced(2, Math.max(maxRows - 1, 1), 28);
 
   if (sheet.getName() === SHEET_NAMES.candidates) {
     sheet.getRange(2, 4, Math.max(maxRows - 1, 1), 1).setFontWeight('bold');
@@ -459,7 +471,7 @@ function setupDashboardData_(spreadsheet) {
   let sheet = spreadsheet.getSheetByName(SHEET_NAMES.dashboardData);
   if (!sheet) sheet = spreadsheet.insertSheet(SHEET_NAMES.dashboardData);
   ensureSheetSize_(sheet, 150, 50);
-  sheet.clear({ contentsOnly: false });
+  sheet.clear();
   sheet.setHiddenGridlines(true);
   sheet.setTabColor(THEME.grey);
 }
@@ -545,7 +557,7 @@ function prepareDashboardCanvas_(sheet, rows, tabColor) {
   ensureSheetSize_(sheet, rows, 16);
   sheet.getCharts().forEach(function(chart) { sheet.removeChart(chart); });
   sheet.getRange(1, 1, sheet.getMaxRows(), sheet.getMaxColumns()).breakApart();
-  sheet.clear({ contentsOnly: false });
+  sheet.clear();
   sheet.setHiddenGridlines(true);
   sheet.setFrozenRows(3);
   sheet.setTabColor(tabColor);
@@ -1111,9 +1123,9 @@ function setupCandidateView_(spreadsheet) {
   let sheet = spreadsheet.getSheetByName(SHEET_NAMES.candidateView);
   if (!sheet) sheet = spreadsheet.insertSheet(SHEET_NAMES.candidateView);
 
-  ensureSheetSize_(sheet, 50, 10);
+  ensureSheetSize_(sheet, 55, 10);
   sheet.getRange(1, 1, sheet.getMaxRows(), sheet.getMaxColumns()).breakApart();
-  sheet.clear({ contentsOnly: false });
+  sheet.clear();
   sheet.setConditionalFormatRules([]);
   sheet.setHiddenGridlines(true);
   sheet.setFrozenRows(2);
@@ -1121,7 +1133,7 @@ function setupCandidateView_(spreadsheet) {
 
   const visibleWidths = [150, 150, 170, 170, 170, 150, 150, 150];
   visibleWidths.forEach(function(width, index) { sheet.setColumnWidth(index + 1, width); });
-  sheet.getRange(1, 1, 50, 8)
+  sheet.getRange(1, 1, 55, 8)
     .setBackground(THEME.background)
     .setFontFamily('Roboto')
     .setFontColor(THEME.text);
@@ -1146,8 +1158,14 @@ function setupCandidateView_(spreadsheet) {
   sheet.getRange('A6:H6').merge().setFormula(candidateRoleExperienceFormula_())
     .setFontSize(15).setFontWeight('bold').setFontColor(THEME.blue)
     .setVerticalAlignment('middle');
-  sheet.getRange('A7:B7').merge().setFormula(candidateFormula_('Status'))
-    .setHorizontalAlignment('center').setFontWeight('bold');
+  const candidateStatusRule = SpreadsheetApp.newDataValidation()
+    .requireValueInList(CANDIDATE_STATUS_OPTIONS, true)
+    .setAllowInvalid(false)
+    .setHelpText('Change the candidate status here. The Candidates table and dashboards update automatically.')
+    .build();
+  sheet.getRange('A7:B7').merge()
+    .setHorizontalAlignment('center').setFontWeight('bold')
+    .setDataValidation(candidateStatusRule);
   sheet.getRange('C7:E7').merge().setFormula(candidatePrefixedFormula_('Availability', 'Availability: '))
     .setBackground(THEME.panelAlt).setHorizontalAlignment('center');
   sheet.getRange('F7:H7').merge().setFormula(candidatePrefixedFormula_('Work Type', 'Work type: '))
@@ -1182,19 +1200,19 @@ function setupCandidateView_(spreadsheet) {
   createViewSection_(sheet, 'A21:H21', 'Application');
   createLabelValuePair_(sheet, 'A22', 'B22:H22', 'Subject', candidateFormula_('Subject'));
   createLabelValuePair_(sheet, 'A23', 'B23:H23', 'Selected Service', candidateFormula_('Selected Service'));
-  createLabelValuePair_(sheet, 'A24', 'B24:H28', 'Message', candidateFormula_('Message'));
-  createLabelValuePair_(sheet, 'A29', 'B29:H29', 'Consent', candidateFormula_('Consent'));
+  createLabelValuePair_(sheet, 'A24', 'B24:H35', 'Message', candidateFormula_('Message'));
+  createLabelValuePair_(sheet, 'A36', 'B36:H36', 'Consent', candidateFormula_('Consent'));
 
-  createViewSection_(sheet, 'A31:H31', 'Internal');
-  createLabelValuePair_(sheet, 'A32', 'B32:H36', 'Internal Notes', candidateFormula_('Internal Notes'));
-  createLabelValuePair_(sheet, 'A37', 'B37:H39', 'AI Tags', candidateFormula_('AI Tags'));
-  createLabelValuePair_(sheet, 'A40', 'B40:H40', 'AI Score', candidateFormula_('AI Score'));
+  createViewSection_(sheet, 'A38:H38', 'Internal');
+  createLabelValuePair_(sheet, 'A39', 'B39:H43', 'Internal Notes', candidateFormula_('Internal Notes'));
+  createLabelValuePair_(sheet, 'A44', 'B44:H46', 'AI Tags', candidateFormula_('AI Tags'));
+  createLabelValuePair_(sheet, 'A47', 'B47:H47', 'AI Score', candidateFormula_('AI Score'));
 
   sheet.getRange('F16:H19').setFontColor(THEME.blue).setFontWeight('bold');
-  sheet.getRange('B24:H28').setWrapStrategy(SpreadsheetApp.WrapStrategy.WRAP).setVerticalAlignment('top');
-  sheet.getRange('B32:H39').setWrapStrategy(SpreadsheetApp.WrapStrategy.WRAP).setVerticalAlignment('top');
-  sheet.setRowHeights(24, 5, 34);
-  sheet.setRowHeights(32, 5, 34);
+  sheet.getRange('B24:H35').setWrapStrategy(SpreadsheetApp.WrapStrategy.WRAP).setVerticalAlignment('top');
+  sheet.getRange('B39:H46').setWrapStrategy(SpreadsheetApp.WrapStrategy.WRAP).setVerticalAlignment('top');
+  sheet.setRowHeights(24, 12, 34);
+  sheet.setRowHeights(39, 5, 34);
   applyViewStatusRules_(sheet, sheet.getRange('A7:B7'), CANDIDATE_STATUS_OPTIONS, CANDIDATE_STATUS_STYLES);
 
   refreshCandidateSelector_(spreadsheet);
@@ -1206,7 +1224,7 @@ function refreshCandidateSelector_(spreadsheet, candidateObjects) {
   const source = spreadsheet.getSheetByName(SHEET_NAMES.candidates);
   if (!sheet || !source) return;
 
-  ensureSheetSize_(sheet, Math.max(50, source.getMaxRows() + 2), 10);
+  ensureSheetSize_(sheet, Math.max(55, source.getMaxRows() + 2), 10);
   const currentId = String(sheet.getRange('J1').getDisplayValue() || '');
   const candidates = candidateObjects || readObjects_(source, CANDIDATE_HEADERS);
   const sorted = sortByNewest_(candidates);
@@ -1234,8 +1252,62 @@ function refreshCandidateSelector_(spreadsheet, candidateObjects) {
   }
   if (!selectedLabel && options.length) selectedLabel = options[0][0];
   sheet.getRange('C1').setValue(selectedLabel);
+  const selectedOption = options.find(function(row) { return row[0] === selectedLabel; });
+  syncCandidateViewStatus_(spreadsheet, selectedOption ? selectedOption[1] : '', candidates);
   sheet.getRange('J1').setFormula('=IF($C$1="","",IFERROR(INDEX($J$2:$J,MATCH($C$1,$I$2:$I,0)),""))');
   sheet.hideColumns(9, 2);
+}
+
+function syncCandidateViewStatus_(spreadsheet, candidateId, candidateObjects) {
+  const view = spreadsheet.getSheetByName(SHEET_NAMES.candidateView);
+  const source = spreadsheet.getSheetByName(SHEET_NAMES.candidates);
+  if (!view || !source) return;
+
+  const selectedId = String(candidateId || selectedCandidateIdFromView_(view) || '');
+  const candidates = candidateObjects || readObjects_(source, CANDIDATE_HEADERS);
+  const selected = candidates.find(function(item) {
+    return String(item['Candidate ID'] || '') === selectedId;
+  });
+  view.getRange('A7').setValue(selected ? String(selected.Status || 'New') : '');
+}
+
+function selectedCandidateIdFromView_(view) {
+  const formulaId = String(view.getRange('J1').getDisplayValue() || '');
+  if (formulaId) return formulaId;
+
+  return candidateIdFromSelectorLabel_(view, view.getRange('C1').getDisplayValue());
+}
+
+function candidateIdFromSelectorLabel_(view, label) {
+  const selectedLabel = String(label || '');
+  if (!selectedLabel || view.getLastRow() < 2) return '';
+  const options = view.getRange(2, 9, view.getLastRow() - 1, 2).getDisplayValues();
+  const match = options.find(function(row) { return row[0] === selectedLabel; });
+  return match ? String(match[1] || '') : '';
+}
+
+function updateCandidateStatusFromView_(spreadsheet, editedStatus) {
+  const view = spreadsheet.getSheetByName(SHEET_NAMES.candidateView);
+  const source = spreadsheet.getSheetByName(SHEET_NAMES.candidates);
+  if (!view || !source) return;
+
+  const status = String(editedStatus || view.getRange('A7').getDisplayValue() || '').trim();
+  const candidateId = selectedCandidateIdFromView_(view);
+  if (CANDIDATE_STATUS_OPTIONS.indexOf(status) === -1 || !candidateId || source.getLastRow() < 2) {
+    syncCandidateViewStatus_(spreadsheet, candidateId);
+    return;
+  }
+
+  const ids = source.getRange(2, 2, source.getLastRow() - 1, 1).getDisplayValues();
+  const index = ids.findIndex(function(row) { return String(row[0] || '') === candidateId; });
+  if (index === -1) {
+    syncCandidateViewStatus_(spreadsheet, candidateId);
+    return;
+  }
+
+  source.getRange(index + 2, 3).setValue(status);
+  refreshAllDashboards_(spreadsheet);
+  spreadsheet.toast('Candidate status updated to ' + status + '.', 'Leaf & Light', 4);
 }
 
 function buildCandidateSelectorLabel_(item) {
@@ -1271,7 +1343,7 @@ function setupContactView_(spreadsheet) {
   if (!sheet) sheet = spreadsheet.insertSheet(SHEET_NAMES.contactView);
   ensureSheetSize_(sheet, 38, 10);
   sheet.getRange(1, 1, sheet.getMaxRows(), sheet.getMaxColumns()).breakApart();
-  sheet.clear({ contentsOnly: false });
+  sheet.clear();
   sheet.setHiddenGridlines(true);
   sheet.setFrozenRows(2);
   sheet.setTabColor(THEME.cyan);
