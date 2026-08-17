@@ -1109,3 +1109,88 @@ body.leaf-light-brand .ambient-audio.is-playing .ambient-icon {
 @media (prefers-reduced-motion: reduce) {
   body.leaf-light-brand .ambient-volume { transition: none; }
 }
+
+/* Project launch update and studio-core refinement. */
+body.leaf-light-brand .hero {
+  background-color: #3e2e20 !important;
+  background-image: url("../images/car-crash-arena-hero-2026.png") !important;
+  background-position: center center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-blend-mode: multiply;
+}
+
+body.leaf-light-brand .hero-content {
+  grid-template-columns: minmax(0, 1fr) minmax(300px, .68fr) !important;
+}
+
+body.leaf-light-brand .hero-side {
+  display: block !important;
+  min-height: 1px;
+  visibility: hidden;
+}
+
+body.leaf-light-brand .hero-copy { text-shadow: 0 3px 24px rgba(20,12,7,.34); }
+
+body.leaf-light-brand #projects .project-card:nth-child(2) .project-identity,
+body.leaf-light-brand #portfolio .portfolio-chapter--prison .portfolio-chapter-mark {
+  background: #07080b !important;
+}
+
+body.leaf-light-brand #projects .project-card:nth-child(2) .project-identity img,
+body.leaf-light-brand #portfolio .portfolio-chapter--prison .portfolio-chapter-mark img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
+
+body.leaf-light-brand #how-we-work .core-node {
+  width: 104px !important;
+  height: 104px !important;
+  padding: 8px !important;
+  overflow: hidden;
+  border: 4px solid var(--gold) !important;
+  background: #fbf2e6 !important;
+  box-shadow: 0 0 0 9px rgba(242,162,10,.09), 0 18px 44px rgba(0,0,0,.34) !important;
+}
+
+body.leaf-light-brand #how-we-work .core-node img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+body.leaf-light-brand #how-we-work .core-node strong {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body.leaf-light-brand #how-we-work .orbit-node {
+  border-color: rgba(251,242,230,.2) !important;
+  background: rgba(29,43,29,.96) !important;
+  color: #e8dfd2 !important;
+  box-shadow: 0 10px 26px rgba(0,0,0,.24) !important;
+}
+
+body.leaf-light-brand #how-we-work .orbit-node.is-active {
+  border-color: var(--gold) !important;
+  background: var(--gold) !important;
+  color: #2d1d0d !important;
+  box-shadow: 0 0 0 5px rgba(242,162,10,.12), 0 12px 32px rgba(242,162,10,.24) !important;
+  font-weight: 900;
+}
+
+@media (max-width: 700px) {
+  body.leaf-light-brand .hero { background-position: 62% center !important; }
+  body.leaf-light-brand .hero-content { grid-template-columns: minmax(0,1fr) !important; }
+  body.leaf-light-brand .hero-side { display: none !important; }
+}
