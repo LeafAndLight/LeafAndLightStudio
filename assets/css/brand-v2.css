@@ -1115,29 +1115,26 @@ body.leaf-light-brand .hero {
   background: #0b120c !important;
 }
 
+body.leaf-light-brand .hero::before {
+  content: "";
+  display: block !important;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("../images/car-crash-arena-hero-2026.png") center center / cover no-repeat;
+  opacity: .52;
+}
+
+body.leaf-light-brand .hero::after { display: none !important; }
+
 body.leaf-light-brand .hero-content {
-  grid-template-columns: minmax(0, .9fr) minmax(420px, 1.1fr) !important;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, .68fr) !important;
 }
 
 body.leaf-light-brand .hero-side {
-  display: flex !important;
-  min-height: 540px;
-  align-items: center;
-  justify-content: center;
-  visibility: visible;
-  overflow: hidden;
-}
-
-body.leaf-light-brand .hero-project-art {
-  display: block;
-  width: min(58vw, 780px);
-  height: min(570px, 70svh);
-  object-fit: cover;
-  object-position: 58% center;
-  opacity: .94;
-  filter: saturate(.94) contrast(1.05);
-  -webkit-mask-image: radial-gradient(ellipse 74% 67% at 58% 50%, #000 38%, rgba(0,0,0,.78) 60%, transparent 100%);
-  mask-image: radial-gradient(ellipse 74% 67% at 58% 50%, #000 38%, rgba(0,0,0,.78) 60%, transparent 100%);
+  display: block !important;
+  min-height: 1px;
+  visibility: hidden;
 }
 
 body.leaf-light-brand .hero-copy { text-shadow: 0 3px 24px rgba(0,0,0,.34); }
@@ -1219,7 +1216,7 @@ body.leaf-light-brand #how-we-work .orbit-node.is-active {
 }
 
 @media (max-width: 700px) {
+  body.leaf-light-brand .hero::before { background-position: 62% center; opacity: .44; }
   body.leaf-light-brand .hero-content { grid-template-columns: minmax(0,1fr) !important; }
-  body.leaf-light-brand .hero-side { display: flex !important; min-height: 330px; margin-top: 18px; }
-  body.leaf-light-brand .hero-project-art { width: 112%; height: 340px; object-position: 60% center; }
+  body.leaf-light-brand .hero-side { display: none !important; }
 }
