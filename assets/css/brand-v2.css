@@ -849,3 +849,263 @@ body.leaf-light-brand .ambient-audio { background: rgba(18,25,17,.94) !important
   body.leaf-light-brand .field-row { grid-template-columns: 1fr !important; }
   body.leaf-light-brand #contact .contact-card { padding: 22px !important; }
 }
+
+/* Layout refinement: warm-soil hero, aligned headings and compact smart controls. */
+body.leaf-light-brand .hero {
+  min-height: min(790px, calc(100svh - 80px));
+  padding: 84px 0 64px;
+  background: #3e2e20 !important;
+}
+
+body.leaf-light-brand .hero::before,
+body.leaf-light-brand .hero::after { display: none !important; }
+
+body.leaf-light-brand .hero-content {
+  grid-template-columns: minmax(0, 1fr) minmax(380px, .82fr) !important;
+  align-items: center;
+  padding: 0 !important;
+}
+
+body.leaf-light-brand .hero-copy { max-width: 690px; }
+body.leaf-light-brand .hero h1 { max-width: 680px; }
+body.leaf-light-brand .hero-side {
+  min-height: 540px;
+  display: flex !important;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: visible;
+}
+
+body.leaf-light-brand .hero-brand-art {
+  display: block !important;
+  width: min(100%, 570px);
+  max-height: 580px;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 28px 34px rgba(18, 11, 6, .28));
+}
+
+body.leaf-light-brand .section-head {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 15px !important;
+  margin-bottom: 48px;
+}
+
+body.leaf-light-brand .section-head > .section-index {
+  margin: 0 !important;
+}
+
+body.leaf-light-brand .section-head > div:last-child {
+  width: min(100%, 980px);
+}
+
+body.leaf-light-brand .section-head h2 {
+  max-width: 900px;
+  margin-top: 0 !important;
+}
+
+body.leaf-light-brand #partnerships .section-head {
+  gap: 16px !important;
+}
+
+body.leaf-light-brand #partnerships .section-head > div:last-child {
+  width: min(100%, 920px);
+}
+
+body.leaf-light-brand #contact .contact-card {
+  padding: clamp(30px, 4vw, 54px) !important;
+}
+
+body.leaf-light-brand .contact-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) !important;
+  gap: 24px !important;
+}
+
+body.leaf-light-brand .contact-copy-block,
+body.leaf-light-brand .inquiry-choice-grid,
+body.leaf-light-brand .contact-form {
+  grid-column: 1 !important;
+  grid-row: auto !important;
+}
+
+body.leaf-light-brand .contact-copy-block {
+  width: min(100%, 980px);
+  padding-right: 0 !important;
+}
+
+body.leaf-light-brand .contact-copy-block h2 {
+  max-width: 850px;
+  margin: 14px 0 14px !important;
+  font-size: clamp(2.8rem, 4.6vw, 4.9rem) !important;
+}
+
+body.leaf-light-brand .contact-copy-block p {
+  max-width: 760px;
+  margin-bottom: 18px !important;
+}
+
+body.leaf-light-brand .inquiry-choice-grid {
+  width: 100%;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 12px !important;
+}
+
+body.leaf-light-brand .contact-form {
+  width: 100%;
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 14px !important;
+  padding: clamp(22px, 2.8vw, 34px) !important;
+}
+
+body.leaf-light-brand .contact-form > .inquiry-detail-card,
+body.leaf-light-brand .contact-form > .hiring-fields,
+body.leaf-light-brand .contact-form > .message-field,
+body.leaf-light-brand .contact-form > .form-actions {
+  grid-column: 1 / -1;
+}
+
+body.leaf-light-brand .contact-form > .field-row { grid-column: span 4; }
+body.leaf-light-brand .contact-form > .inquiry-native-field { grid-column: span 2; }
+body.leaf-light-brand .contact-form > .company-field,
+body.leaf-light-brand .contact-form > #subjectField { grid-column: span 3; }
+body.leaf-light-brand .contact-form > label { margin-bottom: 0 !important; }
+body.leaf-light-brand .contact-form textarea { min-height: 120px; }
+
+body.leaf-light-brand .ambient-audio {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  max-width: calc(100vw - 28px);
+  padding: 7px;
+  border: 1px solid rgba(251,242,230,.16) !important;
+  border-radius: 999px !important;
+  background: rgba(24,31,22,.94) !important;
+  color: var(--text) !important;
+  box-shadow: 0 18px 52px rgba(0,0,0,.38) !important;
+  backdrop-filter: blur(16px);
+}
+
+body.leaf-light-brand .ambient-toggle {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+body.leaf-light-brand .ambient-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: #2a1b0d;
+  font-size: 1.1rem;
+  font-weight: 900;
+}
+
+body.leaf-light-brand .ambient-copy {
+  display: grid;
+  min-width: 118px;
+  padding-right: 5px;
+  line-height: 1.15;
+}
+
+body.leaf-light-brand .ambient-label {
+  color: var(--text);
+  font-size: .78rem;
+  font-weight: 900;
+}
+
+body.leaf-light-brand .ambient-track {
+  max-width: 190px;
+  overflow: hidden;
+  color: var(--moss);
+  font-size: .68rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+body.leaf-light-brand .ambient-volume {
+  display: grid;
+  grid-template-columns: auto 92px;
+  align-items: center;
+  gap: 8px;
+  width: 0;
+  max-width: 0;
+  margin: 0;
+  overflow: hidden;
+  opacity: 0;
+  color: var(--moss);
+  font-size: .68rem;
+  font-weight: 800;
+  white-space: nowrap;
+  transition: width .24s ease, max-width .24s ease, opacity .18s ease, margin .24s ease;
+}
+
+body.leaf-light-brand .ambient-audio:hover .ambient-volume,
+body.leaf-light-brand .ambient-audio:focus-within .ambient-volume,
+body.leaf-light-brand .ambient-audio.is-playing .ambient-volume {
+  width: 142px;
+  max-width: 142px;
+  margin-right: 8px;
+  opacity: 1;
+}
+
+body.leaf-light-brand .ambient-volume input {
+  width: 92px;
+  accent-color: var(--gold);
+}
+
+body.leaf-light-brand .ambient-audio.is-playing .ambient-icon {
+  box-shadow: 0 0 0 5px rgba(242,162,10,.13), 0 0 24px rgba(242,162,10,.26);
+}
+
+@media (max-width: 980px) {
+  body.leaf-light-brand .hero-content { grid-template-columns: minmax(0,1fr) minmax(290px,.72fr) !important; }
+  body.leaf-light-brand .hero-side { min-height: 520px; }
+  body.leaf-light-brand .inquiry-choice-grid { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
+  body.leaf-light-brand .contact-form > .field-row { grid-column: 1 / -1; }
+  body.leaf-light-brand .contact-form > .inquiry-native-field,
+  body.leaf-light-brand .contact-form > .company-field,
+  body.leaf-light-brand .contact-form > #subjectField { grid-column: span 4; }
+}
+
+@media (max-width: 700px) {
+  body.leaf-light-brand .hero {
+    min-height: auto;
+    padding: 66px 0 0;
+    background: #3e2e20 !important;
+  }
+  body.leaf-light-brand .hero-content { grid-template-columns: minmax(0,1fr) !important; }
+  body.leaf-light-brand .hero-side { display: flex !important; min-height: 390px; margin-top: 18px; }
+  body.leaf-light-brand .hero-brand-art { width: min(92%, 390px); max-height: 410px; }
+  body.leaf-light-brand .contact-form { grid-template-columns: 1fr; }
+  body.leaf-light-brand .contact-form > .field-row,
+  body.leaf-light-brand .contact-form > .inquiry-native-field,
+  body.leaf-light-brand .contact-form > .company-field,
+  body.leaf-light-brand .contact-form > #subjectField { grid-column: 1; }
+  body.leaf-light-brand .ambient-audio { right: 12px; bottom: 12px; }
+  body.leaf-light-brand .ambient-copy { min-width: 106px; }
+  body.leaf-light-brand .ambient-audio:not(:focus-within):not(.is-playing) .ambient-volume { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.leaf-light-brand .ambient-volume { transition: none; }
+}
