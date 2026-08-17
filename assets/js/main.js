@@ -544,6 +544,3 @@ if (window.YT?.Player) setupYouTubePriority();
 else window.onYouTubeIframeAPIReady = setupYouTubePriority;
 
 updateMusicUI();
-
-document.body.classList.add('miami-deco-theme');
-document.body.dataset.theme = 'miami';

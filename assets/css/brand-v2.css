@@ -398,3 +398,454 @@ img { max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+/* Dark brand refinement: one visual system, no legacy theme bleed. */
+body.leaf-light-brand {
+  --bg: #0d110c;
+  --panel: #161c14;
+  --panel-2: #20281d;
+  --line: rgba(251, 242, 230, .13);
+  --text: #fbf2e6;
+  --muted: #c2b9ac;
+  --white: #fbf2e6;
+  --gold: #f2a20a;
+  --soil: #3e2e20;
+  --forest: #2e4b2e;
+  --moss: #a8b89a;
+  --clay: #dcc2a1;
+  --shadow: 0 26px 80px rgba(0, 0, 0, .34);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(46, 75, 46, .22), transparent 27rem),
+    radial-gradient(circle at 92% 38%, rgba(242, 162, 10, .08), transparent 24rem),
+    #0d110c !important;
+  color: var(--text) !important;
+  font-family: "DejaVu Sans", Arial, sans-serif !important;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+body.leaf-light-brand::before {
+  background:
+    linear-gradient(rgba(251,242,230,.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(251,242,230,.018) 1px, transparent 1px) !important;
+  background-size: 64px 64px !important;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,.35), transparent 82%);
+}
+
+body.leaf-light-brand .header {
+  min-height: 80px;
+  background: rgba(12, 17, 11, .9) !important;
+  border-bottom: 1px solid rgba(251, 242, 230, .1) !important;
+  box-shadow: 0 14px 42px rgba(0,0,0,.26) !important;
+}
+
+body.leaf-light-brand .menu a { color: rgba(251,242,230,.78) !important; }
+body.leaf-light-brand .menu a:hover,
+body.leaf-light-brand .menu a.active { color: var(--text) !important; background: rgba(251,242,230,.08) !important; }
+body.leaf-light-brand .menu a.cta { color: #211708 !important; background: var(--gold) !important; box-shadow: none !important; }
+body.leaf-light-brand .language-toggle { background: rgba(251,242,230,.05) !important; color: var(--text) !important; }
+body.leaf-light-brand .language-menu { background: #171d15 !important; border-color: var(--line) !important; }
+body.leaf-light-brand .language-menu button { color: var(--text) !important; }
+
+body.leaf-light-brand .hero {
+  min-height: min(820px, calc(100svh - 80px));
+  padding: 92px 0 76px;
+  background:
+    linear-gradient(90deg, rgba(10,13,9,.98) 0%, rgba(10,13,9,.93) 42%, rgba(10,13,9,.43) 69%, rgba(10,13,9,.08) 100%),
+    linear-gradient(180deg, rgba(10,13,9,.08) 56%, #0d110c 100%),
+    url("../images/brand/web-hero.png") 58% center / cover no-repeat !important;
+}
+
+body.leaf-light-brand .hero::after {
+  left: auto;
+  right: 44%;
+  bottom: 12%;
+  width: 180px;
+  background: rgba(242,162,10,.08);
+  filter: blur(26px);
+}
+
+body.leaf-light-brand .hero-content { grid-template-columns: minmax(0, .92fr) minmax(380px, 1.08fr) !important; }
+body.leaf-light-brand .hero-copy { max-width: 640px; }
+body.leaf-light-brand .eyebrow { color: var(--gold) !important; }
+body.leaf-light-brand .hero h1 {
+  color: var(--text) !important;
+  font-size: clamp(3.7rem, 6.4vw, 6.7rem);
+  line-height: .92;
+  letter-spacing: -.055em;
+  max-width: 730px;
+}
+body.leaf-light-brand .hero-copy > p { color: rgba(251,242,230,.72) !important; max-width: 590px; }
+body.leaf-light-brand .hero-pills span,
+body.leaf-light-brand .tag {
+  border-color: rgba(168,184,154,.24) !important;
+  background: rgba(168,184,154,.09) !important;
+  color: #dbe5d2 !important;
+}
+
+body.leaf-light-brand .btn {
+  border: 1px solid rgba(251,242,230,.17) !important;
+  background: rgba(251,242,230,.07) !important;
+  color: var(--text) !important;
+  box-shadow: none !important;
+  letter-spacing: .01em;
+}
+body.leaf-light-brand .btn.primary,
+body.leaf-light-brand .hero-buttons .btn:first-child,
+body.leaf-light-brand .partnership-actions .btn:last-child {
+  border-color: var(--gold) !important;
+  background: var(--gold) !important;
+  color: #211708 !important;
+}
+body.leaf-light-brand .btn:hover { transform: translateY(-2px) !important; border-color: rgba(242,162,10,.75) !important; background: rgba(242,162,10,.16) !important; }
+body.leaf-light-brand .btn.primary:hover,
+body.leaf-light-brand .hero-buttons .btn:first-child:hover { background: #ffb221 !important; color: #211708 !important; }
+body.leaf-light-brand .hero-buttons .btn { color: var(--text) !important; }
+
+body.leaf-light-brand .section { padding: 112px 0; background: transparent !important; border: 0 !important; }
+body.leaf-light-brand .section:nth-of-type(odd) { background: rgba(255,255,255,.012) !important; }
+body.leaf-light-brand .section-head { grid-template-columns: 180px minmax(0,1fr) !important; gap: 34px; margin-bottom: 48px; }
+body.leaf-light-brand .section-head h2,
+body.leaf-light-brand .partnership-hero h2,
+body.leaf-light-brand .contact-copy-block h2 {
+  color: var(--text) !important;
+  font-size: clamp(2.5rem, 4.7vw, 5rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+  text-transform: none;
+}
+body.leaf-light-brand .section-head p,
+body.leaf-light-brand .partnerships-shell .section-head p { color: var(--muted) !important; opacity: 1 !important; }
+body.leaf-light-brand .section-index {
+  width: max-content;
+  padding: 8px 12px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 999px;
+  background: rgba(251,242,230,.035) !important;
+  color: var(--moss) !important;
+}
+body.leaf-light-brand .section-index::before { background: var(--gold) !important; }
+
+body.leaf-light-brand .project-card,
+body.leaf-light-brand .service-card,
+body.leaf-light-brand .leader-card,
+body.leaf-light-brand .info-card {
+  border-color: var(--line) !important;
+  background: linear-gradient(145deg, rgba(31,40,28,.96), rgba(19,25,18,.98)) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow) !important;
+}
+body.leaf-light-brand .project-card:hover { transform: translateY(-6px) !important; }
+body.leaf-light-brand .project-media::after {
+  content: "";
+  position: absolute;
+  inset: 38% 0 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, rgba(13,17,12,.78));
+}
+body.leaf-light-brand .project-identity,
+body.leaf-light-brand .project-status { z-index: 2; }
+body.leaf-light-brand .project-body { color: var(--text) !important; }
+body.leaf-light-brand .project-title h3 { color: var(--text) !important; }
+body.leaf-light-brand .project-kicker { color: var(--gold) !important; }
+body.leaf-light-brand .project-body p { color: var(--muted) !important; }
+body.leaf-light-brand .project-actions { border-color: var(--line) !important; }
+body.leaf-light-brand .store-link { color: var(--gold) !important; }
+
+body.leaf-light-brand .services-grid { gap: 18px !important; }
+body.leaf-light-brand .service-card.service-card--pillar {
+  min-height: 360px !important;
+  border-color: var(--line) !important;
+  background: linear-gradient(150deg, rgba(32,41,29,.98), rgba(18,24,17,.98)) !important;
+  color: var(--text) !important;
+  box-shadow: 0 22px 55px rgba(0,0,0,.25) !important;
+}
+body.leaf-light-brand .service-card.service-card--pillar h3 { color: var(--text) !important; }
+body.leaf-light-brand .service-card.service-card--pillar p,
+body.leaf-light-brand .service-card.service-card--pillar .service-scope,
+body.leaf-light-brand .service-card.service-card--pillar .service-product-label { color: var(--muted) !important; }
+body.leaf-light-brand .service-card.service-card--pillar .service-icon { background: rgba(242,162,10,.1) !important; border-color: rgba(242,162,10,.3) !important; }
+body.leaf-light-brand .service-card.service-card--pillar:hover,
+body.leaf-light-brand .service-card.service-card--pillar[aria-pressed="true"] { background: linear-gradient(150deg, rgba(44,56,39,.98), rgba(20,27,19,.98)) !important; border-color: rgba(242,162,10,.62) !important; }
+body.leaf-light-brand .service-selection-status--static { color: var(--muted) !important; }
+body.leaf-light-brand .service-selected-note { background: var(--gold) !important; color: #211708 !important; border: 0 !important; }
+
+body.leaf-light-brand #how-we-work { background: linear-gradient(135deg, #172319, #0f160f) !important; }
+body.leaf-light-brand .approach {
+  padding: clamp(28px,4vw,54px) !important;
+  border-color: var(--line) !important;
+  background: rgba(8,12,8,.36) !important;
+  box-shadow: var(--shadow) !important;
+}
+body.leaf-light-brand .approach-copy h2 { color: var(--text) !important; }
+body.leaf-light-brand .approach-copy p { color: var(--muted) !important; }
+body.leaf-light-brand .approach-visual { background: radial-gradient(circle at center, rgba(242,162,10,.08), rgba(19,30,19,.92) 64%) !important; }
+body.leaf-light-brand .orbit-node { background: #1c2a1c !important; color: var(--text) !important; }
+
+body.leaf-light-brand .leader-card,
+body.leaf-light-brand .info-card { border-radius: 26px !important; }
+body.leaf-light-brand .leadership-grid { grid-template-columns: minmax(0,1.55fr) minmax(320px,.72fr) !important; gap: 18px !important; filter: none !important; }
+body.leaf-light-brand .leader-copy h3,
+body.leaf-light-brand .info-card h3 { color: var(--text) !important; }
+body.leaf-light-brand .leader-copy p,
+body.leaf-light-brand .info-card p { color: var(--muted) !important; }
+body.leaf-light-brand .leader-tags span,
+body.leaf-light-brand .skill-list span { background: rgba(168,184,154,.08) !important; border-color: rgba(168,184,154,.17) !important; color: #dce7d4 !important; }
+body.leaf-light-brand .crew-work-item { background: #0c100c !important; border-color: var(--line) !important; }
+
+body.leaf-light-brand #portfolio { background: #0a0e0a !important; }
+body.leaf-light-brand #portfolio .portfolio-shell {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+body.leaf-light-brand #portfolio .portfolio-grid.cinematic-grid {
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
+  gap: 16px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+body.leaf-light-brand #portfolio .portfolio-chapter,
+body.leaf-light-brand #portfolio .portfolio-chapter:first-child,
+body.leaf-light-brand #portfolio .portfolio-chapter--secondary,
+body.leaf-light-brand #portfolio .portfolio-chapter--prison,
+body.leaf-light-brand #portfolio .portfolio-chapter--climb {
+  grid-column: 1 / -1 !important;
+  display: grid !important;
+  grid-template-columns: 62px minmax(0,1fr) auto !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin: 36px 0 4px !important;
+  padding: 16px 18px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 18px !important;
+  background: linear-gradient(90deg, rgba(46,75,46,.42), rgba(23,30,21,.94)) !important;
+}
+body.leaf-light-brand #portfolio .portfolio-chapter:first-child { margin-top: 0 !important; }
+body.leaf-light-brand #portfolio .portfolio-chapter::after { display: none !important; }
+body.leaf-light-brand #portfolio .portfolio-chapter-mark { grid-column: 1 !important; grid-row: 1 !important; display: block !important; width: 62px !important; height: 62px !important; border-radius: 14px !important; overflow: hidden !important; }
+body.leaf-light-brand #portfolio .portfolio-chapter-mark img { width: 100% !important; height: 100% !important; object-fit: contain !important; }
+body.leaf-light-brand #portfolio .portfolio-chapter-label { grid-column: 2 !important; grid-row: 1 !important; color: var(--moss) !important; }
+body.leaf-light-brand #portfolio .portfolio-chapter strong { grid-column: 3 !important; grid-row: 1 !important; color: var(--text) !important; font-size: clamp(1.35rem,2vw,2rem) !important; }
+body.leaf-light-brand #portfolio .shot.cinema-shot,
+body.leaf-light-brand #portfolio .shot[data-project] {
+  position: relative !important;
+  grid-column: span 4 !important;
+  min-width: 0 !important;
+  aspect-ratio: 16 / 10 !important;
+  overflow: hidden !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 18px !important;
+  clip-path: none !important;
+  background: #101610 !important;
+  box-shadow: 0 18px 45px rgba(0,0,0,.24) !important;
+}
+body.leaf-light-brand #portfolio .shot.cinema-project-feature {
+  grid-column: span 12 !important;
+  aspect-ratio: 21 / 9 !important;
+}
+body.leaf-light-brand #portfolio .shot img { width: 100% !important; height: 100% !important; object-fit: cover !important; border-radius: 0 !important; }
+body.leaf-light-brand #portfolio .shot::after {
+  content: "" !important;
+  position: absolute !important;
+  inset: 36% 0 0 !important;
+  z-index: 1 !important;
+  background: linear-gradient(to bottom, transparent, rgba(5,8,5,.92)) !important;
+}
+body.leaf-light-brand #portfolio .shot figcaption {
+  position: absolute !important;
+  inset: auto 18px 16px !important;
+  z-index: 2 !important;
+  display: flex !important;
+  align-items: end !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  color: var(--text) !important;
+}
+body.leaf-light-brand #portfolio .shot figcaption span { color: var(--gold) !important; }
+body.leaf-light-brand #portfolio .shot figcaption strong { color: var(--text) !important; }
+body.leaf-light-brand #portfolio .portfolio-open { position: absolute !important; inset: 0 !important; width: 100% !important; height: 100% !important; }
+
+body.leaf-light-brand #partnerships {
+  background:
+    linear-gradient(90deg, rgba(11,15,10,.99) 0%, rgba(11,15,10,.96) 60%, rgba(11,15,10,.68) 100%),
+    url("../images/brand/explorer-map-web.png") 96% 56% / min(42vw, 590px) auto no-repeat !important;
+}
+body.leaf-light-brand #partnerships::after { display: none !important; }
+body.leaf-light-brand #partnerships .partnerships-shell {
+  padding: clamp(32px,5vw,66px) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 30px !important;
+  background: linear-gradient(135deg, rgba(27,35,25,.94), rgba(13,18,12,.94)) !important;
+  box-shadow: var(--shadow) !important;
+}
+body.leaf-light-brand #partnerships .section-head h2 { color: var(--text) !important; }
+body.leaf-light-brand .partnership-paths { gap: 14px !important; border-color: var(--line) !important; }
+body.leaf-light-brand .partnership-path,
+body.leaf-light-brand .partnership-path + .partnership-path {
+  padding: 24px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 20px !important;
+  background: rgba(251,242,230,.045) !important;
+  color: var(--text) !important;
+  box-shadow: none !important;
+}
+body.leaf-light-brand .partnership-path > span { color: var(--gold) !important; }
+body.leaf-light-brand .partnership-path h3 { color: var(--text) !important; }
+body.leaf-light-brand .partnership-path p { color: var(--muted) !important; }
+
+body.leaf-light-brand #contact { background: linear-gradient(180deg, #0d110c, #10160f) !important; padding-bottom: 90px !important; }
+body.leaf-light-brand #contact .contact-card {
+  padding: clamp(30px,5vw,66px) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 32px !important;
+  background:
+    radial-gradient(circle at 5% 15%, rgba(242,162,10,.08), transparent 28rem),
+    linear-gradient(145deg, rgba(28,36,25,.98), rgba(15,20,14,.99)) !important;
+  color: var(--text) !important;
+  box-shadow: var(--shadow) !important;
+}
+body.leaf-light-brand .contact-plane-bg { opacity: .08 !important; filter: sepia(1) saturate(.5) !important; }
+body.leaf-light-brand .contact-layout {
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0,1fr)) !important;
+  gap: 22px !important;
+  align-items: start !important;
+}
+body.leaf-light-brand .contact-copy-block { grid-column: 1 / span 5 !important; grid-row: 1 / span 2 !important; padding-right: 18px; }
+body.leaf-light-brand .contact-copy-block h2 { margin: 18px 0 20px !important; font-size: clamp(3rem,5vw,5.6rem) !important; }
+body.leaf-light-brand .contact-copy-block p { color: var(--muted) !important; font-size: 1.08rem !important; }
+body.leaf-light-brand .contact-email,
+body.leaf-light-brand .copy-icon-btn { border-color: var(--line) !important; background: rgba(251,242,230,.055) !important; color: var(--text) !important; }
+body.leaf-light-brand .inquiry-choice-grid { grid-column: 6 / -1 !important; grid-row: 1 !important; display: grid !important; grid-template-columns: repeat(2,minmax(0,1fr)) !important; gap: 12px !important; }
+body.leaf-light-brand .inquiry-choice {
+  min-height: 96px !important;
+  border-color: var(--line) !important;
+  background: rgba(251,242,230,.035) !important;
+  color: var(--text) !important;
+}
+body.leaf-light-brand .inquiry-choice:hover,
+body.leaf-light-brand .inquiry-choice[aria-pressed="true"] { border-color: rgba(242,162,10,.72) !important; background: rgba(242,162,10,.1) !important; }
+body.leaf-light-brand .inquiry-choice-icon { background: rgba(242,162,10,.12) !important; color: var(--gold) !important; }
+body.leaf-light-brand .inquiry-choice strong { color: var(--text) !important; }
+body.leaf-light-brand .inquiry-choice small { color: var(--muted) !important; }
+body.leaf-light-brand .contact-form {
+  grid-column: 6 / -1 !important;
+  grid-row: 2 !important;
+  width: 100% !important;
+  display: grid !important;
+  gap: 14px !important;
+  padding: clamp(22px,3vw,34px) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 24px !important;
+  background: rgba(5,9,5,.46) !important;
+  box-shadow: none !important;
+}
+body.leaf-light-brand .contact-form label { color: var(--text) !important; margin-bottom: 0 !important; }
+body.leaf-light-brand .contact-form label > span,
+body.leaf-light-brand .hiring-group-label { color: var(--moss) !important; }
+body.leaf-light-brand .contact-form input,
+body.leaf-light-brand .contact-form select,
+body.leaf-light-brand .contact-form textarea {
+  min-height: 50px;
+  border-color: rgba(251,242,230,.15) !important;
+  background: rgba(251,242,230,.055) !important;
+  color: var(--text) !important;
+}
+body.leaf-light-brand .contact-form textarea { min-height: 150px; }
+body.leaf-light-brand .contact-form input::placeholder,
+body.leaf-light-brand .contact-form textarea::placeholder { color: rgba(251,242,230,.42) !important; }
+body.leaf-light-brand .contact-form input:focus,
+body.leaf-light-brand .contact-form select:focus,
+body.leaf-light-brand .contact-form textarea:focus { border-color: var(--gold) !important; box-shadow: 0 0 0 4px rgba(242,162,10,.12) !important; }
+body.leaf-light-brand .inquiry-detail-card { border-color: rgba(242,162,10,.2) !important; background: rgba(242,162,10,.07) !important; color: var(--text) !important; }
+body.leaf-light-brand .inquiry-detail-card span { color: var(--gold) !important; }
+body.leaf-light-brand .inquiry-detail-card strong { color: var(--text) !important; }
+body.leaf-light-brand .inquiry-detail-card p { color: var(--muted) !important; }
+body.leaf-light-brand .hiring-group { border-color: var(--line) !important; background: rgba(251,242,230,.035) !important; }
+body.leaf-light-brand .form-note,
+body.leaf-light-brand .field-helper { color: var(--muted) !important; }
+
+body.leaf-light-brand .footer { background: #090c09 !important; border-top: 1px solid var(--line) !important; }
+body.leaf-light-brand .ambient-audio { background: rgba(18,25,17,.94) !important; }
+
+@media (max-width: 1100px) {
+  body.leaf-light-brand .hero-content { grid-template-columns: minmax(0,1fr) minmax(300px,.72fr) !important; }
+  body.leaf-light-brand .section-head { grid-template-columns: 1fr !important; gap: 14px !important; }
+  body.leaf-light-brand .leadership-grid { grid-template-columns: 1fr !important; }
+  body.leaf-light-brand .contact-copy-block { grid-column: 1 / span 5 !important; }
+  body.leaf-light-brand .inquiry-choice-grid,
+  body.leaf-light-brand .contact-form { grid-column: 6 / -1 !important; }
+}
+
+@media (max-width: 860px) {
+  body.leaf-light-brand .hero {
+    min-height: auto;
+    padding-bottom: 420px;
+    background:
+      linear-gradient(180deg, rgba(10,13,9,.98) 0%, rgba(10,13,9,.94) 50%, rgba(10,13,9,.24) 78%, #0d110c 100%),
+      url("../images/brand/web-hero.png") 73% bottom / auto 62% no-repeat !important;
+  }
+  body.leaf-light-brand .hero-content { grid-template-columns: 1fr !important; }
+  body.leaf-light-brand .hero-side { display: none !important; }
+  body.leaf-light-brand .section { padding: 82px 0; }
+  body.leaf-light-brand .project-grid,
+  body.leaf-light-brand .services-grid,
+  body.leaf-light-brand .partnership-paths { grid-template-columns: 1fr !important; }
+  body.leaf-light-brand .project-card:last-child { grid-column: auto !important; max-width: none !important; }
+  body.leaf-light-brand #portfolio .shot.cinema-shot,
+  body.leaf-light-brand #portfolio .shot[data-project] { grid-column: span 6 !important; }
+  body.leaf-light-brand #portfolio .shot.cinema-project-feature { grid-column: span 12 !important; }
+  body.leaf-light-brand .contact-layout { grid-template-columns: 1fr !important; }
+  body.leaf-light-brand .contact-copy-block,
+  body.leaf-light-brand .inquiry-choice-grid,
+  body.leaf-light-brand .contact-form { grid-column: 1 !important; grid-row: auto !important; }
+  body.leaf-light-brand .contact-copy-block { padding-right: 0; }
+}
+
+@media (max-width: 560px) {
+  html,
+  body.leaf-light-brand { overflow-x: hidden; }
+  body.leaf-light-brand .container { width: min(100% - 28px, 680px); }
+  body.leaf-light-brand .hero { padding: 58px 0 320px; }
+  body.leaf-light-brand .hero-content,
+  body.leaf-light-brand .hero-copy { width: 100%; min-width: 0; }
+  body.leaf-light-brand .hero .eyebrow {
+    max-width: 100%;
+    font-size: .68rem;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+  }
+  body.leaf-light-brand .hero h1 {
+    max-width: 100%;
+    font-size: clamp(2.8rem,13vw,3.7rem);
+    overflow-wrap: anywhere;
+  }
+  body.leaf-light-brand .hero-copy > p { width: 100%; max-width: none; }
+  body.leaf-light-brand .hero-buttons .btn { width: 100%; }
+  body.leaf-light-brand #portfolio .portfolio-chapter,
+  body.leaf-light-brand #portfolio .portfolio-chapter:first-child,
+  body.leaf-light-brand #portfolio .portfolio-chapter--secondary,
+  body.leaf-light-brand #portfolio .portfolio-chapter--prison,
+  body.leaf-light-brand #portfolio .portfolio-chapter--climb { grid-template-columns: 48px 1fr !important; }
+  body.leaf-light-brand #portfolio .portfolio-chapter-mark { width: 48px !important; height: 48px !important; }
+  body.leaf-light-brand #portfolio .portfolio-chapter-label { display: none !important; }
+  body.leaf-light-brand #portfolio .portfolio-chapter strong { grid-column: 2 !important; }
+  body.leaf-light-brand #portfolio .shot.cinema-shot,
+  body.leaf-light-brand #portfolio .shot[data-project],
+  body.leaf-light-brand #portfolio .shot.cinema-project-feature { grid-column: span 12 !important; aspect-ratio: 16 / 10 !important; }
+  body.leaf-light-brand .inquiry-choice-grid { grid-template-columns: 1fr !important; }
+  body.leaf-light-brand .field-row { grid-template-columns: 1fr !important; }
+  body.leaf-light-brand #contact .contact-card { padding: 22px !important; }
+}
