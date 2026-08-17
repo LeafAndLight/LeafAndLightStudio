@@ -1136,8 +1136,8 @@ body.leaf-light-brand .hero-project-art {
   object-position: 58% center;
   opacity: .94;
   filter: saturate(.94) contrast(1.05);
-  -webkit-mask-image: radial-gradient(ellipse 80% 78% at 58% 50%, #000 54%, rgba(0,0,0,.9) 66%, transparent 100%);
-  mask-image: radial-gradient(ellipse 80% 78% at 58% 50%, #000 54%, rgba(0,0,0,.9) 66%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 74% 67% at 58% 50%, #000 38%, rgba(0,0,0,.78) 60%, transparent 100%);
+  mask-image: radial-gradient(ellipse 74% 67% at 58% 50%, #000 38%, rgba(0,0,0,.78) 60%, transparent 100%);
 }
 
 body.leaf-light-brand .hero-copy { text-shadow: 0 3px 24px rgba(0,0,0,.34); }
