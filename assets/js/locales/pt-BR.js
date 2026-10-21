@@ -75,5 +75,26 @@ window.I18N_LOCALES['pt-BR'] = Object.freeze({
   'Explore some of the skills, tools and areas of expertise behind this profile.': 'Conheça algumas das habilidades, ferramentas e áreas de especialização deste perfil.',
   'Project gallery': 'Galeria do projeto', 'Select a service for the contact form': 'Selecione um serviço para o formulário de contato',
   'Choose how you want to contact Leaf and Light': 'Escolha como deseja entrar em contato com a Leaf & Light', 'Ways to work with Leaf and Light Studio': 'Formas de trabalhar com a Leaf & Light Studio',
-  'Project theme music controls': 'Controles da música tema dos projetos', 'Supported platform focus': 'Foco de plataformas compatíveis', 'Hero cover loop': 'Sequência visual de capa'
+  'Project theme music controls': 'Controles da música tema dos projetos', 'Supported platform focus': 'Foco de plataformas compatíveis', 'Hero cover loop': 'Sequência visual de capa',
+  // Current I'm Monster store availability and official gallery.
+  "Available on Meta Quest": "Disponível no Meta Quest",
+  "Become a powerful monster in a stylized city. Move with your arms, climb buildings, smash structures and throw objects in single-player VR.": "Torne-se um monstro poderoso em uma cidade estilizada. Mova-se com os braços, escale prédios, destrua estruturas e arremesse objetos em uma experiência VR para um jogador.",
+  "Helicopter grab": "Helicóptero nas mãos",
+  "Physical movement": "Movimento físico",
+  "City streets": "Ruas da cidade",
+  "City defenders": "Defensores da cidade",
+  "Close encounter": "Encontro de perto",
+  "Destructible city": "Cidade destrutível",
+  "Street destruction": "Destruição nas ruas",
+  "Citywide chaos": "Caos pela cidade",
+  "I'm Monster grabbing a helicopter above the city": "I’m Monster agarrando um helicóptero acima da cidade",
+  "I'm Monster moving through a city street using its arms": "I’m Monster percorrendo uma rua da cidade usando os braços",
+  "I'm Monster holding a city defender beside a building": "I’m Monster segurando um defensor da cidade ao lado de um prédio",
+  "I'm Monster gameplay with vehicles and destruction in the city": "Gameplay de I’m Monster com veículos e destruição na cidade",
+  "I'm Monster holding a helicopter above the city rooftops": "I’m Monster segurando um helicóptero acima dos telhados da cidade",
+  "Open I'm Monster helicopter grab image": "Abrir imagem de I’m Monster agarrando um helicóptero",
+  "Open I'm Monster city streets image": "Abrir imagem das ruas da cidade de I’m Monster",
+  "Open I'm Monster close encounter image": "Abrir imagem do encontro de perto de I’m Monster",
+  "Open I'm Monster street destruction image": "Abrir imagem de destruição nas ruas de I’m Monster",
+  "Open I'm Monster citywide chaos image": "Abrir imagem do caos pela cidade de I’m Monster"
 });

@@ -75,5 +75,26 @@ window.I18N_LOCALES['zh-CN'] = Object.freeze({
   'Explore some of the skills, tools and areas of expertise behind this profile.': '了解该专业背景所涵盖的部分技能、工具与专长。',
   'Project gallery': '项目图库', 'Select a service for the contact form': '为联系表单选择一项服务',
   'Choose how you want to contact Leaf and Light': '选择联系 Leaf & Light 的方式', 'Ways to work with Leaf and Light Studio': '与 Leaf & Light Studio 合作的方式',
-  'Project theme music controls': '项目主题音乐控制', 'Supported platform focus': '支持平台', 'Hero cover loop': '封面画面轮播'
+  'Project theme music controls': '项目主题音乐控制', 'Supported platform focus': '支持平台', 'Hero cover loop': '封面画面轮播',
+  // Current I'm Monster store availability and official gallery.
+  "Available on Meta Quest": "现已登陆 Meta Quest",
+  "Become a powerful monster in a stylized city. Move with your arms, climb buildings, smash structures and throw objects in single-player VR.": "在风格化城市中化身强大怪兽。在这款单人 VR 游戏中，用双臂移动、攀爬建筑、摧毁结构并投掷物体。",
+  "Helicopter grab": "抓住直升机",
+  "Physical movement": "肢体移动",
+  "City streets": "城市街道",
+  "City defenders": "城市守卫",
+  "Close encounter": "近距离遭遇",
+  "Destructible city": "可破坏的城市",
+  "Street destruction": "街道破坏",
+  "Citywide chaos": "全城混乱",
+  "I'm Monster grabbing a helicopter above the city": "I’m Monster 在城市上空抓住直升机",
+  "I'm Monster moving through a city street using its arms": "I’m Monster 用双臂在城市街道中移动",
+  "I'm Monster holding a city defender beside a building": "I’m Monster 在建筑旁抓住城市守卫",
+  "I'm Monster gameplay with vehicles and destruction in the city": "I’m Monster 展示城市中的车辆和破坏场面",
+  "I'm Monster holding a helicopter above the city rooftops": "I’m Monster 在城市屋顶上方抓住直升机",
+  "Open I'm Monster helicopter grab image": "打开 I’m Monster 抓住直升机的图片",
+  "Open I'm Monster city streets image": "打开 I’m Monster 城市街道图片",
+  "Open I'm Monster close encounter image": "打开 I’m Monster 近距离遭遇图片",
+  "Open I'm Monster street destruction image": "打开 I’m Monster 街道破坏图片",
+  "Open I'm Monster citywide chaos image": "打开 I’m Monster 全城混乱图片"
 });
